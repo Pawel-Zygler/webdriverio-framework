@@ -1,20 +1,18 @@
 # webdriverio-framework
->>>>>>>>>>
-how to run your test?
-root > npx wdio
-or to run suite > npm run autostore
 
-or for single spec?
-npx wdio --spec ./test/specs/automation-test-store/add-items-to-basket.spec.js
-npm run b to run add items to basket from script
-npm run r to run register user from script
-npm run lh - for login happy path etc
+How to run your test? Go to root andnpx wdio
+```
+npm run lh
+```
+To run login automated test happy path
 
->>>>>>>>>
-TEST PLAN - to automate whole website
-add items to basket - partially mine, made during tutorial, rest is mine
+```
+npm run luh
+```
+To run login functionality unhappy path
+
+More scripts in package.js
 
 
->>>>>>>>>
-how to open allure reports?
-something broke here, fix
+How to open allure reports?
+Something broke here, fix.
