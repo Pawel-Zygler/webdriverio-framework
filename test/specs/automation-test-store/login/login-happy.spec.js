@@ -1,8 +1,8 @@
-import HomePage from "../../pageObjects/automation-test-store/home.page";
-import MyAccountPage from "../../pageObjects/automation-test-store/my-account.page";
-import testData from "../../data/testData";
-import TopMenuComp from "../../pageObjects/automation-test-store/components/top-menu.comp";
-import LoginPage from "../../pageObjects/automation-test-store/login.page";
+import HomePage from "../../../pageObjects/automation-test-store/home.page";
+import MyAccountPage from "../../../pageObjects/automation-test-store/my-account.page";
+import testData from "../../../data/testData";
+import TopMenuComp from "../../../pageObjects/automation-test-store/components/top-menu.comp";
+import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 
 describe("LOGIN PAGE - happy path", () => {
   beforeEach(() => {

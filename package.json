@@ -15,7 +15,7 @@
     "jest": "jest",
     "cch": "npx wdio --spec ./test/specs/automation-test-store/homePage/currency-change.spec.js",
     "vh": "npx wdio --spec ./test/specs/automation-test-store/homePage/visit-social-media-happy.spec.js",
-    "lh": "npx wdio --spec ./test/specs/automation-test-store/login-happy.spec.js",
+    "lh": "npx wdio --spec ./test/specs/automation-test-store/login/login-happy.spec.js",
     "luh": "npx wdio --spec ./test/specs/automation-test-store/login-unhappy.spec.js",
     "fh": "npx wdio --spec ./test/specs/automation-test-store/forgot-password-happy.spec.js",
     "fuh": "npx wdio --spec ./test/specs/automation-test-store/forgot-password-unhappy.spec.js",
