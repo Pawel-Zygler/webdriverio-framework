@@ -16,12 +16,12 @@
     "cch": "npx wdio --spec ./test/specs/automation-test-store/homePage/currency-change.spec.js",
     "vh": "npx wdio --spec ./test/specs/automation-test-store/homePage/visit-social-media-happy.spec.js",
     "lh": "npx wdio --spec ./test/specs/automation-test-store/login/login-happy.spec.js",
-    "luh": "npx wdio --spec ./test/specs/automation-test-store/login-unhappy.spec.js",
-    "fh": "npx wdio --spec ./test/specs/automation-test-store/forgot-password-happy.spec.js",
-    "fuh": "npx wdio --spec ./test/specs/automation-test-store/forgot-password-unhappy.spec.js",
-    "flh": "npx wdio --spec ./test/specs/automation-test-store/forgot-login-happy.spec.js",
-    "fluh": "npx wdio --spec ./test/specs/automation-test-store/forgot-login-unhappy.spec.js",
-    "smh": "npx wdio --spec ./test/specs/automation-test-store/visit-social-media-happy.spec.js"
+    "luh": "npx wdio --spec ./test/specs/automation-test-store/login/login-unhappy.spec.js",
+    "fh": "npx wdio --spec ./test/specs/automation-test-store//login/forgot-password-happy.spec.js",
+    "fuh": "npx wdio --spec ./test/specs/automation-test-store/login/forgot-password-unhappy.spec.js",
+    "flh": "npx wdio --spec ./test/specs/automation-test-store/login/forgot-login-happy.spec.js",
+    "fluh": "npx wdio --spec ./test/specs/automation-test-store/login/forgot-login-unhappy.spec.js",
+    "smh": "npx wdio --spec ./test/specs/automation-test-store/homePage/visit-social-media-happy.spec.js"
   },
   "author": "pawel",
   "license": "ISC",
