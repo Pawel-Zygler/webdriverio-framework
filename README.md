@@ -5,16 +5,17 @@ Run all automation test store suite:
 npm run autostore
 ```
 
-How to run single test? Go to root folder
+How to run single test? Go to root folder, type this to run login spec happy path
 ```
 npm run lh
 ```
-To run login automated test happy path
+To run login spec unhappy path, type this in root folder
 
 ```
 npm run luh
 ```
-To run login functionality unhappy path
+
+
 More scripts in package.js
 
 
