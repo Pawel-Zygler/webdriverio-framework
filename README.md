@@ -3,6 +3,7 @@
 Run all automation test store suite:
 ```
 npm run autostore
+```
 
 How to run your test? Go to root folder
 ```
