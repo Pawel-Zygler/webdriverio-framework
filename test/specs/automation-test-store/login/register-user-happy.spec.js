@@ -17,7 +17,7 @@ describe("REGISTER COMPONENT - happy path", () => {
     );
   });
 
-  it("fills in the form correctly", async () => {
+  it("fills in the form correctly and registers", async () => {
     for (const eachField in testData.user) {
       if (
         RegisterPage[eachField] &&
@@ -37,7 +37,7 @@ describe("REGISTER COMPONENT - happy path", () => {
     await SharedPageComponents.continueButton.click();
 
     await expect(await RegisterPage.accountCreatedHeader).toHaveText(
-      "OUR ACCOUNT HAS BEEN CREATED! EXPECTED ERROR: change email to unique to register"
+      "OUR ACCOUNT HAS BEEN CREATED! EXPECTED ERROR: change creds to unique to register"
     );
     //change email in testData to unique to register user
     //or maybe fix this so it sohow handles this more gracefully, however, I don't think I can delete the user there

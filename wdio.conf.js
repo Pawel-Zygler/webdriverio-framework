@@ -37,7 +37,7 @@ export const config = {
       "test/specs/webdriver-university/locating-elements.spec.js",
       "test/specs/webdriver-university/contact-us.spec.js",
     ],
-    autostore: ["test/specs/automation-test-store/add-items-to-basket.spec.js"],
+    autostore: ["test/specs/automation-test-store/**/*.spec.js"],
   },
   //
   // ============
@@ -73,7 +73,7 @@ export const config = {
       "goog:chromeOptions": {
         args: [
           "--incognito",
-          //"--headless",
+          "--headless",
           "--start-maximize",
           "--window-size=1920,1080",
         ],

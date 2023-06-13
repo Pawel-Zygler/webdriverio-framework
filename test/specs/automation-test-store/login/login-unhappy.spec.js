@@ -1,8 +1,8 @@
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
+import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 import TopMenuComp from "../../../pageObjects/automation-test-store/components/top-menu.comp";
 import LoginPage from "../../../pageObjects/automation-test-store/login.page";
-import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 
 describe("LOGIN PAGE - unhappy path", () => {
   beforeEach(() => {
