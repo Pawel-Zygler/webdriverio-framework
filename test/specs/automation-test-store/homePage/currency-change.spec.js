@@ -1,4 +1,4 @@
-import testData from "../../../data/testData";
+import testData from "../../../data/testData.js";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 
 describe("HOME PAGE", () => {

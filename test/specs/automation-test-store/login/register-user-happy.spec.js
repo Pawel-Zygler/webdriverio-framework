@@ -1,8 +1,8 @@
-import HomePage from "../../pageObjects/automation-test-store/home.page";
-import TopMenuComponent from "../../pageObjects/automation-test-store/components/top-menu.comp";
-import RegisterPage from "../../pageObjects/automation-test-store/register.page";
-import testData from "../../data/testData";
-import SharedPageComponents from "../../pageObjects/automation-test-store/components/shared-page-components.comp";
+import HomePage from "../../../pageObjects/automation-test-store/home.page";
+import TopMenuComponent from "../../../pageObjects/automation-test-store/components/top-menu.comp";
+import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
+import testData from "../../../data/testData";
+import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("REGISTER COMPONENT - happy path", () => {
   beforeEach(async () => {
@@ -37,7 +37,7 @@ describe("REGISTER COMPONENT - happy path", () => {
     await SharedPageComponents.continueButton.click();
 
     await expect(await RegisterPage.accountCreatedHeader).toHaveText(
-      "YOUR ACCOUNT HAS BEEN CREATED!"
+      "OUR ACCOUNT HAS BEEN CREATED! EXPECTED ERROR: change email to unique to register"
     );
     //change email in testData to unique to register user
     //or maybe fix this so it sohow handles this more gracefully, however, I don't think I can delete the user there

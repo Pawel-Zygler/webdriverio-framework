@@ -109,9 +109,9 @@ const testData = {
     fb: "Facebook",
     tt: "Twitter",
     li: "Linkedin",
-    fburl: "facebook.com",
-    tturl: "twitter.com",
-    liurl: "linkedin.com",
+    fburl: "https://www.facebook.com/",
+    tturl: "https://twitter.com/",
+    liurl: "https://www.linkedin.com/",
   },
 };
 

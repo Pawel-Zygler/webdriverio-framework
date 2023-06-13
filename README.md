@@ -13,6 +13,7 @@ To run login functionality unhappy path
 
 More scripts in package.js
 
+TODO:
+1. How to open allure reports? Something broke here, fix.
 
-How to open allure reports?
-Something broke here, fix.
+
