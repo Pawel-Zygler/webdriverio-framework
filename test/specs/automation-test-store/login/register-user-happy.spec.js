@@ -4,7 +4,6 @@ import RegisterPage from "../../pageObjects/automation-test-store/register.page"
 import testData from "../../data/testData";
 import SharedPageComponents from "../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
-//GOAL: provide confidence that the form works
 describe("REGISTER COMPONENT - happy path", () => {
   beforeEach(async () => {
     await HomePage.open();
@@ -41,6 +40,6 @@ describe("REGISTER COMPONENT - happy path", () => {
       "YOUR ACCOUNT HAS BEEN CREATED!"
     );
     //change email in testData to unique to register user
-    //or maybe fix this so it sohow handles this more gracefully
+    //or maybe fix this so it sohow handles this more gracefully, however, I don't think I can delete the user there
   });
 });

@@ -10,8 +10,6 @@ describe("LOGIN PAGE - unhappy path", () => {
     TopMenuComp.loginOrRegister.click();
   });
 
-  //jak w shared components to są funkcje pomocnicze
-  //to jest wyzszy poziom abstrakcji testow, mozna krocej je pisac
   const loginTest = async (loginName, password) => {
     if (loginName) {
       await LoginPage.loginName.setValue(loginName);

@@ -1,6 +1,5 @@
-import ItemComponent from "../../pageObjects/automation-test-store/components/item.comp";
-import testData from "../../data/testData";
-import HomePage from "../../pageObjects/automation-test-store/home.page";
+import testData from "../../../data/testData";
+import HomePage from "../../../pageObjects/automation-test-store/home.page";
 
 describe("HOME PAGE", () => {
   beforeEach(async () => {

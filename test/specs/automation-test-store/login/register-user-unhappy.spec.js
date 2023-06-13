@@ -4,7 +4,6 @@ import RegisterPage from "../../pageObjects/automation-test-store/register.page"
 import testData from "../../data/testData";
 import SharedPageComponents from "../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
-//GOAL: provide confidence that the form works
 describe("REGISTER COMPONENT - unhappy path", () => {
   beforeEach(async () => {
     await HomePage.open();
@@ -70,7 +69,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
 
     //legit prod error, no message when entering 2 chars, boundries are 3-32
-    //it would be good to handle that correctly
+    //it would be good to handle that correctly, or maybe improve error handling
     xit("throws error for telephone number", async () => {
       await RegisterPage.telephone.setValue(testData.userInvalidMin.telephone);
       await SharedPageComponents.continueButton.click();
@@ -375,6 +374,3 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
   });
 });
-
-//it.each - this is advanced, problems with jest
-//ewentualnie testCase, bo to za duzo kodu tu jest chyba
