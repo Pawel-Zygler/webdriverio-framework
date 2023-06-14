@@ -1,36 +1,24 @@
 import testData from "../../../data/testData.js";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
+import commands from "../../../../utils/commands.js";
 
 describe("HOME PAGE", () => {
   beforeEach(async () => {
     await HomePage.open();
   });
-  describe("CURRENCY CHANGE - happy path", () => {
-    it("changes the currency to euro", async () => {
-      await HomePage.currencyDropdown.click();
-      await HomePage.currencyOption(testData.currency.euro).click();
-
-      await expect(await HomePage.currentCurrency).toHaveTextContaining(
-        testData.currency.euroSymbol
-      );
-    });
-
-    it("changes the currency to dollar", async () => {
-      await HomePage.currencyDropdown.click();
-      await HomePage.currencyOption(testData.currency.dollar).click();
-
-      await expect(await HomePage.currentCurrency).toHaveTextContaining(
-        testData.currency.dollarSymbol
-      );
-    });
-
-    it("changes the currency to pound", async () => {
-      await HomePage.currencyDropdown.click();
-      await HomePage.currencyOption(testData.currency.pound).click();
-
-      await expect(await HomePage.currentCurrency).toHaveTextContaining(
-        testData.currency.poundSymbol
-      );
-    });
+  describe('CURRENCY CHANGE - happy path', () => {
+    const currencies = [
+     { name: 'euro', symbol: testData.currency.euroSymbol },
+      { name: 'dollar', symbol: testData.currency.dollarSymbol },
+      {name: 'pound', symbol: testData.currency.poundSymbol}
+    ];
+    for (let currency of currencies) {
+      it(`changes currency to ${currency.name}`, async () => {
+        await commands.waitThenClick(HomePage.currencyDropdown);
+        await commands.waitThenClick(HomePage.currencyOption(testData.currency[currency.name]));
+        
+        await expect(await HomePage.currentCurrency).toHaveTextContaining(currency.symbol)
+      });
+    }
   });
 });

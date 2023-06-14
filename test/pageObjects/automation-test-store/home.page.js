@@ -17,13 +17,11 @@ class HomePage extends BasePage {
 
   get currencyDropdown() {
     const e = $("//li//a[@class='dropdown-toggle']//span//span");
-    e.waitForClickable();
     return e;
   }
 
   currencyOption(currency) {
     const e = $(`//a[contains(text(),"${currency}")]`);
-    e.waitForClickable();
     return e;
   }
 

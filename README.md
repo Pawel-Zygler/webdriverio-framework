@@ -26,10 +26,8 @@ More scripts in package.js
 
 
 LESSONS and things TODO:
-use waitThenClick command in more places
-
-
-allure reports opening broke
+use waitThenClick command in more places: implemented into currency
+fix add items to basket - still not detected
 gitgnore is missing some files to ignore from allure reports
-home page open could be abstracted?
 some commands from page objects could definitely be abstracted into utils
+allure reports opening broke
