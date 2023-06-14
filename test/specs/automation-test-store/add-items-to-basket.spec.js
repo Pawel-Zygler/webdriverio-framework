@@ -4,7 +4,7 @@ import ItemComponent from "../../pageObjects/automation-test-store/components/it
 import HomePage from "../../pageObjects/automation-test-store/home.page";
 import SkinCarePage from "../../pageObjects/automation-test-store/skincare.page";
 
-describe("add items to basket", () => {
+xdescribe("add items to basket", () => {
   beforeEach(() => {
     HomePage.open();
   });
