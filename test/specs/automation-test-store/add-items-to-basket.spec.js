@@ -21,7 +21,6 @@ describe("add items to basket", () => {
 
   it("checks basket and validate total", async () => {
     await HomePage.topMenuComponent.topMenuLink("Cart").click();
-    //await browser.debug();
     await expect(browser).toHaveUrlContaining("checkout");
     await CartPage.validateTotal();
   });
