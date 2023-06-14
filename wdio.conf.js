@@ -33,9 +33,7 @@ export const config = {
   ],
   suites: {
     smoke: [
-      "test/specs/automation-test-store/add-items-to-basket.spec.js",
-      "test/specs/webdriver-university/locating-elements.spec.js",
-      "test/specs/webdriver-university/contact-us.spec.js",
+      "test/specs/automation-test-store/add-items-to-basket.spec.js"
     ],
     autostore: ["test/specs/automation-test-store/**/*.spec.js"],
   },
