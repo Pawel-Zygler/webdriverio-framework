@@ -29,9 +29,7 @@ describe("LOGIN PAGE - happy path", () => {
 
   it("logs in and logs out (via topmenu)", async () => {
     await TopMenuComp.welcomeBackDropdown.moveTo();
-
     await commands.waitThenClick(MyAccountPage.topMenuLogoff);
-
     await expect(await commands.waitThenGetText(MyAccountPage.logoutHeader)).toHaveText("ACCOUNT LOGOUT");
   });
 

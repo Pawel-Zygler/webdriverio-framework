@@ -1,6 +1,7 @@
 import allure from "allure-commandline";
 import fs from "fs";
 import commands from "./utils/commands.js";
+import HomePage from "./test/pageObjects/automation-test-store/home.page.js";
 
 export const config = {
   //
@@ -71,7 +72,7 @@ export const config = {
       "goog:chromeOptions": {
         args: [
           "--incognito",
-          //"--headless",
+          "--headless",
           "--start-maximize",
           "--window-size=1920,1080",
         ],
@@ -270,11 +271,20 @@ export const config = {
   beforeTest: async function (test, context) {
     await browser.maximizeWindow();
   },
+
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
    * beforeEach in Mocha)
    */
-  // beforeHook: function (test, context) {
+  // beforeHook: async function (test, context) {
+
+  // },
+
+  //I could not run this yet
+  // beforeEach: async function (test) {
+  //   // if (test.file.includes('automation-test-store')) {
+  //   await HomePage.open();
+  //   //}
   // },
   /**
    * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling

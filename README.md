@@ -17,7 +17,7 @@ npm run luh
 
 To run wiremock, go to root:
 ```
-java -jar wiremock-standalone-2.35.0.jar
+npm run wiremock
 ```
 
 
