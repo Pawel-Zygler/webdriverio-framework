@@ -13,7 +13,7 @@ describe("REGISTER COMPONENT - happy path", () => {
   });
 
   it("opens the register form", async () => {
-    await expect(await RegisterPage.createAccountHeader).toHaveText(
+    await expect(await commands.waitThenGetText(RegisterPage.createAccountHeader)).toHaveText(
       "CREATE ACCOUNT"
     );
   });
@@ -22,19 +22,19 @@ describe("REGISTER COMPONENT - happy path", () => {
     for (const eachField in testData.user) {
       if (
         RegisterPage[eachField] &&
-        typeof RegisterPage[eachField].setValue === "function"
+        typeof commands.waitThenSetValue(RegisterPage[eachField]) === "function"
       ) {
         if (eachField === "regionState" || eachField === "country") {
           await RegisterPage[eachField].selectByVisibleText(
             testData.user[eachField]
           );
         } else {
-          await RegisterPage[eachField].setValue(testData.user[eachField]);
+          await commands.waitThenSetValue(RegisterPage[eachField], testData.user[eachField]);
         }
       }
     }
 
-    await RegisterPage.privacyPolicyAgree.click();
+    await commands.waitThenClick(RegisterPage.privacyPolicyAgree);
     
     //I don't click Continue, I just go to success page (it is possible) and check text. 
     //For real registration, we would have to register user with each test, which I want to avoid.
@@ -42,7 +42,7 @@ describe("REGISTER COMPONENT - happy path", () => {
     
     await browser.url("https://automationteststore.com/index.php?rt=account/success");
 
-    await expect(await RegisterPage.accountCreatedHeader).toHaveText(
+    await expect(await commands.waitThenGetText(RegisterPage.accountCreatedHeader)).toHaveText(
       "YOUR ACCOUNT HAS BEEN CREATED!"
     );
   });

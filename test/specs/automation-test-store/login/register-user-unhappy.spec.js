@@ -14,7 +14,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
 
   describe("REGISTER COMPONENT - minimal values", () => {
     it("opens the register form", async () => {
-      await expect(await RegisterPage.createAccountHeader).toHaveText(
+      await expect(await commands.waitThenGetText(RegisterPage.createAccountHeader)).toHaveText(
         "CREATE ACCOUNT"
       );
     });
@@ -34,87 +34,81 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
 
     it("throws error for first name", async () => {
-      await RegisterPage.firstName.setValue(testData.userInvalidMin.firstName);
+      await commands.waitThenSetValue(RegisterPage.firstName, testData.userInvalidMin.firstName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.firstName
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.firstName
       );
     });
 
     it("throws error for last name", async () => {
-      await RegisterPage.lastName.setValue(testData.userInvalidMin.lastName);
+      await commands.waitThenSetValue(RegisterPage.lastName, testData.userInvalidMin.lastName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.lastName
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.lastName
       );
     });
 
     it("throws error for email", async () => {
-      await RegisterPage.email.setValue(testData.userInvalidMin.email);
+      await commands.waitThenSetValue(RegisterPage.email, testData.userInvalidMin.email);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      const errorElement = await RegisterPage.errorElement(
-        testData.registerValidationErrors.email
-      );
-      await expect(await errorElement).toHaveText(
+      const errorElement = await RegisterPage.errorElement(testData.registerValidationErrors.email);
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.email
       );
     });
 
     //legit prod error, no message when entering 2 chars, boundries are 3-32
     //it would be good to handle that correctly, or maybe improve error handling
-    xit("throws error for telephone number", async () => {
-      await RegisterPage.telephone.setValue(testData.userInvalidMin.telephone);
+    xit("[prod bug]throws error for telephone number", async () => {
+      await commands.waitThenSetValue(RegisterPage.telephone, testData.userInvalidMin.telephone);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      await expect(
-        await RegisterPage.errorElement(
-          testData.registerValidationErrors.telephone
-        )
-      ).toHaveText(testData.registerValidationErrors.telephone);
+      const errorElement = await RegisterPage.errorElement(testData.registerValidationErrors.telephone);
+
+      await expect(await commands.waitThenGetText(errorElement).toHaveText(testData.registerValidationErrors.telephone))
     });
 
     //prod bug, has no validations
-    xit("throws error for fax number", async () => {
-      await RegisterPage.fax.setValue(testData.userInvalidMin.fax);
+    xit("[prod bug] throws error for fax number", async () => {
+      await commands.waitThenSetValue(RegisterPage.fax, testData.userInvalidMin.fax);
 
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      await expect(
-        await RegisterPage.errorElement(testData.registerValidationErrors.fax)
-      ).toHaveText(testData.registerValidationErrors.fax);
+      const errorElement = await RegisterPage.errorElement(
+        testData.registerValidationErrors.fax
+      );
+
+      await expect(await commands.waitThenGetText(errorElement).toHaveText(testData.registerValidationErrors.fax))
     });
 
     it("throws error for addres one field", async () => {
-      await RegisterPage.addressOne.setValue(
-        testData.userInvalidMin.addressOne
-      );
+      await commands.waitThenSetValue(RegisterPage.addressOne, testData.userInvalidMin.addressOne);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.addressOne
       );
-      await expect(await errorElement).toHaveText(
-        testData.registerValidationErrors.addressOne
-      );
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(testData.registerValidationErrors.addressOne);
     });
 
     it("throws error for city field", async () => {
-      await RegisterPage.city.setValue(testData.userInvalidMin.city);
+      await commands.waitThenSetValue(RegisterPage.city, testData.userInvalidMin.city);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.addressOne
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.addressOne
       );
     });
@@ -128,88 +122,85 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.regionState
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.regionState
       );
     });
 
     //prod bug, fails but due to bug
-    xit("throws error in zip code", async () => {
-      await RegisterPage.zipCode.setValue(testData.userInvalidMin.zipCode);
+    xit("[prod bug] throws error in zip code", async () => {
+      await commands.waitThenSetValue(RegisterPage.zipCode, testData.userInvalidMin.zipCode);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.zipCode
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.zipCode
       );
     });
 
     it("throws error for login field", async () => {
-      await RegisterPage.loginName.setValue(testData.userInvalidMin.loginName);
+      await commands.waitThenSetValue(RegisterPage.loginName, testData.userInvalidMin.loginName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.loginName
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.loginName
       );
     });
 
     it("throws error for login name taken", async () => {
-      await RegisterPage.loginName.setValue(testData.user.loginName);
+      await commands.waitThenSetValue(RegisterPage.loginName, testData.user.loginName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.loginNameTaken
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.loginNameTaken
       );
     });
 
     it("throws error for password that is less than 4 chars", async () => {
-      await RegisterPage.password.setValue(testData.userInvalidMin.password);
+      await commands.waitThenSetValue(RegisterPage.password, testData.userInvalidMin.password);
 
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.password
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.password
       );
     });
 
     it("throws error for password confirmation", async () => {
-      await RegisterPage.password.setValue(testData.userInvalidMin.password);
+      await commands.waitThenSetValue(RegisterPage.password, testData.userInvalidMin.password);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
-      await RegisterPage.passwordConfirm.setValue(
-        testData.userInvalidMin.passwordConfirm
+      await commands.waitThenSetValue(RegisterPage.passwordConfirm, testData.userInvalidMin.passwordConfirm
       );
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.passwordConfirm
       );
-      await expect(await errorElement).toHaveText(
-        testData.registerValidationErrors.passwordConfirm
-      );
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(testData.registerValidationErrors.passwordConfirm);
     });
 
     it("throws error for privacy policy not selected", async () => {
       for (const eachField in testData.user) {
         if (
           RegisterPage[eachField] &&
-          typeof RegisterPage[eachField].setValue === "function"
+          typeof commands.waitThenSetValue(RegisterPage[eachField]) === "function"
         ) {
           if (eachField === "regionState" || eachField === "country") {
             await RegisterPage[eachField].selectByVisibleText(
               testData.user[eachField]
             );
           } else {
-            await RegisterPage[eachField].setValue(testData.user[eachField]);
+            await commands.waitThenClick(RegisterPage[eachField], testData.user[eachField]);
           }
         }
       }
@@ -219,7 +210,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
         testData.failedValidationAboveForm.privacyPolicy
       );
 
-      await expect(await errorElement).toHaveTextContaining(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveTextContaining(
         testData.failedValidationAboveForm.privacyPolicy
       );
     });
@@ -228,85 +219,80 @@ describe("REGISTER COMPONENT - unhappy path", () => {
   describe("REGISTER COMPONENT - maximum values", () => {
     //not sure if this is not flaky
     it("throws error for first name", async () => {
-      await RegisterPage.firstName.setValue(testData.userInvalidMax.firstName);
+      await commands.waitThenSetValue(RegisterPage.firstName, testData.userInvalidMax.firstName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.firstName
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.firstName
       );
     });
 
     it("throws error for last name", async () => {
-      await RegisterPage.lastName.setValue(testData.userInvalidMax.lastName);
+      await commands.waitThenSetValue(RegisterPage.lastName, testData.userInvalidMax.lastName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.lastName
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.lastName
       );
     });
 
     it("throws error for email", async () => {
-      await RegisterPage.email.setValue(testData.userInvalidMax.email);
+      await commands.waitThenSetValue(RegisterPage.email, testData.userInvalidMax.email);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.email
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.email
       );
     });
 
     it("throws error for telephone number", async () => {
-      await RegisterPage.telephone.setValue(testData.userInvalidMax.telephone);
+      await commands.waitThenSetValue(RegisterPage.telephone, testData.userInvalidMax.telephone);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      await expect(
-        await RegisterPage.errorElement(
-          testData.registerValidationErrors.telephone
-        )
-      ).toHaveText(testData.registerValidationErrors.telephone);
+      const errorElement = await RegisterPage.errorElement(
+        testData.registerValidationErrors.telephone
+      );
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(testData.registerValidationErrors.telephone);
     });
 
     //prod bug, missing validations
-    xit("throws error for fax number", async () => {
-      await RegisterPage.fax.setValue(testData.userInvalidMax.fax);
-
+    xit("[prod bug] throws error for fax number", async () => {
+      await commands.waitThenSetValue(RegisterPage.fax, testData.userInvalidMax.fax);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      await expect(
-        await RegisterPage.errorElement(testData.registerValidationErrors.fax)
-      ).toHaveText(testData.registerValidationErrors.fax);
+      const errorElement = await RegisterPage.errorElement(
+        testData.registerValidationErrors.fax
+      );
+      await expect(errorElement).toHaveText(testData.registerValidationErrors.fax);
     });
 
     it("throws error for addres one field", async () => {
-      await RegisterPage.addressOne.setValue(
-        testData.userInvalidMax.addressOne
-      );
+      await commands.waitThenSetValue(RegisterPage.addressOne, testData.userInvalidMax.addressOne);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.addressOne
       );
-      await expect(await errorElement).toHaveText(
-        testData.registerValidationErrors.addressOne
-      );
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(testData.registerValidationErrors.addressOne);
     });
 
     it("throws error for city field", async () => {
-      await RegisterPage.city.setValue(testData.userInvalidMax.city);
+      await commands.waitThenSetValue(RegisterPage.city, testData.userInvalidMax.city);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.addressOne
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.addressOne
       );
     });
@@ -320,56 +306,56 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.regionState
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.regionState
       );
     });
 
     //prod bug
-    xit("throws error in zip code", async () => {
-      await RegisterPage.zipCode.setValue(testData.userInvalidMin.zipCode);
+    xit("[prod bug] throws error in zip code", async () => {
+      await commands.waitThenSetValue(RegisterPage.zipCode, testData.userInvalidMin.zipCode);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.zipCode
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.zipCode
       );
     });
 
     it("throws error for login field", async () => {
-      await RegisterPage.loginName.setValue(testData.userInvalidMin.loginName);
+      await commands.waitThenSetValue(RegisterPage.loginName, testData.userInvalidMin.loginName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.loginName
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.loginName
       );
     });
 
     it("throws error for login name taken", async () => {
-      await RegisterPage.loginName.setValue(testData.user.loginName);
+      await commands.waitThenSetValue(RegisterPage.loginName, testData.user.loginName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.loginNameTaken
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.loginNameTaken
       );
     });
 
     it("throws error for password that is more than 20 chars", async () => {
-      await RegisterPage.password.setValue(testData.userInvalidMax.password);
+      await commands.waitThenSetValue(RegisterPage.password, testData.userInvalidMax.password);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.password
       );
-      await expect(await errorElement).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
         testData.registerValidationErrors.password
       );
     });

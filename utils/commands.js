@@ -1,17 +1,17 @@
 module.exports = {
-  waitThenClick: async function (e) {
-    await e.waitForExist();
-    await e.waitForDisplayed();
-    await e.click();
+  waitThenClick: async function (element) {
+    await element.waitForExist();
+    await element.waitForDisplayed();
+    await element.click();
   },
-  waitThenGetText: async function (e) {
-    await e.waitForDisplayed();
-    await e.getText();
-    return e;
+  waitThenGetText: async function (element) {
+    await element.waitForDisplayed();
+    await element.getText();
+    return element;
   },
-  waitThenSetValue: async function (e, value) {
-    await e.waitForDisplayed();
-    await e.setValue(value);
-    return e;
+  waitThenSetValue: async function (element, value) {
+    await element.waitForDisplayed();
+    await element.setValue(value);
+    return element;
   },
 };
