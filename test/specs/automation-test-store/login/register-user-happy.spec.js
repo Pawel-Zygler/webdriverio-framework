@@ -8,7 +8,7 @@ import commands from "../../../../utils/commands";
 describe("REGISTER COMPONENT - happy path", () => {
   beforeEach(async () => {
     await HomePage.open();
-    await TopMenuComponent.loginOrRegister.click();
+    await commands.waitThenClick(await TopMenuComponent.loginOrRegister);
     await commands.waitThenClick(await SharedPageComponents.continueButton);
   });
 

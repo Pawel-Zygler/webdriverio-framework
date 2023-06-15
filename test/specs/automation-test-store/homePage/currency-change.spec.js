@@ -17,7 +17,7 @@ describe("HOME PAGE", () => {
         await commands.waitThenClick(HomePage.currencyDropdown);
         await commands.waitThenClick(HomePage.currencyOption(testData.currency[currency.name]));
         
-        await expect(commands.waitThenGetText(HomePage.currentCurrency)).toHaveTextContaining(currency.symbol)
+        await expect(await commands.waitThenGetText(HomePage.currentCurrency)).toHaveTextContaining(currency.symbol)
       });
     }
   });

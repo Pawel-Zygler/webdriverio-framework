@@ -8,10 +8,10 @@ import RegisterPage from "../../../pageObjects/automation-test-store/register.pa
 import commands from "../../../../utils/commands";
 
 describe("FORGOT PASSWORD PAGE - happy path", () => {
-  beforeEach(() => {
-    HomePage.open();
-    commands.waitThenClick(TopMenuComp.loginOrRegister);
-    commands.waitThenClick(LoginPage.forgotPasswordButton);
+  beforeEach(async() => {
+    await HomePage.open();
+    await commands.waitThenClick(TopMenuComp.loginOrRegister);
+    await commands.waitThenClick(LoginPage.forgotPasswordButton);
   });
 
   it("checks if user is on forgot password page", async () => {

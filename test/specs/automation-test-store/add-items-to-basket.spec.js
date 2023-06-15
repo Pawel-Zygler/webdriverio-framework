@@ -5,8 +5,8 @@ import HomePage from "../../pageObjects/automation-test-store/home.page";
 import SkinCarePage from "../../pageObjects/automation-test-store/skincare.page";
 
 describe("add items to basket", () => {
-  beforeEach(() => {
-    HomePage.open();
+  beforeEach(async() => {
+    await HomePage.open();
   });
   it(`adds specific 'skincare products' & validates cart total`, async () => {
     await HomePage.categoryMenuComponent

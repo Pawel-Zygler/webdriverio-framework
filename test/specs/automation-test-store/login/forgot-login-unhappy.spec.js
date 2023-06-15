@@ -8,10 +8,10 @@ import RegisterPage from "../../../pageObjects/automation-test-store/register.pa
 import commands from "../../../../utils/commands";
 
 describe("FORGOT LOGIN PAGE - unhappy path", () => {
-  beforeEach(() => {
-    HomePage.open();
-    commands.waitThenClick(TopMenuComp.loginOrRegister);
-    commands.waitThenClick(LoginPage.forgotLoginButton);
+  beforeEach(async() => {
+    await HomePage.open();
+    await commands.waitThenClick(TopMenuComp.loginOrRegister);
+    await commands.waitThenClick(LoginPage.forgotLoginButton);
   });
 
   it("checks if user is on forgot login page", async () => {

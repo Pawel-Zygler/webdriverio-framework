@@ -3,11 +3,12 @@ import testData from "../../../data/testData";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 import TopMenuComp from "../../../pageObjects/automation-test-store/components/top-menu.comp";
 import LoginPage from "../../../pageObjects/automation-test-store/login.page";
+import commands from "../../../../utils/commands";
 
 describe("LOGIN PAGE - unhappy path", () => {
-  beforeEach(() => {
-    HomePage.open();
-    TopMenuComp.loginOrRegister.click();
+  beforeEach(async() => {
+    await HomePage.open();
+    await commands.waitThenClick(TopMenuComp.loginOrRegister);
   });
 
   const loginTest = async (loginName, password) => {
@@ -17,7 +18,7 @@ describe("LOGIN PAGE - unhappy path", () => {
     if (password) {
       await LoginPage.password.setValue(password);
     }
-    await LoginPage.loginButton.click();
+    await commands.waitThenClick(LoginPage.loginButton);
 
     const errorElement = await RegisterPage.validationMessageAboveForm(
       testData.failedValidationAboveForm.incorrectLoginOrPassword

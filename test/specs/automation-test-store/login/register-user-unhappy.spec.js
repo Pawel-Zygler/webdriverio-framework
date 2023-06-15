@@ -6,10 +6,10 @@ import SharedPageComponents from "../../../pageObjects/automation-test-store/com
 import commands from "../../../../utils/commands";
 
 describe("REGISTER COMPONENT - unhappy path", () => {
-  beforeEach( () => {
-     HomePage.open();
-     commands.waitThenClick(TopMenuComponent.loginOrRegister);
-     commands.waitThenClick(SharedPageComponents.continueButton);
+  beforeEach(async() => {
+     await HomePage.open();
+     await commands.waitThenClick(TopMenuComponent.loginOrRegister);
+     await commands.waitThenClick(SharedPageComponents.continueButton);
   });
 
   describe("REGISTER COMPONENT - minimal values", () => {
