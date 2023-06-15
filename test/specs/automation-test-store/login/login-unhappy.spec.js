@@ -13,10 +13,10 @@ describe("LOGIN PAGE - unhappy path", () => {
 
   const loginTest = async (loginName, password) => {
     if (loginName) {
-      await LoginPage.loginName.setValue(loginName);
+      await commands.waitThenSetValue(LoginPage.loginName, loginName);
     }
     if (password) {
-      await LoginPage.password.setValue(password);
+      await commands.waitThenSetValue(LoginPage.password, password);
     }
     await commands.waitThenClick(LoginPage.loginButton);
 
@@ -24,7 +24,7 @@ describe("LOGIN PAGE - unhappy path", () => {
       testData.failedValidationAboveForm.incorrectLoginOrPassword
     );
 
-    await expect(await errorElement).toHaveTextContaining(
+    await expect(await commands.waitThenGetText(errorElement)).toHaveTextContaining(
       testData.failedValidationAboveForm.incorrectLoginOrPassword
     );
   };
