@@ -23,7 +23,7 @@
     "flh": "npx wdio --spec ./test/specs/automation-test-store/login/forgot-login-happy.spec.js",
     "fluh": "npx wdio --spec ./test/specs/automation-test-store/login/forgot-login-unhappy.spec.js",
     "smh": "npx wdio --spec ./test/specs/automation-test-store/homePage/visit-social-media-happy.spec.js",
-    "wiremock": "java -jar -verbose wiremock-standalone-2.35.0.jar"
+    "wiremock": "cd /Users/pawelzygler/Documents && java -jar -verbose wiremock-standalone-2.35.0.jar"
   },
   "author": "pawel",
   "license": "ISC",

@@ -26,11 +26,10 @@ More scripts in package.js
 
 
 LESSONS and things TODO:
-use waitThenClick command in more places: implemented into currency, socials
-use wait and click command
-
-
+develope something new functionality
 fix add items to basket - still not detected
 gitgnore is missing some files to ignore from allure reports
-some commands from page objects could definitely be abstracted into utils
+
+CHANGELOG:
+Implementing commands support reduced github execution time from 2:16s to 1:46s. 30s reduction. Or around 20%.
 
