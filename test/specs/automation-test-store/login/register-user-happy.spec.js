@@ -3,12 +3,13 @@ import TopMenuComponent from "../../../pageObjects/automation-test-store/compone
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 import testData from "../../../data/testData";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
+import commands from "../../../../utils/commands";
 
 describe("REGISTER COMPONENT - happy path", () => {
   beforeEach(async () => {
     await HomePage.open();
     await TopMenuComponent.loginOrRegister.click();
-    await SharedPageComponents.continueButton.click();
+    await commands.waitThenClick(await SharedPageComponents.continueButton);
   });
 
   it("opens the register form", async () => {
@@ -37,7 +38,7 @@ describe("REGISTER COMPONENT - happy path", () => {
     
     //I don't click Continue, I just go to success page (it is possible) and check text. 
     //For real registration, we would have to register user with each test, which I want to avoid.
-    //await SharedPageComponents.continueButton.click();
+    //await commands.waitThenClick(await SharedPageComponents.continueButton);
     
     await browser.url("https://automationteststore.com/index.php?rt=account/success");
 

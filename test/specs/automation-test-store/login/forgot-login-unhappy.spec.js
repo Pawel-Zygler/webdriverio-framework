@@ -5,16 +5,17 @@ import TopMenuComp from "../../../pageObjects/automation-test-store/components/t
 import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
+import commands from "../../../../utils/commands";
 
 describe("FORGOT LOGIN PAGE - unhappy path", () => {
   beforeEach(() => {
     HomePage.open();
-    TopMenuComp.loginOrRegister.click();
-    LoginPage.forgotLoginButton.click();
+    commands.waitThenClick(TopMenuComp.loginOrRegister);
+    commands.waitThenClick(LoginPage.forgotLoginButton);
   });
 
   it("checks if user is on forgot login page", async () => {
-    await expect(await ForgotLoginPage.forgotLoginHeader).toHaveText(
+    await expect(commands.waitThenGetText(ForgotLoginPage.forgotLoginHeader)).toHaveText(
       "FORGOT YOUR LOGIN NAME?"
     );
   });
@@ -48,14 +49,15 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
     expectedErrorMessage,
   } of testCases) {
     it(description, async () => {
-      await ForgotLoginPage.forgotLoginLastName.setValue(lastName);
-      await ForgotLoginPage.forgotLoginEmail.setValue(email);
-      await SharedPageComponents.continueButton.click();
+      await commands.waitThenSetValue(ForgotLoginPage.forgotLoginLastName, lastName);
+      await commands.waitThenSetValue(ForgotLoginPage.forgotLoginEmail, email);
+      await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.validationMessageAboveForm(
         expectedErrorMessage
       );
-      await expect(await errorElement).toHaveTextContaining(
+
+      await expect(await commands.waitThenGetText(errorElement)).toHaveTextContaining(
         expectedErrorMessage
       );
     });

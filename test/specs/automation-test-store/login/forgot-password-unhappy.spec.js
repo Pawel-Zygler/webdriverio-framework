@@ -5,6 +5,7 @@ import TopMenuComp from "../../../pageObjects/automation-test-store/components/t
 import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
+import commands from "../../../../utils/commands";
 
 describe("FORGOT PASSWORD PAGE - unhappy path", () => {
   beforeEach(() => {
@@ -49,7 +50,7 @@ describe("FORGOT PASSWORD PAGE - unhappy path", () => {
     it(description, async () => {
       await ForgotPasswordPage.forgotPasswordLoginName.setValue(loginName);
       await ForgotPasswordPage.forgotPasswordEmail.setValue(email);
-      await SharedPageComponents.continueButton.click();
+      await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.validationMessageAboveForm(
         expectedErrorMessage
@@ -69,7 +70,7 @@ describe("FORGOT PASSWORD PAGE - unhappy path", () => {
   //     testData.registeredUser.loginName
   //   );
 
-  //   await SharedPageComponents.continueButton.click();
+  //   await commands.waitThenClick(await SharedPageComponents.continueButton);
 
   //   const errorElement = await RegisterPage.validationMessageAboveForm(
   //     testData.failedValidationAboveForm.emailNotProvided
@@ -84,7 +85,7 @@ describe("FORGOT PASSWORD PAGE - unhappy path", () => {
   //     testData.registeredUser.email
   //   );
 
-  //   await SharedPageComponents.continueButton.click();
+  //   await commands.waitThenClick(await SharedPageComponents.continueButton);
 
   //   const errorElement = await RegisterPage.validationMessageAboveForm(
   //     testData.failedValidationAboveForm.noLoginProvided
@@ -103,7 +104,7 @@ describe("FORGOT PASSWORD PAGE - unhappy path", () => {
   //     testData.registeredUser.password
   //   );
 
-  //   await SharedPageComponents.continueButton.click();
+  //   await commands.waitThenClick(await SharedPageComponents.continueButton);
 
   //   const errorElement = await RegisterPage.validationMessageAboveForm(
   //     testData.failedValidationAboveForm.noRecordsMatched

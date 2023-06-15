@@ -5,6 +5,7 @@ import TopMenuComp from "../../../pageObjects/automation-test-store/components/t
 import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
+import commands from "../../../../utils/commands";
 
 describe("FORGOT PASSWORD PAGE - happy path", () => {
   beforeEach(() => {
@@ -26,7 +27,7 @@ describe("FORGOT PASSWORD PAGE - happy path", () => {
     await ForgotPasswordPage.forgotPasswordEmail.setValue(
       testData.registeredUser.email
     );
-    await SharedPageComponents.continueButton.click();
+    await commands.waitThenClick(await SharedPageComponents.continueButton);
 
     const errorElement = await RegisterPage.validationMessageAboveForm(
       testData.successValidationAboveForm.resetLinkSent

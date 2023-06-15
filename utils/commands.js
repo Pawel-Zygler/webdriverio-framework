@@ -9,4 +9,9 @@ module.exports = {
     await e.getText();
     return e;
   },
+  waitThenSetValue: async function (e, value) {
+    await e.waitForDisplayed();
+    await e.setValue(value);
+    return e;
+  },
 };
