@@ -1,30 +1,29 @@
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
+import commands from "../../../../utils/commands";
 
 describe("SOCIAL MEDIA - happy path", () => {
   beforeEach(() => {
     HomePage.open();
   });
 
-  it("verified Facebook page opened in a separate tab", async () => {
-    await HomePage.socialMediaButton(testData.socialMedia.fb).click();
-    await browser.switchWindow(testData.socialMedia.fburl)
+//this test for linked in has a prod bug, linked in opens in same tab
+  describe('SOCIAL MEDIA - happy path', () => {
+    const socials = [
+      {name: "fb", url: "fburl"},
+      {name: "tt", url: "tturl"},
+      {name: "li", url: "liurl"},
+    ];
 
-    await expect(await browser).toHaveUrlContaining(testData.socialMedia.fburl);
-  });
+    for (let social of socials )   {
+      it(`verifies ${socials.name} page opens in new tab`, async () => {
+      
+      await commands.waitThenClick(HomePage.socialMediaButton(testData.socialMedia[social.name]))
+      await browser.switchWindow(testData.socialMedia[social.url])
 
-  it("verifies Twitter page opened in a separate tab", async () => {
-    await HomePage.socialMediaButton(testData.socialMedia.tt).click();
-    await browser.switchWindow(testData.socialMedia.tturl)
 
-    await expect(await browser).toHaveUrlContaining(testData.socialMedia.tturl);
-  });
-  
-//prod bug, linked in opens in same page
-  xit("verifies Linked in page opened in a separate tab", async () => {
-    await HomePage.socialMediaButton(testData.socialMedia.li).click();
-    await browser.switchWindow(testData.socialMedia.liurl)
-
-    await expect(await browser).toHaveUrlContaining(testData.socialMedia.liurl);
+      await expect(await browser).toHaveUrlContaining(testData.socialMedia[social.url])
+      });
+    } 
   });
 });

@@ -8,8 +8,8 @@ describe("HOME PAGE", () => {
   });
   describe('CURRENCY CHANGE - happy path', () => {
     const currencies = [
-     { name: 'euro', symbol: testData.currency.euroSymbol },
-      { name: 'dollar', symbol: testData.currency.dollarSymbol },
+      {name: 'euro', symbol: testData.currency.euroSymbol},
+      {name: 'dollar', symbol: testData.currency.dollarSymbol},
       {name: 'pound', symbol: testData.currency.poundSymbol}
     ];
     for (let currency of currencies) {

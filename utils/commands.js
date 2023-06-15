@@ -4,5 +4,9 @@ module.exports = {
     await e.waitForDisplayed();
     await e.click();
   },
-  //anotherCommand: {},
+  waitThenGetText: async function (e) {
+    await e.waitForDisplayed();
+    await e.getText();
+    return e;
+  },
 };

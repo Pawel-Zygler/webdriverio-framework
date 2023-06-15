@@ -26,8 +26,11 @@ More scripts in package.js
 
 
 LESSONS and things TODO:
-use waitThenClick command in more places: implemented into currency
+use waitThenClick command in more places: implemented into currency, socials
+use wait and click command
+
+
 fix add items to basket - still not detected
 gitgnore is missing some files to ignore from allure reports
 some commands from page objects could definitely be abstracted into utils
-allure reports opening broke
+

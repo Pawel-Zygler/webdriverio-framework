@@ -27,14 +27,11 @@ class HomePage extends BasePage {
 
   get currentCurrency() {
     const e = $(`//span[@class='cart_total']`);
-    e.waitForClickable();
-    e.getText();
     return e;
   }
 
   socialMediaButton(socialMedia) {
     const e = $(`//a[contains(text(),'${socialMedia}')]`);
-    e.waitForClickable();
     return e;
   }
 }
