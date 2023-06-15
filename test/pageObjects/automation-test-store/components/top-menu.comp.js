@@ -5,7 +5,6 @@ class TopMenuComponent {
 
   get loginOrRegister() {
     const e = $(`//a[contains(text(), 'Login or register')]`);
-    e.waitForClickable();
     return e;
   }
 

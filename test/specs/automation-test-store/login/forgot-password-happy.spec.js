@@ -10,29 +10,26 @@ import commands from "../../../../utils/commands";
 describe("FORGOT PASSWORD PAGE - happy path", () => {
   beforeEach(() => {
     HomePage.open();
-    TopMenuComp.loginOrRegister.click();
-    LoginPage.forgotPasswordButton.click();
+    commands.waitThenClick(TopMenuComp.loginOrRegister);
+    commands.waitThenClick(LoginPage.forgotPasswordButton);
   });
 
   it("checks if user is on forgot password page", async () => {
-    await expect(await ForgotPasswordPage.forgotPasswordHeader).toHaveText(
+    await expect(commands.waitThenGetText(ForgotPasswordPage.forgotPasswordHeader)).toHaveText(
       "FORGOT YOUR PASSWORD?"
     );
   });
 
   it("submits correct login and email", async () => {
-    await ForgotPasswordPage.forgotPasswordLoginName.setValue(
-      testData.registeredUser.loginName
-    );
-    await ForgotPasswordPage.forgotPasswordEmail.setValue(
-      testData.registeredUser.email
-    );
+    await commands.waitThenSetValue(ForgotPasswordPage.forgotPasswordLoginName, testData.registeredUser.loginName);
+    await commands.waitThenSetValue(ForgotPasswordPage.forgotPasswordEmail, testData.registeredUser.email);
     await commands.waitThenClick(await SharedPageComponents.continueButton);
 
     const errorElement = await RegisterPage.validationMessageAboveForm(
       testData.successValidationAboveForm.resetLinkSent
     );
-    await expect(await errorElement).toHaveTextContaining(
+
+    await expect(await commands.waitThenGetText(errorElement)).toHaveTextContaining(
       testData.successValidationAboveForm.resetLinkSent
     );
   });

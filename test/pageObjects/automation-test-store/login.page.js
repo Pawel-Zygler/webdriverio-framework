@@ -31,7 +31,6 @@ class LoginPage {
 
   get forgotLoginButton() {
     const e = $(`//a[contains(text(),'Forgot your login?')]`);
-    e.waitForClickable();
     return e;
   }
 }
