@@ -20,8 +20,13 @@ class CartPage extends BasePage {
     expect(parseFloat(subTotal)).toEqual(parseFloat(cartTotal));
   }
 
-  shoppingCartHeader() {
+  get shoppingCartHeader() {
     return $(`//span[contains(text(),'Shopping Cart')]`);
+  }
+
+  get getTextsFromItemsInBasket() {
+    let rows = $$(`//*[contains(@class, 'container-fluid') and contains(@class, 'cart-info') and contains(@class, 'product-list')]//tr//td[count(//th[normalize-space(text())='Name']/preceding-sibling::*)+1]`);
+    return rows;
   }
 }
 

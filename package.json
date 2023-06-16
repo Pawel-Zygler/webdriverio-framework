@@ -10,7 +10,7 @@
     "webdriver-uat": "npx wdio config/wdio.uat.conf.js--spec test/specs/webdriver-university/contact-us.spec.js",
     "smoke-suite": "npx wdio --suite smoke",
     "autostore": "npx wdio --spec test/specs/automation-test-store/**/*.spec.js",
-    "bh": "npx wdio --spec ./test/specs/automation-test-store/add-items-to-basket.spec.js",
+    "bh": "npx wdio --spec ./test/specs/automation-test-store/add-items-to-basket-happy.spec.js",
     "rh": "npx wdio --spec ./test/specs/automation-test-store/login/register-user-happy.spec.js",
     "ruh": "npx wdio --spec ./test/specs/automation-test-store/login/register-user-unhappy.spec.js",
     "jest": "jest",
@@ -44,6 +44,7 @@
     "wdio-geckodriver-service": "^4.1.0"
   },
   "dependencies": {
-    "allure-commandline": "^2.21.0"
+    "allure-commandline": "^2.21.0",
+    "chai-as-promised": "^7.1.1"
   }
 }
