@@ -27,8 +27,7 @@ npm run wiremock
 More scripts in package.js
 
 LESSONS and things TODO:
-
-
+spróbuj znaleźć po klasie i Skincare, popraw selektor? Dlaczeto nie klika w skincare? Od nowa moze zrobie te komponenty i wtedy poklikam
 
 develope something new functionality - add t-shirts from same category of apparel - modify existing add items to basket function or reuse its elements
 fix add items to basket - still not detected

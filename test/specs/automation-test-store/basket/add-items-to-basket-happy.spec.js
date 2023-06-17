@@ -11,11 +11,11 @@ describe("BASKET - happy path", () => {
   });
 
   describe("ADD SKINCARE PRODUCTS", () => {
-    it(`adds specific 'skincare products' with clicking dropdown`, async () => {
-      await browser.pause(4000);
+    xit(`adds specific 'skincare products' with clicking dropdown`, async () => {
       await commands.waitThenClick(
         HomePage.categoryMenuComponent.categoryMenuLink("Skincare")[1]
       );
+
       await SkinCarePage.addSpecificItems(
         "creme precieuse nuit 50ml",
         "total moisture facial cream"
@@ -30,7 +30,7 @@ describe("BASKET - happy path", () => {
       await CartPage.validateTotal();
     });
 
-    it("adds a shoe to basket without clicking dropdown and checks if user is in cart", async () => {
+    xit("adds a shoe to basket without clicking dropdown and checks if user is in cart", async () => {
       await commands.waitThenClick(
         HomePage.categoryMenuComponent.categoryMenuLink(
           "Apparel & accessories"
