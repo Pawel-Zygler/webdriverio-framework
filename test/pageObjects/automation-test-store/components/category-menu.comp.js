@@ -1,8 +1,8 @@
 class CategoryMenuComponent {
   categoryMenuLink(linkText) {
-    const e = $$(`//a[contains(text(), '${linkText}')]`);
-    e.waitForClickable();
-    return e;
+    const element = $(`//a[contains(text(), '${linkText}')]`);
+    element.waitForClickable();
+    return element;
   }
 }
 
