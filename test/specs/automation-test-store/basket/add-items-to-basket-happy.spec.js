@@ -51,7 +51,7 @@ describe("BASKET - happy path", () => {
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
       await expect(ItemComponent.shoppingCartHeader).toBeDisplayed();
-      let texts = await CartPage.areItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInBasket();
       await expect(texts).toContain(testData.categories.apparel.productThree);
     });
   });
@@ -90,7 +90,7 @@ describe("BASKET - happy path", () => {
       );
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
-      let texts = await CartPage.areItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInBasket();
 
       await expect(texts).toContain(testData.categories.apparel.productOne);
       await expect(texts).toContain(testData.categories.apparel.productTwo);

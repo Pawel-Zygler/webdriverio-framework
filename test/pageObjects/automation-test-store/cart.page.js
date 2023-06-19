@@ -24,15 +24,15 @@ class CartPage extends BasePage {
     return $(`//span[contains(text(),'Shopping Cart')]`);
   }
 
-  get getTextsFromItemsInBasket() {
+  get itemsInBasketNames() {
     let rows = $$(
       `//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`
     );
     return rows;
   }
 
-  async areItemsInBasket() {
-    let rows = await this.getTextsFromItemsInBasket;
+  async getTextsFromItemsInBasket() {
+    let rows = await this.itemsInBasketNames;
     let texts = [];
 
     for (let row of rows) {
