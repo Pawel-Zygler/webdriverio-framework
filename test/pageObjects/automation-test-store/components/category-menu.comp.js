@@ -1,7 +1,8 @@
 class CategoryMenuComponent {
   categoryMenuLink(linkText) {
-    const element = $(`//a[contains(text(), '${linkText}')]`);
-    element.waitForClickable();
+    const element = $(
+      `//ul[@class='nav-pills categorymenu']//a[contains(text(), '${linkText}')]`
+    );
     return element;
   }
 }

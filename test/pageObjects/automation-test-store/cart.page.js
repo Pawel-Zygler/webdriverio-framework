@@ -25,7 +25,9 @@ class CartPage extends BasePage {
   }
 
   get getTextsFromItemsInBasket() {
-    let rows = $$(`//*[contains(@class, 'container-fluid') and contains(@class, 'cart-info') and contains(@class, 'product-list')]//tr//td[count(//th[normalize-space(text())='Name']/preceding-sibling::*)+1]`);
+    let rows = $$(
+      `//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`
+    );
     return rows;
   }
 }

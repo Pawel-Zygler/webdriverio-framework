@@ -63,7 +63,7 @@ describe("LOGIN PAGE - happy path", () => {
     it("logs in through the Home dropdown and Account dropdown", async () => {
       await HomePage.categoryMenuComponent.categoryMenuLink("Home").moveTo();
       await browser.pause(3000);
-      //kontynuuj klikanie w jeden dropodown a potem w druig
+      //kontynuuj klikanie w jeden dropodown a potem w drugi, ale to advanced
     });
   });
 });
