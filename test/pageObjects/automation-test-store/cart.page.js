@@ -1,21 +1,32 @@
 import BasePage from "./base.page";
 
 class CartPage extends BasePage {
-  async validateTotal() {
-    var tempShippingRate = await $(
+  get tempShippingRate() {
+    const element = $(
       "//span[text()='Flat Shipping Rate:']/../following-sibling::td"
-    ).getText();
+    );
+    return element;
+  }
+
+  get subTotal() {
+    const element = $("//span[text()='Sub-Total:']/../following-sibling::td");
+    return element;
+  }
+
+  get cartTotal() {
+    const element = $("//span[text()='Total:']/../following-sibling::td");
+    return element;
+  }
+
+  async validateTotal() {
+    var tempShippingRate = await this.tempShippingRate.getText();
     var shippingRate = tempShippingRate.replace("$", "");
 
-    var subTotal = await (
-      await $("//span[text()='Sub-Total:']/../following-sibling::td")
-    ).getText();
+    var subTotal = await this.subTotal.getText();
     subTotal = parseFloat(shippingRate) + parseFloat(subTotal.replace("$", ""));
 
     //extract cart total
-    var cartTotal = await (
-      await $("//span[text()='Total:']/../following-sibling::td")
-    ).getText();
+    var cartTotal = await this.cartTotal.getText();
     cartTotal = cartTotal.replace("$", ""); //260
     expect(parseFloat(subTotal)).toEqual(parseFloat(cartTotal));
   }
