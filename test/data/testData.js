@@ -113,6 +113,30 @@ const testData = {
     tturl: "https://twitter.com/",
     liurl: "https://www.linkedin.com/",
   },
+
+  categories: {
+    home: "Home",
+    apparel: {
+      name: "Apparel & accessories",
+      subcategoryTshirts: "T-shirts",
+      subcategoryShoes: "Shoes",
+      productOne:
+        "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie",
+      productTwo: "Casual 3/4 Sleeve Baseball T-Shirt",
+      productThree: "Ruby Shoo Womens Jada T-Bar",
+    },
+    skincare: {
+      name: "Skincare",
+      productOne: "creme precieuse nuit 50ml",
+      productTwo: "total moisture facial cream",
+    },
+  },
 };
 
 module.exports = testData;
+
+const productOne =
+  "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie";
+const productTwo = "Casual 3/4 Sleeve Baseball T-Shirt";
+const category = "";
+const subcategory = "T-shirts";

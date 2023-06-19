@@ -30,6 +30,17 @@ class CartPage extends BasePage {
     );
     return rows;
   }
+
+  async areItemsInBasket() {
+    let rows = await this.getTextsFromItemsInBasket;
+    let texts = [];
+
+    for (let row of rows) {
+      let text = await row.getText();
+      texts.push(text);
+    }
+    return texts;
+  }
 }
 
 export default new CartPage();

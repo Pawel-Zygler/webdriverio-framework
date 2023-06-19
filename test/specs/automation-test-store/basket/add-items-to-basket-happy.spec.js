@@ -4,21 +4,24 @@ import ItemComponent from "../../../pageObjects/automation-test-store/components
 import SkinCarePage from "../../../pageObjects/automation-test-store/skincare.page";
 import commands from "../../../../utils/commands";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
+import testData from "../../../data/testData";
 
 describe("BASKET - happy path", () => {
   beforeEach(async () => {
     await HomePage.open();
   });
 
-  describe("ADD SKINCARE PRODUCTS", () => {
-    it(`adds two products and validates total`, async () => {
+  describe("ADD PRODUCTS", () => {
+    it(`adds two Skincare products and validates cart total`, async () => {
       await commands.waitThenClick(
-        HomePage.categoryMenuComponent.categoryMenuLink("Skincare")
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.skincare.name
+        )
       );
 
       await SkinCarePage.addSpecificItems(
-        "creme precieuse nuit 50ml",
-        "total moisture facial cream"
+        testData.categories.skincare.productOne,
+        testData.categories.skincare.productTwo
       );
 
       await commands.waitThenClick(
@@ -29,63 +32,68 @@ describe("BASKET - happy path", () => {
       await CartPage.validateTotal();
     });
 
-    it("adds a shoe to basket without clicking dropdown and checks if user is in cart", async () => {
+    it("adds Shoe without clicking dropdown and validates items", async () => {
       await commands.waitThenClick(
-        HomePage.categoryMenuComponent.categoryMenuLink("Apparel & accessories")
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.apparel.name
+        )
       );
       await commands.waitThenClick(
-        ApparelAndAccessoriesPage.subcategory("Shoes")
+        ApparelAndAccessoriesPage.subcategory(
+          testData.categories.apparel.subcategoryShoes
+        )
       );
 
       await ApparelAndAccessoriesPage.selectProduct(
-        "Ruby Shoo Womens Jada T-Bar"
+        testData.categories.apparel.productThree
       );
 
       await commands.waitThenClick(ItemComponent.addToCartBtn);
+
       await expect(ItemComponent.shoppingCartHeader).toBeDisplayed();
-      //add expect if item is in baskets
+      let texts = await CartPage.areItemsInBasket();
+      await expect(texts).toContain(testData.categories.apparel.productThree);
     });
   });
 
-  //wip
   describe("ADD T-SHIRTS", () => {
-    it.only("adds a t-shirt and checks if items are in cart", async () => {
-      const productOne =
-        "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie";
-      const productTwo = "Casual 3/4 Sleeve Baseball T-Shirt";
-      const errorInName =
-        "Designer Men Cassual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie";
-
+    it("adds t-shirts and checks if items are in cart", async () => {
       await commands.waitThenClick(
-        HomePage.categoryMenuComponent.categoryMenuLink("Apparel & accessories")
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.apparel.name
+        )
       );
       await commands.waitThenClick(
-        ApparelAndAccessoriesPage.subcategory("T-shirts")
+        ApparelAndAccessoriesPage.subcategory(
+          testData.categories.apparel.subcategoryTshirts
+        )
       );
 
-      await commands.waitThenClickProduct(productOne);
+      await commands.waitThenClickProduct(
+        testData.categories.apparel.productOne
+      );
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
       await commands.waitThenClick(
-        HomePage.categoryMenuComponent.categoryMenuLink("Apparel & accessories")
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.apparel.name
+        )
       );
       await commands.waitThenClick(
-        ApparelAndAccessoriesPage.subcategory("T-shirts")
+        ApparelAndAccessoriesPage.subcategory(
+          testData.categories.apparel.subcategoryTshirts
+        )
       );
 
-      await commands.waitThenClickProduct(productTwo);
+      await commands.waitThenClickProduct(
+        testData.categories.apparel.productTwo
+      );
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
-      let rows = await CartPage.getTextsFromItemsInBasket;
-      let texts = [];
-      //let allTextsInString = texts.join(" ");
+      let texts = await CartPage.areItemsInBasket();
 
-      for (let row of rows) {
-        let text = await row.getText();
-        texts.push(text);
-      }
-
-      await expect(texts).toHaveTextContaining(productOne);
+      await expect(texts).toContain(testData.categories.apparel.productOne);
+      await expect(texts).toContain(testData.categories.apparel.productTwo);
     });
   });
 });
