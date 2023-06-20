@@ -13,7 +13,7 @@ describe("BASKET - happy path", () => {
 
   describe("ADD PRODUCTS", () => {
     it(`adds two Skincare products and validates cart total`, async () => {
-      await commands.waitThenClick(
+      await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.skincare.name
         )
@@ -33,7 +33,7 @@ describe("BASKET - happy path", () => {
     });
 
     it("adds Shoe without clicking dropdown and validates items", async () => {
-      await commands.waitThenClick(
+      await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.apparel.name
         )
@@ -58,7 +58,7 @@ describe("BASKET - happy path", () => {
 
   describe("ADD T-SHIRTS", () => {
     it("adds t-shirts and checks if items are in cart", async () => {
-      await commands.waitThenClick(
+      await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.apparel.name
         )
@@ -74,7 +74,7 @@ describe("BASKET - happy path", () => {
       );
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
-      await commands.waitThenClick(
+      await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.apparel.name
         )
@@ -94,6 +94,48 @@ describe("BASKET - happy path", () => {
 
       await expect(texts).toContain(testData.categories.apparel.productOne);
       await expect(texts).toContain(testData.categories.apparel.productTwo);
+    });
+  });
+
+  describe("ADDS BOOKS", () => {
+    it("adds a book", async () => {
+      await commands.waitThenMoveTo(
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.books.name
+        )
+      );
+      await commands.waitThenClick(
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.books.subcategoryPaperback
+        )
+      );
+      await commands.waitThenClickProduct(testData.categories.books.productOne);
+      await commands.waitThenClick(ItemComponent.addToCartBtn);
+
+      let texts = await CartPage.getTextsFromItemsInBasket();
+      await expect(texts).toContain(testData.categories.books.productOne);
+    });
+  });
+
+  describe("ADDS FRAGRANCE", () => {
+    it("adds a men fragrance", async () => {
+      await commands.waitThenMoveTo(
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.fragrance.name
+        )
+      );
+      await commands.waitThenClick(
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.fragrance.subcategoryMen
+        )
+      );
+      await commands.waitThenClickProduct(
+        testData.categories.fragrance.productOne
+      );
+      await commands.waitThenClick(ItemComponent.addToCartBtn);
+
+      let texts = await CartPage.getTextsFromItemsInBasket();
+      await expect(texts).toContain(testData.categories.fragrance.productOne);
     });
   });
 });

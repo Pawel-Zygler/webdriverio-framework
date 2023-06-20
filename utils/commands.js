@@ -23,4 +23,10 @@ module.exports = {
     await element.waitForDisplayed();
     await element.click();
   },
+
+  waitThenMoveTo: async function (element) {
+    await element.waitForDisplayed();
+    await element.moveTo();
+    return element;
+  },
 };

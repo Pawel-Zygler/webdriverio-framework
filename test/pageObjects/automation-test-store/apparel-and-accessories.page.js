@@ -1,8 +1,12 @@
 import BasePage from "./base.page";
 
 class ApparelAndAccessoriesPage extends BasePage {
+  //subcategory should be moved to category menu components
   subcategory(subcategory) {
-    return $(`//a[text()='${subcategory}']`);
+    const element = $(
+      `//div[@class='subcategories']//a[contains(text(), '${subcategory}')]`
+    );
+    return element;
   }
 
   selectProduct(itemName) {

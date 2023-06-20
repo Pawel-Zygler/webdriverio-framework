@@ -11,7 +11,6 @@
     "smoke-suite": "npx wdio --suite smoke",
     "autostore": "npx wdio --spec test/specs/automation-test-store/**/*.spec.js",
     "bh": "npx wdio --spec ./test/specs/automation-test-store/basket/add-items-to-basket-happy.spec.js",
-    "t": "npx wdio --spec ./test/specs/automation-test-store/basket/temp.spec.js",
     "buh": "npx wdio --spec ./test/specs/automation-test-store/basket/add-items-to-basket-unhappy.spec.js",
     "rh": "npx wdio --spec ./test/specs/automation-test-store/login/register-user-happy.spec.js",
     "ruh": "npx wdio --spec ./test/specs/automation-test-store/login/register-user-unhappy.spec.js",
@@ -25,8 +24,7 @@
     "flh": "npx wdio --spec ./test/specs/automation-test-store/login/forgot-login-happy.spec.js",
     "fluh": "npx wdio --spec ./test/specs/automation-test-store/login/forgot-login-unhappy.spec.js",
     "smh": "npx wdio --spec ./test/specs/automation-test-store/homePage/visit-social-media-happy.spec.js",
-    "wiremock": "cd /Users/pawelzygler/Documents && java -jar -verbose wiremock-standalone-2.35.0.jar",
-    "bbh": "npx wdio --spec ./test/specs/automation-test-store/basket/add-items.spec.js"
+    "wiremock": "cd /Users/pawelzygler/Documents && java -jar -verbose wiremock-standalone-2.35.0.jar"
   },
   "author": "pawel",
   "license": "ISC",

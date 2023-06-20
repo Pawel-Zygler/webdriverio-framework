@@ -130,6 +130,25 @@ const testData = {
       productOne: "creme precieuse nuit 50ml",
       productTwo: "total moisture facial cream",
     },
+
+    books: {
+      name: "Books",
+      subcategoryPaperback: "Paperback",
+      productOne: "Paper Towns by John Green",
+    },
+
+    fragrance: {
+      name: "Fragrance",
+      subcategoryMen: "Men",
+      productOne: "Euphoria Men Intense Eau De Toilette Spray",
+    },
+    men: {
+      name: "Men",
+      subcategoryMen: "Body & Shower",
+      productOne: "Men+Care Active Clean Shower Tool",
+      productOutOfStock:
+        "Lancome Slimissime 360 Slimming Activating Concentrate Unisex Treatment",
+    },
   },
 };
 
