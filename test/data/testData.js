@@ -153,9 +153,3 @@ const testData = {
 };
 
 module.exports = testData;
-
-const productOne =
-  "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie";
-const productTwo = "Casual 3/4 Sleeve Baseball T-Shirt";
-const category = "";
-const subcategory = "T-shirts";
