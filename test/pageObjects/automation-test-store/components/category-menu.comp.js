@@ -5,6 +5,13 @@ class CategoryMenuComponent {
     );
     return element;
   }
+
+  subcategory(subcategory) {
+    const element = $(
+      `//div[@class='subcategories']//a[contains(text(), '${subcategory}')]`
+    );
+    return element;
+  }
 }
 
 export default new CategoryMenuComponent();

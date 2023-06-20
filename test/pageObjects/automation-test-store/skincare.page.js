@@ -7,11 +7,11 @@ class SkinCarePage extends BasePage {
   }
 
   async addSpecificItems(item1, item2) {
-    const skincareProducts_Header_Links = await ItemComponent.itemHeaderLinks;
+    const skincareProductsHeaderLinks = await ItemComponent.itemHeaderLinks;
 
     const itemPrices = []; //$220.00 $38.00
 
-    for (const header of skincareProducts_Header_Links) {
+    for (const header of skincareProductsHeaderLinks) {
       const tempHeaderText = await header.getText();
 
       if (
@@ -21,7 +21,7 @@ class SkinCarePage extends BasePage {
         const attr = await header.getAttribute("href");
 
         const itemId = attr.split("id=").pop();
-        console.log(itemId); //93 66
+        // console.log(itemId); //93 66
 
         await $('//a[@data-id="' + itemId + '"]').click();
 

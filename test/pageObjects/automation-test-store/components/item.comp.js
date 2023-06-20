@@ -12,5 +12,12 @@ class ItemComponent {
     e.waitForClickable();
     return e;
   }
+
+  selectProduct(itemName) {
+    const title = $(`//*[@title='${itemName}']`);
+    title.waitForExist();
+    title.waitForClickable();
+    title.click();
+  }
 }
 export default new ItemComponent();

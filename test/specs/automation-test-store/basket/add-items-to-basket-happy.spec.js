@@ -1,7 +1,7 @@
-import ApparelAndAccessoriesPage from "../../../pageObjects/automation-test-store/apparel-and-accessories.page";
 import CartPage from "../../../pageObjects/automation-test-store/cart.page";
 import ItemComponent from "../../../pageObjects/automation-test-store/components/item.comp";
 import SkinCarePage from "../../../pageObjects/automation-test-store/skincare.page";
+import CategoryMenuComponent from "../../../pageObjects/automation-test-store/components/category-menu.comp";
 import commands from "../../../../utils/commands";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
@@ -18,6 +18,21 @@ describe("BASKET - happy path", () => {
           testData.categories.skincare.name
         )
       );
+
+      //for some reason there were two Face elements found, could not figure out a way out of it so far
+      //went back to old way of adding those skin care products
+      // await commands.waitThenClick(
+      //   CategoryMenuComponent.subcategory(
+      //     testData.categories.skincare.subcategoryFace
+      //   )
+      // );
+
+      // await ItemComponent.selectProduct(
+      //   testData.categories.skincare.productOne
+      // );
+      // await ItemComponent.selectProduct(
+      //   testData.categories.skincare.productTwo
+      // );
 
       await SkinCarePage.addSpecificItems(
         testData.categories.skincare.productOne,
@@ -39,12 +54,12 @@ describe("BASKET - happy path", () => {
         )
       );
       await commands.waitThenClick(
-        ApparelAndAccessoriesPage.subcategory(
+        CategoryMenuComponent.subcategory(
           testData.categories.apparel.subcategoryShoes
         )
       );
 
-      await ApparelAndAccessoriesPage.selectProduct(
+      await ItemComponent.selectProduct(
         testData.categories.apparel.productThree
       );
 
@@ -64,7 +79,7 @@ describe("BASKET - happy path", () => {
         )
       );
       await commands.waitThenClick(
-        ApparelAndAccessoriesPage.subcategory(
+        CategoryMenuComponent.subcategory(
           testData.categories.apparel.subcategoryTshirts
         )
       );
@@ -80,7 +95,7 @@ describe("BASKET - happy path", () => {
         )
       );
       await commands.waitThenClick(
-        ApparelAndAccessoriesPage.subcategory(
+        CategoryMenuComponent.subcategory(
           testData.categories.apparel.subcategoryTshirts
         )
       );

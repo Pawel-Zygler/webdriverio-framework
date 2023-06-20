@@ -25,7 +25,6 @@ class CartPage extends BasePage {
     var subTotal = await this.subTotal.getText();
     subTotal = parseFloat(shippingRate) + parseFloat(subTotal.replace("$", ""));
 
-    //extract cart total
     var cartTotal = await this.cartTotal.getText();
     cartTotal = cartTotal.replace("$", ""); //260
     expect(parseFloat(subTotal)).toEqual(parseFloat(cartTotal));
