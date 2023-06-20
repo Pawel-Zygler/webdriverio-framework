@@ -1,7 +1,6 @@
 import allure from "allure-commandline";
 import fs from "fs";
 import commands from "./utils/commands.js";
-import HomePage from "./test/pageObjects/automation-test-store/home.page.js";
 
 export const config = {
   //
