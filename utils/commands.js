@@ -25,6 +25,7 @@ module.exports = {
   },
 
   waitThenMoveTo: async function (element) {
+    await element.waitForExist();
     await element.waitForDisplayed();
     await element.moveTo();
     return element;

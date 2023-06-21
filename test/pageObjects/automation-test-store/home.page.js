@@ -34,6 +34,11 @@ class HomePage extends BasePage {
     const e = $(`//a[contains(text(),'${socialMedia}')]`);
     return e;
   }
+
+  async scrollToTop() {
+    const element = $(`[title='Automation Test Store']`);
+    await element.scrollIntoView();
+  }
 }
 
 export default new HomePage();

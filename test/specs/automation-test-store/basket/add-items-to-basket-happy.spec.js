@@ -6,48 +6,53 @@ import commands from "../../../../utils/commands";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
 
-describe("BASKET - happy path", () => {
+describe("ADD PRODUCTS - happy path", () => {
   beforeEach(async () => {
     await HomePage.open();
   });
 
-  describe("ADD PRODUCTS", () => {
-    it(`adds two Skincare products and validates cart total`, async () => {
+  describe(`${testData.categories.skincare.name}`, () => {
+    it(`adds subcategory ${testData.categories.skincare.subcategoryFace} products and validates cart total`, async () => {
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.skincare.name
         )
       );
+      await commands.waitThenClick(
+        CategoryMenuComponent.subcategory(
+          testData.categories.skincare.name,
+          testData.categories.skincare.subcategoryFace
+        )
+      );
+      await ItemComponent.selectProduct(
+        testData.categories.skincare.productOne
+      );
+      await commands.waitThenClick(ItemComponent.addToCartBtn);
 
-      //for some reason there were two Face elements found, could not figure out a way out of it so far
-      //went back to old way of adding those skin care products
-      // await commands.waitThenClick(
-      //   CategoryMenuComponent.subcategory(
-      //     testData.categories.skincare.subcategoryFace
-      //   )
-      // );
-
-      // await ItemComponent.selectProduct(
-      //   testData.categories.skincare.productOne
-      // );
-      // await ItemComponent.selectProduct(
-      //   testData.categories.skincare.productTwo
-      // );
-
-      await SkinCarePage.addSpecificItems(
-        testData.categories.skincare.productOne,
+      await commands.waitThenMoveTo(
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.skincare.name
+        )
+      );
+      await commands.waitThenClick(
+        CategoryMenuComponent.subcategory(
+          testData.categories.skincare.name,
+          testData.categories.skincare.subcategoryFace
+        )
+      );
+      await ItemComponent.selectProduct(
         testData.categories.skincare.productTwo
       );
-
-      await commands.waitThenClick(
-        HomePage.topMenuComponent.topMenuLink("Cart")
-      );
+      await commands.waitThenClick(ItemComponent.addToCartBtn);
 
       await expect(browser).toHaveUrlContaining("checkout");
       await CartPage.validateTotal();
     });
+  });
 
-    it("adds Shoe without clicking dropdown and validates items", async () => {
+  describe(`${testData.categories.apparel.name}`, () => {
+    it(`adds subcategory ${testData.categories.apparel.subcategoryShoes} products with clicking dropdown and validates items are in basket`, async () => {
+      await HomePage.scrollToTop();
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.apparel.name
@@ -55,6 +60,7 @@ describe("BASKET - happy path", () => {
       );
       await commands.waitThenClick(
         CategoryMenuComponent.subcategory(
+          testData.categories.apparel.name,
           testData.categories.apparel.subcategoryShoes
         )
       );
@@ -71,8 +77,9 @@ describe("BASKET - happy path", () => {
     });
   });
 
-  describe("ADD T-SHIRTS", () => {
-    it("adds t-shirts and checks if items are in cart", async () => {
+  describe(`${testData.categories.apparel.name}`, () => {
+    it(`adds subcategory ${testData.categories.apparel.subcategoryTshirts} products and checks if items are in cart`, async () => {
+      await browser.pause(3000);
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.apparel.name
@@ -80,6 +87,7 @@ describe("BASKET - happy path", () => {
       );
       await commands.waitThenClick(
         CategoryMenuComponent.subcategory(
+          testData.categories.apparel.name,
           testData.categories.apparel.subcategoryTshirts
         )
       );
@@ -96,6 +104,7 @@ describe("BASKET - happy path", () => {
       );
       await commands.waitThenClick(
         CategoryMenuComponent.subcategory(
+          testData.categories.apparel.name,
           testData.categories.apparel.subcategoryTshirts
         )
       );
@@ -112,8 +121,8 @@ describe("BASKET - happy path", () => {
     });
   });
 
-  describe("ADDS BOOKS", () => {
-    it("adds a book", async () => {
+  describe(`${testData.categories.books.name}`, () => {
+    it(`adds a subcategory ${testData.categories.books.subcategoryPaperback} products and validates item is in basket`, async () => {
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.books.name
@@ -132,8 +141,8 @@ describe("BASKET - happy path", () => {
     });
   });
 
-  describe("ADDS FRAGRANCE", () => {
-    it("adds a men fragrance", async () => {
+  describe(`${testData.categories.fragrance.name}`, () => {
+    it(`adds a subcategory ${testData.categories.fragrance.subcategoryMen} men fragrance`, async () => {
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.fragrance.name
