@@ -1,6 +1,5 @@
 import CartPage from "../../../pageObjects/automation-test-store/cart.page";
 import ItemComponent from "../../../pageObjects/automation-test-store/components/item.comp";
-import SkinCarePage from "../../../pageObjects/automation-test-store/skincare.page";
 import CategoryMenuComponent from "../../../pageObjects/automation-test-store/components/category-menu.comp";
 import commands from "../../../../utils/commands";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";

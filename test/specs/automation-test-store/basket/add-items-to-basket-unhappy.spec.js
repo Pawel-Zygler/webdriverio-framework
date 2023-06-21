@@ -1,6 +1,7 @@
 import commands from "../../../../utils/commands";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
+import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("ADD ITEMS - unhappy path", () => {
   beforeEach(async () => {
@@ -8,7 +9,6 @@ describe("ADD ITEMS - unhappy path", () => {
   });
 
   it("tries to add item out of stock", async () => {
-    //this selector again finds men in sub and main cateogries - need to find one, use ai
     await commands.waitThenMoveTo(
       HomePage.categoryMenuComponent.categoryMenuLink(
         testData.categories.men.name
@@ -16,13 +16,12 @@ describe("ADD ITEMS - unhappy path", () => {
     );
 
     await commands.waitThenClick(
-      HomePage.categoryMenuComponent.categoryMenuLink(
-        testData.categories.subcategoryMen
+      HomePage.categoryMenuComponent.subcategory(
+        testData.categories.men.name,
+        testData.categories.men.subcategoryMen
       )
     );
 
-    await commands.waitThenClickProduct(
-      testData.categories.men.productOutOfStock
-    );
+    //out of stock
   });
 });

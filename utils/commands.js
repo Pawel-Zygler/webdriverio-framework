@@ -1,3 +1,5 @@
+import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
+
 module.exports = {
   waitThenClick: async function (element) {
     await element.waitForExist();
@@ -29,5 +31,19 @@ module.exports = {
     await element.waitForDisplayed();
     await element.moveTo();
     return element;
+  },
+
+  clickItemIfInStock(item) {
+    const element = SharedPageComponents.addToCartBtnSub;
+    if (
+      element ===
+      `//div[@class='pricetag jumbotron']/span[contains(text(),'Out of Stock')]`
+    ) {
+      element.waitForExist();
+      element.waitForDisplayed();
+      element.click();
+    } else {
+      console.log("Item out of stock");
+    }
   },
 };
