@@ -9,11 +9,12 @@ import commands from "../../../../utils/commands";
 
 describe("FORGOT LOGIN PAGE - happy path", () => {
   beforeEach(async () => {
+    await HomePage.open();
     await commands.waitThenClick(TopMenuComp.loginOrRegister);
     await commands.waitThenClick(LoginPage.forgotLoginButton);
   });
 
-  it.only("checks if user is on forgot login page", async () => {
+  it("checks if user is on forgot login page", async () => {
     await expect(
       await commands.waitThenGetText(ForgotLoginPage.forgotLoginHeader)
     ).toHaveText("FORGOT YOUR LOGIN NAME?");

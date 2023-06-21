@@ -27,10 +27,18 @@ npm run wiremock
 More scripts in package.js
 
 LESSONS and things TODO:
-FLAKY TEST add items happy - out of bounds bug
+Many failing tests, probably HomePage changes and others too.
+FLAKY TEST add items happy - out of bounds bug - possibly fixed
+allureReporter.addFeature("Contact us Page - valid submission"); - use those more often, read doc
 
-add item with certai size
-add items of certain numbers (through many sources)
+SCENARIOS
+As a user I want to check if there are any sales.
+As a user I want to add size 7 shoes for Women.
+As a distributor, I want to buy 10 000 books.
+As a user I want to add 10 products QTY from subcategory page to Cart.
+As a user I want to checkout one item.
+As a user I want to checkout 10 items.
+
 https://automationteststore.com/index.php?rt=product/category&path=43_47 - ten przycisk dodaje od razu do koszyka przedmioty, sprawdz czy sie updejtją
 
 MEDIUM

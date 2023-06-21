@@ -1,4 +1,5 @@
 describe("locating elements", () => {
+  //change ase url
   beforeEach(async () => {
     await browser.url("https://www.selectors.webdriveruniversity.com/");
   });

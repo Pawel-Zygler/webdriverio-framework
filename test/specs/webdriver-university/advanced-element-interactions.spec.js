@@ -1,5 +1,3 @@
-import BasePage from "../../pageObjects/webdriver-university/base.page";
-
 describe("advanced element interactions - examples", () => {
   it("inputs", async () => {
     await browser.url("/Contact-Us/contactus.html");

@@ -6,6 +6,10 @@ import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
 
 describe("ADD PRODUCTS - happy path", () => {
+  beforeEach(async () => {
+    await HomePage.open();
+  });
+
   describe(`${testData.categories.skincare.name}`, () => {
     it(`adds subcategory ${testData.categories.skincare.subcategoryFace} products and validates cart total`, async () => {
       await commands.waitThenMoveTo(

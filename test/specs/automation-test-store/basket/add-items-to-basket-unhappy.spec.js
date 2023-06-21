@@ -4,6 +4,10 @@ import testData from "../../../data/testData";
 import ItemComponent from "../../../pageObjects/automation-test-store/components/item.comp";
 
 describe("ADD ITEMS - unhappy path", () => {
+  beforeEach(async () => {
+    await HomePage.open();
+  });
+
   describe("MEN", () => {
     it(`tries to add item ${testData.categories.men.productTwo} from item page which is out of stock`, async () => {
       await commands.waitThenMoveTo(

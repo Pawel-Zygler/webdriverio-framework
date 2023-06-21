@@ -72,7 +72,7 @@ export const config = {
       "goog:chromeOptions": {
         args: [
           "--incognito",
-          //"--headless",
+          "--headless",
           "--start-maximize",
           "--window-size=1920,1080",
         ],
@@ -128,7 +128,7 @@ export const config = {
   // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
   // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
   // gets prepended directly.
-  baseUrl: "https://www.webdriveruniversity.com/",
+  baseUrl: "https://automationteststore.com",
   //
   // Default timeout for all waitFor* commands.
   waitforTimeout: 10000,
@@ -268,16 +268,12 @@ export const config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  beforeTest: async function () {
-    await HomePage.open();
-    await HomePage.scrollToTop();
-    await browser.maximizeWindow();
-  },
-  beforeEach: async function () {
-    await HomePage.open();
-    await HomePage.scrollToTop();
-    await browser.maximizeWindow();
-  },
+  //still was not actually going to that home page, dunno why, so I have it in beforeEach on each test.
+  // beforeTest: async function () {
+  //   await HomePage.open();
+  //   await HomePage.scrollToTop();
+  //   await browser.maximizeWindow();
+  // },
 
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling

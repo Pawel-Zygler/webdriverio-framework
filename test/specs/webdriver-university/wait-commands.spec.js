@@ -1,5 +1,6 @@
 describe("wait commands - examples", () => {
   beforeEach(async () => {
+    //change base url if have to navigate here
     await browser.url("/Ajax-Loader/index.html");
   });
   it("pause command", async () => {
