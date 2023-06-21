@@ -127,6 +127,7 @@ const testData = {
     },
     skincare: {
       name: "Skincare",
+      subcategoryFace: "Face",
       productOne: "creme precieuse nuit 50ml",
       productTwo: "total moisture facial cream",
     },
