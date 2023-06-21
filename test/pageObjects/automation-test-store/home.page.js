@@ -38,6 +38,7 @@ class HomePage extends BasePage {
   async scrollToTop() {
     const element = $(`[title='Automation Test Store']`);
     await element.scrollIntoView();
+    await element.waitUntil(this.element.isDisplayed());
   }
 }
 

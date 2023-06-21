@@ -6,10 +6,6 @@ import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
 
 describe("ADD PRODUCTS - happy path", () => {
-  beforeEach(async () => {
-    await HomePage.open();
-  });
-
   describe(`${testData.categories.skincare.name}`, () => {
     it(`adds subcategory ${testData.categories.skincare.subcategoryFace} products and validates cart total`, async () => {
       await commands.waitThenMoveTo(
@@ -51,7 +47,6 @@ describe("ADD PRODUCTS - happy path", () => {
 
   describe(`${testData.categories.apparel.name}`, () => {
     it(`adds subcategory ${testData.categories.apparel.subcategoryShoes} products with clicking dropdown and validates items are in basket`, async () => {
-      await HomePage.scrollToTop();
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.apparel.name
@@ -73,12 +68,13 @@ describe("ADD PRODUCTS - happy path", () => {
       await expect(ItemComponent.shoppingCartHeader).toBeDisplayed();
       let texts = await CartPage.getTextsFromItemsInBasket();
       await expect(texts).toContain(testData.categories.apparel.productThree);
+      await browser.pause(3000);
     });
   });
 
   describe(`${testData.categories.apparel.name}`, () => {
-    it(`adds subcategory ${testData.categories.apparel.subcategoryTshirts} products and checks if items are in cart`, async () => {
-      await browser.pause(3000);
+    it(`adds subcategory ${testData.categories.apparel.subcategoryTshirts.name} products and checks if items are in cart`, async () => {
+      await browser.pause(2000);
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.apparel.name
@@ -87,7 +83,7 @@ describe("ADD PRODUCTS - happy path", () => {
       await commands.waitThenClick(
         CategoryMenuComponent.subcategory(
           testData.categories.apparel.name,
-          testData.categories.apparel.subcategoryTshirts
+          testData.categories.apparel.subcategoryTshirts.name
         )
       );
 
@@ -104,7 +100,7 @@ describe("ADD PRODUCTS - happy path", () => {
       await commands.waitThenClick(
         CategoryMenuComponent.subcategory(
           testData.categories.apparel.name,
-          testData.categories.apparel.subcategoryTshirts
+          testData.categories.apparel.subcategoryTshirts.name
         )
       );
 
@@ -114,51 +110,61 @@ describe("ADD PRODUCTS - happy path", () => {
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
       let texts = await CartPage.getTextsFromItemsInBasket();
-
       await expect(texts).toContain(testData.categories.apparel.productOne);
       await expect(texts).toContain(testData.categories.apparel.productTwo);
     });
   });
 
   describe(`${testData.categories.books.name}`, () => {
-    it(`adds a subcategory ${testData.categories.books.subcategoryPaperback} products and validates item is in basket`, async () => {
+    it(`adds a subcategory ${testData.categories.books.subcategoryPaperback.name} products and validates item is in basket`, async () => {
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.books.name
         )
       );
       await commands.waitThenClick(
-        HomePage.categoryMenuComponent.categoryMenuLink(
-          testData.categories.books.subcategoryPaperback
+        HomePage.categoryMenuComponent.subcategory(
+          testData.categories.books.name,
+          testData.categories.books.subcategoryPaperback.name
         )
       );
-      await commands.waitThenClickProduct(testData.categories.books.productOne);
+      await commands.waitThenClickProduct(
+        testData.categories.books.subcategoryPaperback.productOne
+      );
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
       let texts = await CartPage.getTextsFromItemsInBasket();
-      await expect(texts).toContain(testData.categories.books.productOne);
+      await expect(texts).toContain(
+        testData.categories.books.subcategoryPaperback.productOne
+      );
     });
   });
 
   describe(`${testData.categories.fragrance.name}`, () => {
-    it(`adds a subcategory ${testData.categories.fragrance.subcategoryMen} men fragrance`, async () => {
+    it(`adds a subcategory ${testData.categories.fragrance.subcategoryMen.name} men fragrance`, async () => {
       await commands.waitThenMoveTo(
         HomePage.categoryMenuComponent.categoryMenuLink(
           testData.categories.fragrance.name
         )
       );
+
       await commands.waitThenClick(
-        HomePage.categoryMenuComponent.categoryMenuLink(
-          testData.categories.fragrance.subcategoryMen
+        HomePage.categoryMenuComponent.subcategory(
+          testData.categories.fragrance.name,
+          testData.categories.fragrance.subcategoryMen.name
         )
       );
+
       await commands.waitThenClickProduct(
-        testData.categories.fragrance.productOne
+        testData.categories.fragrance.subcategoryMen.productOne
       );
+
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
       let texts = await CartPage.getTextsFromItemsInBasket();
-      await expect(texts).toContain(testData.categories.fragrance.productOne);
+      await expect(texts).toContain(
+        testData.categories.fragrance.subcategoryMen.productOne
+      );
     });
   });
 });

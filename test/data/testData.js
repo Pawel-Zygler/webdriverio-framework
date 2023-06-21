@@ -118,7 +118,9 @@ const testData = {
     home: "Home",
     apparel: {
       name: "Apparel & accessories",
-      subcategoryTshirts: "T-shirts",
+      subcategoryTshirts: {
+        name: "T-shirts",
+      },
       subcategoryShoes: "Shoes",
       productOne:
         "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie",
@@ -128,27 +130,37 @@ const testData = {
     skincare: {
       name: "Skincare",
       subcategoryFace: "Face",
+      subcategoryEyes: {
+        name: "Eyes",
+        productThree: "Eye Rejuvenating Serum",
+      },
       productOne: "Creme Precieuse Nuit 50ml",
       productTwo: "Total Moisture Facial Cream",
     },
 
     books: {
       name: "Books",
-      subcategoryPaperback: "Paperback",
-      productOne: "Paper Towns by John Green",
+      subcategoryPaperback: {
+        name: "Paperback",
+        productOne: "Paper Towns by John Green",
+      },
     },
 
     fragrance: {
       name: "Fragrance",
-      subcategoryMen: "Men",
-      productOne: "Euphoria Men Intense Eau De Toilette Spray",
+      subcategoryMen: {
+        name: "Men",
+        productOne: "Euphoria Men Intense Eau De Toilette Spray",
+      },
     },
     men: {
       name: "Men",
-      subcategoryMen: "Body & Shower",
-      productOne: "Men+Care Active Clean Shower Tool",
-      productOutOfStock:
-        "Lancome Slimissime 360 Slimming Activating Concentrate Unisex Treatment",
+      subcategoryBodyAndShower: {
+        name: "Body & Shower",
+        productOne: "Men+Care Active Clean Shower Tool",
+        productTwo:
+          "Lancome Slimissime 360 Slimming Activating Concentrate Unisex Treatment",
+      },
     },
   },
 };

@@ -1,6 +1,7 @@
 import allure from "allure-commandline";
 import fs from "fs";
 import commands from "./utils/commands.js";
+import HomePage from "./test/pageObjects/automation-test-store/home.page.js";
 
 export const config = {
   //
@@ -267,7 +268,14 @@ export const config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  beforeTest: async function (test, context) {
+  beforeTest: async function () {
+    await HomePage.open();
+    await HomePage.scrollToTop();
+    await browser.maximizeWindow();
+  },
+  beforeEach: async function () {
+    await HomePage.open();
+    await HomePage.scrollToTop();
     await browser.maximizeWindow();
   },
 
@@ -279,12 +287,6 @@ export const config = {
 
   // },
 
-  //I could not run this yet
-  // beforeEach: async function (test) {
-  //   // if (test.file.includes('automation-test-store')) {
-  //   await HomePage.open();
-  //   //}
-  // },
   /**
    * Hook that gets executed _after_ a hook within the suite starts (e.g. runs after calling
    * afterEach in Mocha)
@@ -308,7 +310,6 @@ export const config = {
   ) {
     if (error) {
       await browser.takeScreenshot();
-      await browser.deleteSession();
     }
   },
 
