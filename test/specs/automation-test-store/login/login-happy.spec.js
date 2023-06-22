@@ -5,6 +5,7 @@ import TopMenuComp from "../../../pageObjects/automation-test-store/components/t
 import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import commands from "../../../../utils/commands";
 import CategoryMenuComponent from "../../../../test/pageObjects/automation-test-store/components/category-menu.comp";
+import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("LOGIN PAGE - happy path", () => {
   describe("LOGIN PAGE - happy path", () => {
@@ -22,6 +23,7 @@ describe("LOGIN PAGE - happy path", () => {
       await commands.waitThenClick(LoginPage.loginButton);
     });
 
+    //remove hardcoded headers, reuse shared comp header method
     it("logs in (via login page) and logs out (via right side menu)", async () => {
       await expect(await MyAccountPage.MyAccountPageHeader).toHaveText(
         "MY ACCOUNT"
@@ -86,9 +88,17 @@ describe("LOGIN PAGE - happy path", () => {
       await commands.waitThenClick(LoginPage.loginButton);
 
       await commands.waitThenClick(MyAccountPage.sideMenuLogoff);
+
       await expect(
-        await commands.waitThenGetText(MyAccountPage.logoutHeader)
-      ).toHaveText("ACCOUNT LOGOUT");
+        await commands.waitThenGetText(
+          SharedPageComponents.pageHeader(testData.headers.accountLogout)
+        )
+      ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
+  });
+
+  //add a test that logs in from top menu button
+  xdescribe("", () => {
+    it("", () => {});
   });
 });

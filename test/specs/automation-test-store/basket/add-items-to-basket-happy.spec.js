@@ -4,6 +4,7 @@ import CategoryMenuComponent from "../../../pageObjects/automation-test-store/co
 import commands from "../../../../utils/commands";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
+import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("ADD PRODUCTS - happy path", () => {
   beforeEach(async () => {
@@ -72,8 +73,14 @@ describe("ADD PRODUCTS - happy path", () => {
 
       await commands.waitThenClick(await ItemComponent.addToCartBtn);
 
-      await expect(await ItemComponent.shoppingCartHeader).toBeDisplayed();
+      await expect(
+        await SharedPageComponents.pageHeader(
+          testData.headers.shoppingCart
+        ).toBeDisplayed()
+      );
+
       let texts = await CartPage.getTextsFromItemsInBasket();
+      //added this pause due to flaky test, possibly to improve
       await browser.pause(3000);
       await expect(texts).toContain(
         testData.categories.apparel.subcategoryShoes.shoeOne

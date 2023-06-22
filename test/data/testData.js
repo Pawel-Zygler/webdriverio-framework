@@ -182,6 +182,24 @@ const testData = {
       },
     },
   },
+
+  topMenu: {
+    specials: {
+      name: "Specials",
+    },
+    account: {
+      name: "Account",
+    },
+  },
+
+  headers: {
+    shoppingCart: "Shopping Cart",
+    specialOffers: "Special Offers",
+    forgotLogin: "Forgot your login name?",
+    createAccount: "Create Account",
+    accountCreated: "Your Account Has Been Created!",
+    accountLogout: "Account Logout",
+  },
 };
 
 module.exports = testData;

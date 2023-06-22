@@ -30,10 +30,6 @@ class CartPage extends BasePage {
     expect(parseFloat(subTotal)).toEqual(parseFloat(cartTotal));
   }
 
-  get shoppingCartHeader() {
-    return $(`//span[contains(text(),'Shopping Cart')]`);
-  }
-
   get itemsInBasketNames() {
     let rows = $$(
       `//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`

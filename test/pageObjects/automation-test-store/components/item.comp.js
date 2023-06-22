@@ -7,12 +7,6 @@ class ItemComponent {
     return $("//a[@class='cart']/i");
   }
 
-  get shoppingCartHeader() {
-    const e = $(`//span[contains(text(), 'Shopping Cart')]`);
-    e.waitForClickable();
-    return e;
-  }
-
   selectProduct(itemName) {
     const title = $(`//*[@title='${itemName}']`);
     title.waitForExist();

@@ -8,16 +8,16 @@ import RegisterPage from "../../../pageObjects/automation-test-store/register.pa
 import commands from "../../../../utils/commands";
 
 describe("FORGOT LOGIN PAGE - unhappy path", () => {
-  beforeEach(async() => {
+  beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(TopMenuComp.loginOrRegister);
     await commands.waitThenClick(LoginPage.forgotLoginButton);
   });
 
   it("checks if user is on forgot login page", async () => {
-    await expect(commands.waitThenGetText(ForgotLoginPage.forgotLoginHeader)).toHaveText(
-      "FORGOT YOUR LOGIN NAME?"
-    );
+    await expect(
+      SharedPageComponents.pageHeader(testData.headers.forgotLogin)
+    ).toHaveText(testData.headers.forgotLogin.toUpperCase());
   });
 
   const testCases = [
@@ -49,7 +49,10 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
     expectedErrorMessage,
   } of testCases) {
     it(description, async () => {
-      await commands.waitThenSetValue(ForgotLoginPage.forgotLoginLastName, lastName);
+      await commands.waitThenSetValue(
+        ForgotLoginPage.forgotLoginLastName,
+        lastName
+      );
       await commands.waitThenSetValue(ForgotLoginPage.forgotLoginEmail, email);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
@@ -57,9 +60,9 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
         expectedErrorMessage
       );
 
-      await expect(await commands.waitThenGetText(errorElement)).toHaveTextContaining(
-        expectedErrorMessage
-      );
+      await expect(
+        await commands.waitThenGetText(errorElement)
+      ).toHaveTextContaining(expectedErrorMessage);
     });
   }
 });

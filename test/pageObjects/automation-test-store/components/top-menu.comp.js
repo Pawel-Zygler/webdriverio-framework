@@ -1,6 +1,8 @@
 class TopMenuComponent {
   topMenuLink(linkText) {
-    return $(`//span[contains(text(), '${linkText}')]`);
+    return $(
+      `//ul[@id='main_menu_top']//span[contains(text(), '${linkText}')]`
+    );
   }
 
   get loginOrRegister() {
@@ -13,8 +15,6 @@ class TopMenuComponent {
     element.waitForClickable();
     return element;
   }
-
-  get specialsBtn() {}
 }
 
 export default new TopMenuComponent();

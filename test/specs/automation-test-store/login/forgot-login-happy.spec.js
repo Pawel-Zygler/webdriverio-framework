@@ -16,8 +16,8 @@ describe("FORGOT LOGIN PAGE - happy path", () => {
 
   it("checks if user is on forgot login page", async () => {
     await expect(
-      await commands.waitThenGetText(ForgotLoginPage.forgotLoginHeader)
-    ).toHaveText("FORGOT YOUR LOGIN NAME?");
+      SharedPageComponents.pageHeader(testData.headers.forgotLogin)
+    ).toHaveText(testData.headers.forgotLogin.toUpperCase());
   });
 
   it("submits correct last name and email", async () => {

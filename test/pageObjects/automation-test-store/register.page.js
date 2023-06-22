@@ -1,9 +1,4 @@
 class RegisterPage {
-  get createAccountHeader() {
-    const e = $(`//span[contains(text(), 'Create Account')]`);
-    return e;
-  }
-
   get firstName() {
     const e = $("#AccountFrm_firstname");
     return e;
@@ -96,11 +91,6 @@ class RegisterPage {
     const e = $(
       "//div[contains(@class,'alert alert-error alert-danger')] | //div[contains(@class,'alert alert-success')]"
     );
-    return e;
-  }
-
-  get accountCreatedHeader() {
-    const e = $("//span[contains(text(), 'Your Account Has Been Created!')]");
     return e;
   }
 }
