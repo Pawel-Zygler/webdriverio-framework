@@ -32,13 +32,6 @@ class SharedPageComponents {
     );
     return element;
   }
-
-  // addToCartBtnSub() {
-  //   const element = $(
-  //     `//div[@class='pricetag jumbotron']/span[contains(text(),'Out of Stock')] | //div[@class='pricetag jumbotron']//a[@class='productcart']`
-  //   );
-  //   return element;
-  // }
 }
 
 export default new SharedPageComponents();

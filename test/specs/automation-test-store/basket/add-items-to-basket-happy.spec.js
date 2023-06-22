@@ -8,7 +8,7 @@ import testData from "../../../data/testData";
 describe("ADD PRODUCTS - happy path", () => {
   beforeEach(async () => {
     await HomePage.open();
-    //await HomePage.bannerSlide.waitForDisplayed();
+    await HomePage.bannerSlide.waitForDisplayed();
     await HomePage.scrollToLogo();
   });
 

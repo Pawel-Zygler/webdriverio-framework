@@ -16,28 +16,28 @@ class HomePage extends BasePage {
   }
 
   get currencyDropdown() {
-    const e = $("//li//a[@class='dropdown-toggle']//span//span");
-    return e;
+    const element = $("//li//a[@class='dropdown-toggle']//span//span");
+    return element;
   }
 
   currencyOption(currency) {
-    const e = $(`//a[contains(text(),"${currency}")]`);
-    return e;
+    const element = $(`//a[contains(text(),"${currency}")]`);
+    return element;
   }
 
   get currentCurrency() {
-    const e = $(`//span[@class='cart_total']`);
-    return e;
+    const element = $(`//span[@class='cart_total']`);
+    return element;
   }
 
   socialMediaButton(socialMedia) {
-    const e = $(`//a[contains(text(),'${socialMedia}')]`);
-    return e;
+    const element = $(`//a[contains(text(),'${socialMedia}')]`);
+    return element;
   }
 
   get bannerSlide() {
-    const slides = $(`//div[@class='oneByOneSlide']`);
-    return slides;
+    const slide = $(`//div[@class='oneByOneSlide']`);
+    return slide;
   }
 
   async scrollToLogo() {

@@ -4,15 +4,17 @@ class TopMenuComponent {
   }
 
   get loginOrRegister() {
-    const e = $(`//a[contains(text(), 'Login or register')]`);
-    return e;
+    const element = $(`//a[contains(text(), 'Login or register')]`);
+    return element;
   }
 
   get welcomeBackDropdown() {
-    const e = $(`//div[contains(text(), 'Welcome back pawel')]`);
-    e.waitForClickable();
-    return e;
+    const element = $(`//div[contains(text(), 'Welcome back pawel')]`);
+    element.waitForClickable();
+    return element;
   }
+
+  get specialsBtn() {}
 }
 
 export default new TopMenuComponent();

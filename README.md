@@ -27,9 +27,9 @@ npm run wiremock
 More scripts in package.js
 
 LESSONS and things TODO:
-FireFox in bh for some reason does not click main category skincare - chorme ok
-
-allureReporter.addFeature("Contact us Page - valid submission"); - use those more often, read doc
+bh = FireFox in bh for some reason does not click main category skincare - chrome ok
+bh = Chrome sometimes have 'move target out of bounds' error gdzie przycisk jest poza ekranem
+próbowałem juz 4-5 rozwiązań, ale tylko udalo sie zredukowac severity, ale czasem wpada blad nadal
 
 SCENARIOS
 As a user I want to check if there are any sales.
@@ -42,12 +42,11 @@ As a user I want to checkout 10 items.
 https://automationteststore.com/index.php?rt=product/category&path=43_47 - ten przycisk dodaje od razu do koszyka przedmioty, sprawdz czy sie updejtją
 
 MEDIUM
-is total price same as price?
 gitgnore is missing some files to ignore from allure reports
-kontynuuj test z login z 4 miejsca na stronie, klikając w podwójny dropdown - trudne
+As a user I want to login through left side dropdown
 
 HARD
-Set it up so tests run on 40 browsers
+Set it up so tests run on 4 browsers
 Analyse Kibana integration
 Improve github workflow in CI, it actually passes 10/10 but still fails in actions
 

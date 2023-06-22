@@ -12,6 +12,18 @@ class CategoryMenuComponent {
     );
     return element;
   }
+
+  homeSubcategoryOption(subcategory) {
+    const element = $(
+      `//ul[@class='nav-pills categorymenu']//span[contains(text(), '${subcategory}')]`
+    );
+    return element;
+  }
+
+  get homeCategoryDropdownLoginBtn() {
+    const element = $(`//ul[@id='main_menu']//span[text()='Login']`);
+    return element;
+  }
 }
 
 export default new CategoryMenuComponent();

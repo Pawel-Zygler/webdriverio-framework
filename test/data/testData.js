@@ -115,7 +115,21 @@ const testData = {
   },
 
   categories: {
-    home: "Home",
+    home: {
+      name: "Home",
+      subcategorySpecials: {
+        name: "Specials",
+      },
+      subcategoryAccount: {
+        name: "Account",
+      },
+      subcategoryCart: {
+        name: "Cart",
+      },
+      subcategoryCheckout: {
+        name: "Checkout",
+      },
+    },
     apparel: {
       name: "Apparel & accessories",
       subcategoryTshirts: {
