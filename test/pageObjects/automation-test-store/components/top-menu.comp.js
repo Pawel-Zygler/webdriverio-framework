@@ -11,8 +11,7 @@ class TopMenuComponent {
   }
 
   get welcomeBackDropdown() {
-    const element = $(`//div[contains(text(), 'Welcome back pawel')]`);
-    element.waitForClickable();
+    const element = $(`//div[@class='menu_text']`);
     return element;
   }
 }

@@ -6,28 +6,23 @@ class LoginPage {
   }
 
   get loginName() {
-    const e = $("#loginFrm_loginname");
-    return e;
+    return $("#loginFrm_loginname");
   }
 
   get password() {
-    const e = $("#loginFrm_password");
-    return e;
+    return $("#loginFrm_password");
   }
 
   get loginButton() {
-    const e = $(`//button[@title='Login']`);
-    return e;
+    return $(`//button[@title='Login']`);
   }
 
   get forgotPasswordButton() {
-    const e = $(`//a[contains(text(),'Forgot your password?')]`);
-    return e;
+    return $(`//a[contains(text(),'Forgot your password?')]`);
   }
 
   get forgotLoginButton() {
-    const e = $(`//a[contains(text(),'Forgot your login?')]`);
-    return e;
+    return $(`//a[contains(text(),'Forgot your login?')]`);
   }
 }
 

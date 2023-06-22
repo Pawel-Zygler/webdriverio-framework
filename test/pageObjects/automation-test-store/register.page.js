@@ -1,75 +1,60 @@
 class RegisterPage {
   get firstName() {
-    const e = $("#AccountFrm_firstname");
-    return e;
+    return $("#AccountFrm_firstname");
   }
 
   get lastName() {
-    const e = $("#AccountFrm_lastname");
-    return e;
+    return $("#AccountFrm_lastname");
   }
 
   get email() {
-    const e = $("#AccountFrm_email");
-    return e;
+    return $("#AccountFrm_email");
   }
 
   get telephone() {
-    const e = $("#AccountFrm_telephone");
-    return e;
+    return $("#AccountFrm_telephone");
   }
 
   get fax() {
-    const e = $("#AccountFrm_fax");
-    return e;
+    return $("#AccountFrm_fax");
   }
 
   get addressOne() {
-    const e = $("#AccountFrm_address_1");
-    return e;
+    return $("#AccountFrm_address_1");
   }
 
   get city() {
-    const e = $("#AccountFrm_city");
-    return e;
+    return $("#AccountFrm_city");
   }
 
   get regionState() {
-    const e = $("#AccountFrm_zone_id");
-    return e;
+    return $("#AccountFrm_zone_id");
   }
   get zipCode() {
-    const e = $("#AccountFrm_postcode");
-    return e;
+    return $("#AccountFrm_postcode");
   }
 
   get country() {
-    const e = $("#AccountFrm_country_id");
-    return e;
+    return $("#AccountFrm_country_id");
   }
 
   get loginName() {
-    const e = $("#AccountFrm_loginname");
-    return e;
+    return $("#AccountFrm_loginname");
   }
   get password() {
-    const e = $("#AccountFrm_password");
-    return e;
+    return $("#AccountFrm_password");
   }
 
   get passwordConfirm() {
-    const e = $("#AccountFrm_confirm");
-    return e;
+    return $("#AccountFrm_confirm");
   }
 
   get newsletterNo() {
-    const e = $("#AccountFrm_newsletter0");
-    return e;
+    return $("#AccountFrm_newsletter0");
   }
 
   get privacyPolicyAgree() {
-    const e = $("#AccountFrm_agree");
-    return e;
+    return $("#AccountFrm_agree");
   }
 
   errorElement(validationText) {
@@ -88,10 +73,9 @@ class RegisterPage {
   }
 
   validationMessageAboveForm() {
-    const e = $(
+    return $(
       "//div[contains(@class,'alert alert-error alert-danger')] | //div[contains(@class,'alert alert-success')]"
     );
-    return e;
   }
 }
 export default new RegisterPage();

@@ -74,10 +74,8 @@ describe("ADD PRODUCTS - happy path", () => {
       await commands.waitThenClick(await ItemComponent.addToCartBtn);
 
       await expect(
-        await SharedPageComponents.pageHeader(
-          testData.headers.shoppingCart
-        ).toBeDisplayed()
-      );
+        SharedPageComponents.pageHeader(testData.headers.shoppingCart)
+      ).toBeDisplayed();
 
       let texts = await CartPage.getTextsFromItemsInBasket();
       //added this pause due to flaky test, possibly to improve

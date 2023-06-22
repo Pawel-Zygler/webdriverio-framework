@@ -195,10 +195,11 @@ const testData = {
   headers: {
     shoppingCart: "Shopping Cart",
     specialOffers: "Special Offers",
-    forgotLogin: "Forgot your login name?",
+    forgotLogin: "Forgot Your Login Name?",
     createAccount: "Create Account",
     accountCreated: "Your Account Has Been Created!",
     accountLogout: "Account Logout",
+    myAccount: "My Account",
   },
 };
 

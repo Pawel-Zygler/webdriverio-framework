@@ -16,28 +16,23 @@ class HomePage extends BasePage {
   }
 
   get currencyDropdown() {
-    const element = $("//li//a[@class='dropdown-toggle']//span//span");
-    return element;
+    return $("//li//a[@class='dropdown-toggle']//span//span");
   }
 
   currencyOption(currency) {
-    const element = $(`//a[contains(text(),"${currency}")]`);
-    return element;
+    return $(`//a[contains(text(),"${currency}")]`);
   }
 
   get currentCurrency() {
-    const element = $(`//span[@class='cart_total']`);
-    return element;
+    return $(`//span[@class='cart_total']`);
   }
 
   socialMediaButton(socialMedia) {
-    const element = $(`//a[contains(text(),'${socialMedia}')]`);
-    return element;
+    return $(`//a[contains(text(),'${socialMedia}')]`);
   }
 
   get bannerSlide() {
-    const slide = $(`//div[@class='oneByOneSlide']`);
-    return slide;
+    return $(`//div[@class='oneByOneSlide']`);
   }
 
   async scrollToLogo() {

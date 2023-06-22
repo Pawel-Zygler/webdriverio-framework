@@ -2,20 +2,15 @@ import BasePage from "./base.page";
 
 class CartPage extends BasePage {
   get tempShippingRate() {
-    const element = $(
-      "//span[text()='Flat Shipping Rate:']/../following-sibling::td"
-    );
-    return element;
+    return $("//span[text()='Flat Shipping Rate:']/../following-sibling::td");
   }
 
   get subTotal() {
-    const element = $("//span[text()='Sub-Total:']/../following-sibling::td");
-    return element;
+    return $("//span[text()='Sub-Total:']/../following-sibling::td");
   }
 
   get cartTotal() {
-    const element = $("//span[text()='Total:']/../following-sibling::td");
-    return element;
+    return $("//span[text()='Total:']/../following-sibling::td");
   }
 
   async validateTotal() {
@@ -31,10 +26,9 @@ class CartPage extends BasePage {
   }
 
   get itemsInBasketNames() {
-    let rows = $$(
+    return $$(
       `//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`
     );
-    return rows;
   }
 
   async getTextsFromItemsInBasket() {

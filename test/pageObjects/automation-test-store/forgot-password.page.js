@@ -1,17 +1,14 @@
 class ForgotPasswordPage {
   get forgotPasswordHeader() {
-    const e = $(`//span[contains(text(),'Forgot Your Password?')]`);
-    return e;
+    return $(`//span[contains(text(),'Forgot Your Password?')]`);
   }
 
   get forgotPasswordLoginName() {
-    const e = $("#forgottenFrm_loginname");
-    return e;
+    return $("#forgottenFrm_loginname");
   }
 
   get forgotPasswordEmail() {
-    const e = $("#forgottenFrm_email");
-    return e;
+    return $("#forgottenFrm_email");
   }
 }
 

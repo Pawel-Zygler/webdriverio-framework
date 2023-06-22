@@ -1,4 +1,5 @@
 class ItemComponent {
+  //those probably should go to shared page components
   get itemHeaderLinks() {
     return $$(".fixed_wrapper .prdocutname");
   }

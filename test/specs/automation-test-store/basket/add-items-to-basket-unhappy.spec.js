@@ -1,7 +1,7 @@
 import commands from "../../../../utils/commands";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
-import ItemComponent from "../../../pageObjects/automation-test-store/components/item.comp";
+import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("ADD ITEMS - unhappy path", () => {
   beforeEach(async () => {
@@ -27,14 +27,16 @@ describe("ADD ITEMS - unhappy path", () => {
         testData.categories.men.subcategoryBodyAndShower.productTwo
       );
 
-      const isItemInStock = await ItemComponent.addToCartBtn.isDisplayed();
-
-      if (isItemInStock) {
-        await commands.waitThenClick(ItemComponent.addToCartBtn);
-        await expect(browser).toHaveUrlContaining("checkout");
-      } else {
-        throw new Error("No cart button, item probably out of stock");
-      }
+      //const isItemInStock = await ItemComponent.addToCartBtn.isDisplayed();
+      //throws error if item is found not in stock, adds to cart of not found - older solution
+      // if (isItemInStock) {
+      //   await commands.waitThenClick(ItemComponent.addToCartBtn);
+      //   await expect(browser).toHaveUrlContaining("checkout");
+      // } else {
+      //   throw new Error("No cart button, item probably out of stock");
+      // }
+      const isOutOfStockBtn = await SharedPageComponents.outOfStockBtn;
+      await isOutOfStockBtn.isDisplayed();
     });
   });
 

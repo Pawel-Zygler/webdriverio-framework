@@ -1,5 +1,11 @@
 # webdriverio-framework
 
+Go to root and
+
+```
+npm i
+```
+
 Run all automation test store suite:
 
 ```
@@ -32,7 +38,9 @@ bh = Chrome sometimes have 'move target out of bounds' error gdzie przycisk jest
 próbowałem juz 4-5 rozwiązań, ale tylko udalo sie zredukowac severity, ale czasem wpada blad nadal
 
 SCENARIOS(todo):
+Change if statement to something smarter in buh - so it find a button that is out of stock, so it passes because it failed to click that button
 Adapt testData and headers in tests
+add a test that logs in from top menu button
 As a user I want to check if there are any sales - now
 As a user I want to log in frm top menu login button
 As a user I want to add size 7 shoes for Women.

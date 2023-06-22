@@ -1,12 +1,10 @@
 class ForgotLoginPage {
   get forgotLoginLastName() {
-    const e = $("#forgottenFrm_lastname");
-    return e;
+    return $("#forgottenFrm_lastname");
   }
 
   get forgotLoginEmail() {
-    const e = $("#forgottenFrm_email");
-    return e;
+    return $("#forgottenFrm_email");
   }
 }
 
