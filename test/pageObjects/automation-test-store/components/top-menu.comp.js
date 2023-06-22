@@ -6,13 +6,11 @@ class TopMenuComponent {
   }
 
   get loginOrRegister() {
-    const element = $(`//a[contains(text(), 'Login or register')]`);
-    return element;
+    return $(`//a[contains(text(), 'Login or register')]`);
   }
 
   get welcomeBackDropdown() {
-    const element = $(`//div[@class='menu_text']`);
-    return element;
+    return $(`//div[@class='menu_text']`);
   }
 }
 

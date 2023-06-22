@@ -189,6 +189,7 @@ const testData = {
     },
     account: {
       name: "Account",
+      subcategoryLoginBtn: "Login",
     },
   },
 
@@ -200,6 +201,7 @@ const testData = {
     accountCreated: "Your Account Has Been Created!",
     accountLogout: "Account Logout",
     myAccount: "My Account",
+    accountLogin: "Account Login",
   },
 };
 

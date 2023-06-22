@@ -113,5 +113,23 @@ describe("LOGIN PAGE - happy path", () => {
         )
       ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
+
+    it("goes to login page through Account top menu button", async () => {
+      await commands.waitThenMoveTo(
+        TopMenuComponent.topMenuLink(testData.topMenu.account.name)
+      );
+
+      await commands.waitThenClick(
+        TopMenuComponent.topMenuLink(
+          testData.topMenu.account.subcategoryLoginBtn
+        )
+      );
+
+      await expect(
+        SharedPageComponents.pageHeader(
+          testData.headers.accountLogin
+        ).toBeDisplayed()
+      );
+    });
   });
 });
