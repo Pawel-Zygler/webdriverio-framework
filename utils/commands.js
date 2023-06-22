@@ -16,7 +16,6 @@ module.exports = {
   waitThenSetValue: async function (element, value) {
     await element.waitForDisplayed();
     await element.setValue(value);
-    return element;
   },
 
   waitThenClickProduct: async function (productName) {

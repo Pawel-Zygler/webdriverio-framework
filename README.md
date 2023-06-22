@@ -27,8 +27,8 @@ npm run wiremock
 More scripts in package.js
 
 LESSONS and things TODO:
-Many failing tests, probably HomePage changes and others too.
-FLAKY TEST add items happy - out of bounds bug - possibly fixed
+FireFox in bh for some reason does not click main category skincare - chorme ok
+
 allureReporter.addFeature("Contact us Page - valid submission"); - use those more often, read doc
 
 SCENARIOS

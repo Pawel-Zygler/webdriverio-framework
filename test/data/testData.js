@@ -120,22 +120,27 @@ const testData = {
       name: "Apparel & accessories",
       subcategoryTshirts: {
         name: "T-shirts",
+        tshirtOne:
+          "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie",
+        tshirtTwo: "Casual 3/4 Sleeve Baseball T-Shirt",
       },
-      subcategoryShoes: "Shoes",
-      productOne:
-        "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie",
-      productTwo: "Casual 3/4 Sleeve Baseball T-Shirt",
-      productThree: "Ruby Shoo Womens Jada T-Bar",
+      subcategoryShoes: {
+        name: "Shoes",
+        shoeOne: "Ruby Shoo Womens Jada T-Bar",
+      },
     },
+
     skincare: {
       name: "Skincare",
-      subcategoryFace: "Face",
+      subcategoryFace: {
+        name: "Face",
+        productOne: "Creme Precieuse Nuit 50ml",
+        productTwo: "Total Moisture Facial Cream",
+      },
       subcategoryEyes: {
         name: "Eyes",
         productThree: "Eye Rejuvenating Serum",
       },
-      productOne: "Creme Precieuse Nuit 50ml",
-      productTwo: "Total Moisture Facial Cream",
     },
 
     books: {
