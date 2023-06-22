@@ -1,7 +1,6 @@
 import allure from "allure-commandline";
 import fs from "fs";
 import commands from "./utils/commands.js";
-import HomePage from "./test/pageObjects/automation-test-store/home.page.js";
 
 export const config = {
   //
@@ -242,12 +241,22 @@ export const config = {
    * @param {Array.<String>} specs        List of spec file paths that are to be run
    * @param {Object}         browser      instance of created browser/device session
    */
-  before: function (capabilities, specs) {
-    require("expect-webdriverio").setOptions(
-      { wait: 10000 },
-      { interval: 500 }
-    );
-  },
+  // before: function (capabilities, specs) {
+  //   require("expect-webdriverio").setOptions(
+  //     { wait: 10000 },
+  //     { interval: 500 }
+  //   );
+  // },
+
+  // before: async function (capabilities, specs) {
+  //   // eslint-disable-next-line
+  //   const { setOptions } = await import("expect-webdriverio");
+  //   setOptions({ wait: 10000 }, { interval: 500 });
+  // },
+
+  // before: async function (capabilities, specs) {
+  //   setOptions({ wait: 10000 }, { interval: 500 });
+  // },
 
   /**
    * Runs before a WebdriverIO command gets executed.

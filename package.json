@@ -4,6 +4,7 @@
   "description": "webdriver io automation framework",
   "main": "index.js",
   "scripts": {
+    "start": "node -r esm index.js",
     "test": "wdio --spec ./test/specs/automation-test-store/**/*.spec.js,./test/specs/folder2/**/*.spec.js",
     "wdio": "wdio run ./wdio.conf.js",
     "webdriver": "npx wdio --spec test/specs/webdriver-university/**/*.spec.js",
