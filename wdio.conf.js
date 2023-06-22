@@ -72,7 +72,7 @@ export const config = {
       "goog:chromeOptions": {
         args: [
           "--incognito",
-          "--headless",
+          //"--headless",
           "--start-maximize",
           "--window-size=1920,1080",
         ],
@@ -271,7 +271,7 @@ export const config = {
   //still was not actually going to that home page, dunno why, so I have it in beforeEach on each test.
   // beforeTest: async function () {
   //   await HomePage.open();
-  //   await HomePage.scrollToTop();
+  //   await HomePage.scrollToLogo();
   //   await browser.maximizeWindow();
   // },
 

@@ -8,6 +8,8 @@ import testData from "../../../data/testData";
 describe("ADD PRODUCTS - happy path", () => {
   beforeEach(async () => {
     await HomePage.open();
+    await HomePage.bannerSlide.waitForDisplayed();
+    await HomePage.scrollToLogo();
   });
 
   describe(`${testData.categories.skincare.name}`, () => {
@@ -135,7 +137,7 @@ describe("ADD PRODUCTS - happy path", () => {
       await commands.waitThenClickProduct(
         testData.categories.books.subcategoryPaperback.productOne
       );
-      await commands.waitThenClick(ItemComponent.addToCartBtn);
+      await commands.waitThenClick(await ItemComponent.addToCartBtn);
 
       let texts = await CartPage.getTextsFromItemsInBasket();
       await expect(texts).toContain(

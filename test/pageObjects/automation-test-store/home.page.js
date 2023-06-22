@@ -35,10 +35,16 @@ class HomePage extends BasePage {
     return e;
   }
 
-  async scrollToTop() {
+  get bannerSlide() {
+    const slides = $(`//div[@class='oneByOneSlide']`);
+    return slides;
+  }
+
+  async scrollToLogo() {
     const element = $(`[title='Automation Test Store']`);
+    await element.waitForExist();
     await element.scrollIntoView();
-    await element.waitUntil(this.element.isDisplayed());
+    await element.waitForDisplayed();
   }
 }
 

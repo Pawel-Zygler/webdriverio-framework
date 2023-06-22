@@ -29,10 +29,9 @@ module.exports = {
   waitThenMoveTo: async function (element) {
     await element.waitForExist();
     await element.waitForDisplayed();
-    await element.isDisplayed();
     await element.scrollIntoView();
+    await element.isDisplayed();
     await element.moveTo();
-    return element;
   },
 
   clickItemIfInStock() {
