@@ -6,3 +6,4 @@ allure-report
 .vscode
 test/specs/webdriver-university
 test/pageObjects/webdriver-university
+dataUniversity
