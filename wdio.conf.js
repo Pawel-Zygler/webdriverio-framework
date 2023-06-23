@@ -71,7 +71,7 @@ export const config = {
       "goog:chromeOptions": {
         args: [
           "--incognito",
-          "--headless",
+          //"--headless",
           "--start-maximize",
           "--window-size=1920,1080",
         ],
@@ -88,7 +88,7 @@ export const config = {
     //   maxInstances: 2,
     //   browserName: "firefox",
     //   "moz:firefoxOptions": {
-    //     args: ["-private"],
+    //     args: ["-private", "-headless"],
     //   },
     //   timeouts: {
     //     pageLoad: 30000,

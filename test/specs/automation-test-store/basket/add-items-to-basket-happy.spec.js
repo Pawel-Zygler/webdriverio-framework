@@ -84,6 +84,76 @@ describe("ADD PRODUCTS - happy path", () => {
         testData.categories.apparel.subcategoryShoes.shoeOne
       );
     });
+
+    it(`adds a shoe of size ${testData.categories.apparel.subcategoryShoes.shoeTwoSize40}`, async () => {
+      await commands.waitThenMoveTo(
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.apparel.name
+        )
+      );
+
+      await commands.waitThenClick(
+        CategoryMenuComponent.subcategory(
+          testData.categories.apparel.name,
+          testData.categories.apparel.subcategoryShoes.name
+        )
+      );
+
+      await commands.waitThenClickProduct(
+        testData.categories.apparel.subcategoryShoes.shoeTwo
+      );
+
+      await ItemComponent.selectSizeDropdown.selectByVisibleText(
+        testData.categories.apparel.subcategoryShoes.shoeTwoSize40
+      );
+
+      await commands.waitThenClick(ItemComponent.addToCartBtn);
+
+      let texts = await CartPage.getTextsFromItemsAttributesInBasket(
+        testData.categories.apparel.subcategoryShoes.shoeTwo
+      );
+      await texts.includes(
+        testData.categories.apparel.subcategoryShoes.shoeTwoSize40
+      );
+    });
+
+    it(`adds ${testData.categories.apparel.subcategoryShoes.shoeGreenColor} shoe`, async () => {
+      await commands.waitThenMoveTo(
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.apparel.name
+        )
+      );
+
+      await commands.waitThenClick(
+        CategoryMenuComponent.subcategory(
+          testData.categories.apparel.name,
+          testData.categories.apparel.subcategoryShoes.name
+        )
+      );
+
+      await commands.waitThenClickProduct(
+        testData.categories.apparel.subcategoryShoes.shoeThree
+      );
+
+      // await ItemComponent.selectSizeDropdown.selectByVisibleText(
+      //   testData.categories.apparel.subcategoryShoes.shoeGreenColor
+      // );
+
+      await commands.waitThenClick(
+        ItemComponent.selectColourRadioBtn(
+          testData.categories.apparel.subcategoryShoes.shoeGreenColor
+        )
+      );
+
+      await commands.waitThenClick(ItemComponent.addToCartBtn);
+
+      let texts = await CartPage.getTextsFromItemsAttributesInBasket(
+        testData.categories.apparel.subcategoryShoes.shoeThree
+      );
+      await texts.includes(
+        testData.categories.apparel.subcategoryShoes.shoeGreenColor
+      );
+    });
   });
 
   describe(`${testData.categories.apparel.name}`, () => {

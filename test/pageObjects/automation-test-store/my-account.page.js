@@ -12,11 +12,6 @@ class MyAccountPage {
   get footerMenuLogoff() {
     return $(`//ul[@class='info_links_footer']//a[contains(text(),'Logoff')]`);
   }
-
-  //del later
-  get logoutHeader() {
-    return $(`//span[contains(text(),'Account Logout')]`);
-  }
 }
 
 export default new MyAccountPage();

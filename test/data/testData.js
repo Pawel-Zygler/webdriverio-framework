@@ -141,6 +141,11 @@ const testData = {
       subcategoryShoes: {
         name: "Shoes",
         shoeOne: "Ruby Shoo Womens Jada T-Bar",
+        shoeTwo: "Fiorella Purple Peep Toes",
+        shoeTwoSize40: 40,
+        shoeThree:
+          "Womens high heel point toe stiletto sandals ankle strap court shoes",
+        shoeGreenColor: "green",
       },
     },
 

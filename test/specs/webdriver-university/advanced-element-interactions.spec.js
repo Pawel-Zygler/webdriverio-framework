@@ -28,6 +28,7 @@ describe("advanced element interactions - examples", () => {
       ignoreCase: true,
     });
   });
+
   it("dropdowns - by text 'css'", async () => {
     await browser.url("/Dropdown-Checkboxes-RadioButtons/index.html");
 

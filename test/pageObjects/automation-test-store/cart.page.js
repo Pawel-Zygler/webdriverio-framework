@@ -31,6 +31,23 @@ class CartPage extends BasePage {
     );
   }
 
+  itemsInBasketAttributes(productName) {
+    return $$(
+      `//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`
+    );
+  }
+
+  async getTextsFromItemsAttributesInBasket(productName) {
+    let rows = await this.itemsInBasketAttributes(productName);
+    let texts = [];
+
+    for (let row of rows) {
+      let text = await row.getText();
+      texts.push(text);
+    }
+    return texts;
+  }
+
   async getTextsFromItemsInBasket() {
     let rows = await this.itemsInBasketNames;
     let texts = [];

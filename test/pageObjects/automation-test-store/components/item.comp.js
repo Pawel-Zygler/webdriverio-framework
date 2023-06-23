@@ -14,5 +14,15 @@ class ItemComponent {
     title.waitForClickable();
     title.click();
   }
+
+  get selectSizeDropdown() {
+    return $(`//div[@class='input-group col-sm-10']//select`);
+  }
+
+  selectColourRadioBtn(colour) {
+    return $(
+      `//input[@type='radio' and following-sibling::text()[contains(., '${colour}')]]`
+    );
+  }
 }
 export default new ItemComponent();
