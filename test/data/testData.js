@@ -201,7 +201,6 @@ const testData = {
     accountCreated: "Your Account Has Been Created!",
     accountLogout: "Account Logout",
     myAccount: "My Account",
-    accountLogin: "Account Login",
   },
 };
 

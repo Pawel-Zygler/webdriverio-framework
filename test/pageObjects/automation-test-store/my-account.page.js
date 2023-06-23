@@ -1,9 +1,4 @@
 class MyAccountPage {
-  //del late
-  get MyAccountPageHeader() {
-    return $(`//h1//span[contains(text(),'My Account')]`);
-  }
-
   get topMenuLogoff() {
     return $(
       `//ul[@class='sub_menu dropdown-menu']//a[contains(text(),'Logoff')]`
@@ -17,7 +12,8 @@ class MyAccountPage {
   get footerMenuLogoff() {
     return $(`//ul[@class='info_links_footer']//a[contains(text(),'Logoff')]`);
   }
-  //del late
+
+  //del later
   get logoutHeader() {
     return $(`//span[contains(text(),'Account Logout')]`);
   }

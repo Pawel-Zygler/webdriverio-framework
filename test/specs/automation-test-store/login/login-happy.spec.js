@@ -25,19 +25,15 @@ describe("LOGIN PAGE - happy path", () => {
       await commands.waitThenClick(LoginPage.loginButton);
     });
 
-    //remove hardcoded headers, reuse shared comp header method
-    //also those tests might be dependent on previous it, which should not be the case, debug this
-    it("checks if the user is on My Account page after succesful login", async () => {
+    it("logs in (via login page) and logs out (via right side menu)", async () => {
       await expect(
-        await SharedPageComponents.pageHeader(testData.headers.myAccount)
+        SharedPageComponents.pageHeader(testData.headers.myAccount)
       ).toHaveText(testData.headers.myAccount.toUpperCase());
 
       await commands.waitThenClick(MyAccountPage.sideMenuLogoff);
 
       await expect(
-        await commands.waitThenGetText(
-          SharedPageComponents.pageHeader(testData.headers.accountLogout)
-        )
+        SharedPageComponents.pageHeader(testData.headers.accountLogout)
       ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
 
@@ -45,9 +41,7 @@ describe("LOGIN PAGE - happy path", () => {
       await commands.waitThenClick(MyAccountPage.sideMenuLogoff);
 
       await expect(
-        await commands.waitThenGetText(
-          SharedPageComponents.pageHeader(testData.headers.accountLogout)
-        )
+        SharedPageComponents.pageHeader(testData.headers.accountLogout)
       ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
 
@@ -56,9 +50,7 @@ describe("LOGIN PAGE - happy path", () => {
       await commands.waitThenClick(MyAccountPage.topMenuLogoff);
 
       await expect(
-        await commands.waitThenGetText(
-          SharedPageComponents.pageHeader(testData.headers.accountLogout)
-        )
+        SharedPageComponents.pageHeader(testData.headers.accountLogout)
       ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
 
@@ -66,9 +58,7 @@ describe("LOGIN PAGE - happy path", () => {
       await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
 
       await expect(
-        await commands.waitThenGetText(
-          SharedPageComponents.pageHeader(testData.headers.accountLogout)
-        )
+        SharedPageComponents.pageHeader(testData.headers.accountLogout)
       ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
   });
