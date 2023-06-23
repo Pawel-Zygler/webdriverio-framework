@@ -34,7 +34,6 @@ More scripts in package.js
 
 SCENARIOS(todo):
 As a user I want to add a product from latest products
-
 As a user I want to add a shoes of blue color
 As a user i want to see breadcrumbs whereever I go
 

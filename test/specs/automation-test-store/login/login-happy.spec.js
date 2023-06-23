@@ -77,7 +77,7 @@ describe("LOGIN PAGE - happy path", () => {
         )
       );
       await commands.waitThenMoveTo(
-        CategoryMenuComponent.homeSubcategoryOption(
+        CategoryMenuComponent.homeCategorySubcategoryOption(
           testData.categories.home.subcategoryAccount.name
         )
       );

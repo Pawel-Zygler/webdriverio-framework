@@ -11,7 +11,7 @@ class CategoryMenuComponent {
     );
   }
 
-  homeSubcategoryOption(subcategory) {
+  homeCategorySubcategoryOption(subcategory) {
     return $(
       `//ul[@class='nav-pills categorymenu']//span[contains(text(), '${subcategory}')]`
     );

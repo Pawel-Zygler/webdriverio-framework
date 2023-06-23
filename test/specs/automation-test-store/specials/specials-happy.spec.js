@@ -13,10 +13,31 @@ describe("SPECIALS", () => {
     await HomePage.open();
   });
 
-  it("goes to Specials page", async () => {
+  it("goes to Specials page from Top Menu", async () => {
     await commands.waitThenClick(
       TopMenuComponent.topMenuLink(testData.topMenu.specials.name)
     );
+
+    await expect(
+      SharedPageComponents.pageHeader(
+        testData.headers.specialOffers
+      ).toBeDisplayed()
+    );
+  });
+
+  it("goes to Specials page from Home menu", async () => {
+    await commands.waitThenMoveTo(
+      HomePage.categoryMenuComponent.categoryMenuLink(
+        testData.categories.home.name
+      )
+    );
+
+    await commands.waitThenClick(
+      CategoryMenuComponent.homeCategorySubcategoryOption(
+        testData.categories.home.subcategorySpecials.name
+      )
+    );
+    await browser.pause(3000);
 
     await expect(
       SharedPageComponents.pageHeader(
