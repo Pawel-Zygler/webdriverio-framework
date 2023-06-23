@@ -33,14 +33,18 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
-As a user I want to add a product from latest products
-As a user I want to add a shoes of blue color
-As a user i want to see breadcrumbs whereever I go
+As a logged in user I want to checkout one item
+As a logged in user I want to checkout item and go to invoice page
+As a guest user I want to checkout one item
+As a guest user I want to checkout one item and register account during checkout
+As a guest user I want to checkout and log in during checkout
 
-As a distributor, I want to buy 10 000 books.
-As a user I want to add 10 products QTY from subcategory page to Cart.
-As a user I want to checkout one item.
 As a user I want to checkout 10 items.
+As a user I want to add 10 products QTY from subcategory page to Cart.
+easy or later
+As a user I want to add a product from latest products (home page, item page)
+As a user i want to see breadcrumbs whereever I go
+As a distributor, I want to buy 10 000 books.
 
 https://automationteststore.com/index.php?rt=product/category&path=43_47 - ten przycisk dodaje od razu do koszyka przedmioty, sprawdz czy sie updejtją
 
