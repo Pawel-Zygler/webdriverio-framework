@@ -24,7 +24,7 @@ class HomePage extends BasePage {
   }
 
   get currentCurrency() {
-    return $(`//span[@class='cart_total']`);
+    return $(`//span//span[@class='label label-orange font14']`);
   }
 
   socialMediaButton(socialMedia) {

@@ -1,3 +1,7 @@
+import TopMenuComponent from "../../../test/pageObjects/automation-test-store/components/top-menu.comp";
+import commands from "../../../utils/commands";
+import testData from "../../data/testData";
+
 class LoginPage {
   get accountLoginHeader() {
     const e = $(`//span[contains(text(), 'Account Login')]`);
@@ -23,6 +27,20 @@ class LoginPage {
 
   get forgotLoginButton() {
     return $(`//a[contains(text(),'Forgot your login?')]`);
+  }
+
+  async loginRegisteredUser() {
+    await commands.waitThenClick(TopMenuComponent.loginOrRegister);
+    await browser.pause(3000);
+    await commands.waitThenSetValue(
+      this.loginName,
+      testData.registeredUser.loginName
+    );
+    await commands.waitThenSetValue(
+      this.password,
+      testData.registeredUser.password
+    );
+    await commands.waitThenClick(this.loginButton);
   }
 }
 

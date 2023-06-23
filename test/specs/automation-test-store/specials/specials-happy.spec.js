@@ -34,7 +34,6 @@ describe("SPECIALS", () => {
         testData.categories.home.subcategorySpecials.name
       )
     );
-    await browser.pause(3000);
 
     await expect(
       SharedPageComponents.pageHeader(

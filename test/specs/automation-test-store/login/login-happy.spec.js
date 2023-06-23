@@ -11,18 +11,13 @@ describe("LOGIN PAGE - happy path", () => {
   describe("LOGIN PAGE - happy path", () => {
     beforeEach(async () => {
       await HomePage.open();
-      await HomePage.bannerSlide.waitForDisplayed();
-      await HomePage.scrollToLogo();
-      await commands.waitThenClick(TopMenuComponent.loginOrRegister);
-      await commands.waitThenSetValue(
-        LoginPage.loginName,
-        testData.registeredUser.loginName
-      );
-      await commands.waitThenSetValue(
-        LoginPage.password,
-        testData.registeredUser.password
-      );
-      await commands.waitThenClick(LoginPage.loginButton);
+      await LoginPage.loginRegisteredUser();
+    });
+
+    afterEach(async () => {
+      await expect(
+        SharedPageComponents.pageHeader(testData.headers.accountLogout)
+      ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
 
     it("logs in (via login page) and logs out (via right side menu)", async () => {
@@ -31,35 +26,19 @@ describe("LOGIN PAGE - happy path", () => {
       ).toHaveText(testData.headers.myAccount.toUpperCase());
 
       await commands.waitThenClick(MyAccountPage.sideMenuLogoff);
-
-      await expect(
-        SharedPageComponents.pageHeader(testData.headers.accountLogout)
-      ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
 
     it("logs in and logs out (via submenu)", async () => {
       await commands.waitThenClick(MyAccountPage.sideMenuLogoff);
-
-      await expect(
-        SharedPageComponents.pageHeader(testData.headers.accountLogout)
-      ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
 
     it("logs in and logs out (via topmenu dropdown)", async () => {
       await commands.waitThenMoveTo(TopMenuComponent.welcomeBackDropdown);
       await commands.waitThenClick(MyAccountPage.topMenuLogoff);
-
-      await expect(
-        SharedPageComponents.pageHeader(testData.headers.accountLogout)
-      ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
 
     it("logs in and logs out (via footer)", async () => {
       await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
-
-      await expect(
-        SharedPageComponents.pageHeader(testData.headers.accountLogout)
-      ).toHaveText(testData.headers.accountLogout.toUpperCase());
     });
   });
 

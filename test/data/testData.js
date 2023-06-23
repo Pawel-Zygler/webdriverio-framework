@@ -196,6 +196,9 @@ const testData = {
       name: "Account",
       subcategoryLoginBtn: "Login",
     },
+    checkout: {
+      name: "Checkout",
+    },
   },
 
   headers: {
@@ -206,6 +209,7 @@ const testData = {
     accountCreated: "Your Account Has Been Created!",
     accountLogout: "Account Logout",
     myAccount: "My Account",
+    checkoutConfirmation: "Checkout Confirmation",
   },
 };
 
