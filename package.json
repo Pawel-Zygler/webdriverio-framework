@@ -4,11 +4,7 @@
   "description": "webdriver io automation framework",
   "main": "index.js",
   "scripts": {
-    "start": "node -r esm index.js",
-    "test": "wdio --spec ./test/specs/automation-test-store/**/*.spec.js,./test/specs/folder2/**/*.spec.js",
     "wdio": "wdio run ./wdio.conf.js",
-    "webdriver": "npx wdio --spec test/specs/webdriver-university/**/*.spec.js",
-    "webdriver-uat": "npx wdio config/wdio.uat.conf.js--spec test/specs/webdriver-university/contact-us.spec.js",
     "smoke-suite": "npx wdio --suite smoke",
     "autostore": "npx wdio --spec test/specs/automation-test-store/**/*.spec.js",
     "bh": "npx wdio --spec ./test/specs/automation-test-store/basket/add-items-to-basket-happy.spec.js",
