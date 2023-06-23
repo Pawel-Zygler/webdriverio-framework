@@ -4,4 +4,5 @@ allure-results
 allure-report
 .DS_Store
 .vscode
-webdriver-university
+test/specs/webdriver-university
+test/pageObjects/webdriver-university
