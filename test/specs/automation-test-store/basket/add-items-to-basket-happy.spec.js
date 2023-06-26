@@ -75,6 +75,7 @@ describe("ADD PRODUCTS - happy path", () => {
 
     it(`adds ${testData.categories.apparel.subcategoryShoes.shoeGreenColor} shoe`, async () => {
       //use method add items to basket, add size option
+      //debug text.includes, possibly flaky
       await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(testData.categories.apparel.name));
 
       await commands.waitThenClick(

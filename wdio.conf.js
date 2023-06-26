@@ -67,12 +67,7 @@ export const config = {
       browserName: "chrome",
       acceptInsecureCerts: true,
       "goog:chromeOptions": {
-        args: [
-          "--incognito",
-          //"--headless",
-          "--start-maximize",
-          "--window-size=1920,1080",
-        ],
+        args: ["--incognito", "--headless", "--start-maximize", "--window-size=1920,1080"],
       },
       timeouts: {
         pageLoad: 30000, //30 seconds

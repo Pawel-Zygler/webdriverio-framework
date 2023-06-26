@@ -71,7 +71,7 @@ class RegisterPage {
   }
 
   get validationMessageAboveForm() {
-    return $(".alert");
+    return $(`h1 + div.alert.alert-success`);
   }
 }
 export default new RegisterPage();

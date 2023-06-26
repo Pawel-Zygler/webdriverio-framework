@@ -202,6 +202,7 @@ const testData = {
     checkoutConfirmation: "Checkout Confirmation",
     yourOrderHasBeenProcessed: "Your Order Has Been Processed!",
     orderDetails: "Order Details",
+    forgotYourPassword: "Forgot Your Password?",
   },
 };
 

@@ -1,8 +1,4 @@
 class ForgotPasswordPage {
-  get forgotPasswordHeader() {
-    return $(`//span[contains(text(),'Forgot Your Password?')]`);
-  }
-
   get forgotPasswordLoginName() {
     return $("#forgottenFrm_loginname");
   }

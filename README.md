@@ -33,9 +33,9 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
-As a logged in user I want to checkout one item
-As a logged in user I want to checkout item and go to invoice page
-As a guest user I want to checkout one item
+Check for unfinished //debug tests
+Increase log data in terminal
+keep fixing test that use getText, now fph - 4 tests fixed, 4 left
 As a guest user I want to checkout one item and register account during checkout
 As a guest user I want to checkout and log in during checkout
 
@@ -81,3 +81,5 @@ As a user I want to log in from top menu Account button
 As a user I want to check if there are any sales
 As a user I want to add size 40 shoe
 As a logged in user I want to go to checkout from all locations
+As a logged in user I want to checkout item and go to invoice page
+As a guest user I want to checkout one item
