@@ -201,6 +201,7 @@ const testData = {
     myAccount: "My Account",
     checkoutConfirmation: "Checkout Confirmation",
     yourOrderHasBeenProcessed: "Your Order Has Been Processed!",
+    orderDetails: "Order Details",
   },
 };
 

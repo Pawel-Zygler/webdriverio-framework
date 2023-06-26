@@ -14,6 +14,10 @@ class CheckoutPage {
   get orderNumber() {
     return $(`//p[contains(text(),'Your order')]`);
   }
+
+  get invoiceLink() {
+    return $(`//a[contains(text(),'invoice page')]`);
+  }
 }
 
 export default new CheckoutPage();
