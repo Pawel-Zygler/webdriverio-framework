@@ -1,4 +1,8 @@
 import BasePage from "./base.page";
+import ItemComponent from "./components/item.comp";
+import HomePage from "./home.page";
+import CategoryMenuComponent from "./components/category-menu.comp";
+import commands from "../../../utils/commands";
 
 class CartPage extends BasePage {
   get tempShippingRate() {
@@ -26,15 +30,11 @@ class CartPage extends BasePage {
   }
 
   get itemsInBasketNames() {
-    return $$(
-      `//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`
-    );
+    return $$(`//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`);
   }
 
   itemsInBasketAttributes(productName) {
-    return $$(
-      `//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`
-    );
+    return $$(`//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`);
   }
 
   async getTextsFromItemsAttributesInBasket(productName) {
@@ -57,6 +57,13 @@ class CartPage extends BasePage {
       texts.push(text);
     }
     return texts;
+  }
+
+  async addItemToBasket(mainCategory, subcategory, item) {
+    await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(mainCategory));
+    await commands.waitThenClick(CategoryMenuComponent.subcategory(mainCategory, subcategory));
+    await ItemComponent.selectProduct(item);
+    await commands.waitThenClick(await ItemComponent.addToCartBtn);
   }
 }
 
