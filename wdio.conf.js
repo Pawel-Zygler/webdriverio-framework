@@ -32,9 +32,7 @@ export const config = {
     // 'path/to/excluded/files'
   ],
   suites: {
-    smoke: [
-      "test/specs/automation-test-store/add-items-to-basket-happy.spec.js",
-    ],
+    smoke: ["test/specs/automation-test-store/add-items-to-basket-happy.spec.js"],
     autostore: ["test/specs/automation-test-store/**/*.spec.js"],
   },
   //
@@ -308,11 +306,7 @@ export const config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  afterTest: async function (
-    test,
-    context,
-    { error, result, duration, passed, retries }
-  ) {
+  afterTest: async function (test, context, { error, result, duration, passed, retries }) {
     if (error) {
       await browser.takeScreenshot();
     }

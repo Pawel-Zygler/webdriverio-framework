@@ -66,10 +66,8 @@ const testData = {
     regionState: "Please select a region / state!",
     zipCode: "Zip/postal code must be between 3 and 10 characters!",
     country: "Please select a region / state!",
-    loginName:
-      "Login name must be alphanumeric only and between 5 and 64 characters!",
-    loginNameTaken:
-      "This login name is not available. Try different login name!",
+    loginName: "Login name must be alphanumeric only and between 5 and 64 characters!",
+    loginNameTaken: "This login name is not available. Try different login name!",
     password: "Password must be between 4 and 20 characters!",
     passwordConfirm: "Password confirmation does not match password!",
   },
@@ -79,21 +77,16 @@ const testData = {
     incorrectLoginOrPassword: "Error: Incorrect login or password provided.",
     noRecords:
       "Error: No records found matching information your provided, please check your information and try again!",
-    emailNotProvided:
-      "Error: The Email address was not provided or not found in our records, please try again!",
-    noLoginProvided:
-      "Error: The Login name was not provided or not found in our records, please try again!",
+    emailNotProvided: "Error: The Email address was not provided or not found in our records, please try again!",
+    noLoginProvided: "Error: The Login name was not provided or not found in our records, please try again!",
     noRecordsMatched:
       "Error: No records found matching information your provided, please check your information and try again!",
-    noLastNameProvided:
-      "Error: The Last name was not provided or not found in our records, please try again!",
+    noLastNameProvided: "Error: The Last name was not provided or not found in our records, please try again!",
   },
 
   successValidationAboveForm: {
-    resetLinkSent:
-      "Success: Password reset link has been sent to your e-mail address.",
-    loginNameSent:
-      "Success: Your login name reminder has been sent to your e-mail address.",
+    resetLinkSent: "Success: Password reset link has been sent to your e-mail address.",
+    loginNameSent: "Success: Your login name reminder has been sent to your e-mail address.",
   },
 
   currency: {
@@ -134,8 +127,7 @@ const testData = {
       name: "Apparel & accessories",
       subcategoryTshirts: {
         name: "T-shirts",
-        tshirtOne:
-          "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie",
+        tshirtOne: "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie",
         tshirtTwo: "Casual 3/4 Sleeve Baseball T-Shirt",
       },
       subcategoryShoes: {
@@ -143,8 +135,7 @@ const testData = {
         shoeOne: "Ruby Shoo Womens Jada T-Bar",
         shoeTwo: "Fiorella Purple Peep Toes",
         shoeTwoSize40: 40,
-        shoeThree:
-          "Womens high heel point toe stiletto sandals ankle strap court shoes",
+        shoeThree: "Womens high heel point toe stiletto sandals ankle strap court shoes",
         shoeGreenColor: "green",
       },
     },
@@ -182,8 +173,7 @@ const testData = {
       subcategoryBodyAndShower: {
         name: "Body & Shower",
         productOne: "Men+Care Active Clean Shower Tool",
-        productTwo:
-          "Lancome Slimissime 360 Slimming Activating Concentrate Unisex Treatment",
+        productTwo: "Lancome Slimissime 360 Slimming Activating Concentrate Unisex Treatment",
       },
     },
   },
@@ -210,6 +200,7 @@ const testData = {
     accountLogout: "Account Logout",
     myAccount: "My Account",
     checkoutConfirmation: "Checkout Confirmation",
+    yourOrderHasBeenProcessed: "Your Order Has Been Processed!",
   },
 };
 

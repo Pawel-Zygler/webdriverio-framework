@@ -64,18 +64,14 @@ class RegisterPage {
   }
 
   get errorMessages() {
-    let errorElements = $$(
-      "//span[@class='help-block' and string-length(text())>0]"
-    );
+    let errorElements = $$("//span[@class='help-block' and string-length(text())>0]");
     errorElements.waitForClickable();
     let errorMessages = errorElements.map((element) => element.getText());
     return errorMessages;
   }
 
-  validationMessageAboveForm() {
-    return $(
-      "//div[contains(@class,'alert alert-error alert-danger')] | //div[contains(@class,'alert alert-success')]"
-    );
+  get validationMessageAboveForm() {
+    return $(".alert");
   }
 }
 export default new RegisterPage();
