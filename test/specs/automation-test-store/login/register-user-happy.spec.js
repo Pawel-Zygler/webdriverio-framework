@@ -16,7 +16,8 @@ describe("REGISTER COMPONENT - happy path", () => {
     const header = await commands.waitThenGetText(
       await SharedPageComponents.pageHeader(testData.headers.createAccount)
     );
-    await expect(header).toHaveText(
+
+    await expect(header).toContain(
       testData.headers.createAccount.toUpperCase()
     );
   });
@@ -54,6 +55,6 @@ describe("REGISTER COMPONENT - happy path", () => {
       await commands.waitThenGetText(
         SharedPageComponents.pageHeader(testData.headers.accountCreated)
       )
-    ).toHaveText(testData.headers.accountCreated.toUpperCase());
+    ).toContain(testData.headers.accountCreated.toUpperCase());
   });
 });
