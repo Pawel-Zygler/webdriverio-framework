@@ -6,6 +6,7 @@ describe("HOME PAGE", () => {
   beforeEach(async () => {
     await HomePage.open();
   });
+
   describe("CURRENCY CHANGE - happy path", () => {
     const currencies = [
       { name: "euro", symbol: testData.currency.euroSymbol },
@@ -16,13 +17,11 @@ describe("HOME PAGE", () => {
     for (let currency of currencies) {
       it(`changes currency to ${currency.name}`, async () => {
         await commands.waitThenClick(HomePage.currencyDropdown);
-        await commands.waitThenClick(
-          HomePage.currencyOption(testData.currency[currency.name])
-        );
+        await commands.waitThenClick(HomePage.currencyOption(testData.currency[currency.name]));
 
-        await expect(
-          await commands.waitThenGetText(HomePage.currentCurrency)
-        ).toHaveTextContaining(currency.symbol);
+        const currentCurrency = await commands.waitThenGetText(HomePage.currentCurrency);
+
+        await currentCurrency.includes(testData.currency[currencies.symbol]);
       });
     }
   });

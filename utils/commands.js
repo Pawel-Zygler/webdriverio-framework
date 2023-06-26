@@ -8,9 +8,10 @@ module.exports = {
   },
 
   waitThenGetText: async function (element) {
+    await element.waitForExist();
     await element.waitForDisplayed();
-    await element.getText();
-    return element;
+    let text = await element.getText();
+    return text;
   },
 
   waitThenSetValue: async function (element, value) {
