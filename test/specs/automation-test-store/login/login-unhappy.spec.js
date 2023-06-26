@@ -6,41 +6,48 @@ import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import commands from "../../../../utils/commands";
 
 describe("LOGIN PAGE - unhappy path", () => {
-  beforeEach(async() => {
+  beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(TopMenuComp.loginOrRegister);
   });
 
-  const loginTest = async (loginName, password) => {
-    if (loginName) {
-      await commands.waitThenSetValue(LoginPage.loginName, loginName);
-    }
-    if (password) {
-      await commands.waitThenSetValue(LoginPage.password, password);
-    }
-    await commands.waitThenClick(LoginPage.loginButton);
+  afterEach(async () => {
+    const errorElement = await RegisterPage.validationErrorMessageAboveForm;
 
-    const errorElement = await RegisterPage.validationMessageAboveForm(
+    await expect(await commands.waitThenGetText(errorElement)).toContain(
       testData.failedValidationAboveForm.incorrectLoginOrPassword
     );
-
-    await expect(await commands.waitThenGetText(errorElement)).toHaveTextContaining(
-      testData.failedValidationAboveForm.incorrectLoginOrPassword
-    );
-  };
+  });
 
   it("it throws error when incorrect username is provided", async () => {
-    await loginTest(testData.userInvalidMax.loginName, null);
+    await commands.waitThenSetValue(
+      LoginPage.loginName,
+      testData.userInvalidMax.loginName
+    );
+
+    await commands.waitThenClick(LoginPage.loginButton);
   });
 
   it("it throws error when incorrect password is provided", async () => {
-    await loginTest(testData.userInvalidMax.password, null);
+    await commands.waitThenSetValue(
+      LoginPage.password,
+      testData.userInvalidMax.password
+    );
+
+    await commands.waitThenClick(LoginPage.loginButton);
   });
 
   it("it throws error when incorrect username and password is provided", async () => {
-    await loginTest(
-      testData.userInvalidMax.loginName,
+    await commands.waitThenSetValue(
+      LoginPage.loginName,
+      testData.userInvalidMax.loginName
+    );
+
+    await commands.waitThenSetValue(
+      LoginPage.password,
       testData.userInvalidMax.password
     );
+
+    await commands.waitThenClick(LoginPage.loginButton);
   });
 });
