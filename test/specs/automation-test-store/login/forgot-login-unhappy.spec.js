@@ -6,6 +6,7 @@ import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 import commands from "../../../../utils/commands";
+import assert from "assert";
 
 describe("FORGOT LOGIN PAGE - unhappy path", () => {
   beforeEach(async () => {
@@ -15,9 +16,9 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
   });
 
   it("checks if user is on forgot login page", async () => {
-    await expect(
-      SharedPageComponents.pageHeader(testData.headers.forgotLogin)
-    ).toHaveText(testData.headers.forgotLogin.toUpperCase());
+    await expect(SharedPageComponents.pageHeader(testData.headers.forgotLogin)).toHaveText(
+      testData.headers.forgotLogin.toUpperCase()
+    );
   });
 
   const testCases = [
@@ -31,8 +32,7 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
       description: "throws error when only email is submitted",
       lastName: "",
       email: "pawel.zygler2@yandex.com",
-      expectedErrorMessage:
-        testData.failedValidationAboveForm.noLastNameProvided,
+      expectedErrorMessage: testData.failedValidationAboveForm.noLastNameProvided,
     },
     {
       description: "throws error when records submitted don't match",
@@ -42,27 +42,15 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
     },
   ];
 
-  for (const {
-    description,
-    lastName,
-    email,
-    expectedErrorMessage,
-  } of testCases) {
+  for (const { description, lastName, email, expectedErrorMessage } of testCases) {
     it(description, async () => {
-      await commands.waitThenSetValue(
-        ForgotLoginPage.forgotLoginLastName,
-        lastName
-      );
+      await commands.waitThenSetValue(ForgotLoginPage.forgotLoginLastName, lastName);
       await commands.waitThenSetValue(ForgotLoginPage.forgotLoginEmail, email);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      const errorElement = await RegisterPage.validationMessageAboveForm(
-        expectedErrorMessage
-      );
+      const errorElement = await commands.waitThenGetText(RegisterPage.validationMessageAboveForm);
 
-      await expect(
-        await commands.waitThenGetText(errorElement)
-      ).toHaveTextContaining(expectedErrorMessage);
+      await assert(errorElement.includes(expectedErrorMessage));
     });
   }
 });
