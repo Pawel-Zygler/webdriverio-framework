@@ -16,9 +16,9 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
   });
 
   it("checks if user is on forgot login page", async () => {
-    await expect(SharedPageComponents.pageHeader(testData.headers.forgotLogin)).toHaveText(
-      testData.headers.forgotLogin.toUpperCase()
-    );
+    await expect(
+      SharedPageComponents.pageHeader(testData.headers.forgotLogin)
+    ).toHaveText(testData.headers.forgotLogin.toUpperCase());
   });
 
   const testCases = [
@@ -32,7 +32,8 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
       description: "throws error when only email is submitted",
       lastName: "",
       email: "pawel.zygler2@yandex.com",
-      expectedErrorMessage: testData.failedValidationAboveForm.noLastNameProvided,
+      expectedErrorMessage:
+        testData.failedValidationAboveForm.noLastNameProvided,
     },
     {
       description: "throws error when records submitted don't match",
@@ -42,13 +43,23 @@ describe("FORGOT LOGIN PAGE - unhappy path", () => {
     },
   ];
 
-  for (const { description, lastName, email, expectedErrorMessage } of testCases) {
+  for (const {
+    description,
+    lastName,
+    email,
+    expectedErrorMessage,
+  } of testCases) {
     it(description, async () => {
-      await commands.waitThenSetValue(ForgotLoginPage.forgotLoginLastName, lastName);
+      await commands.waitThenSetValue(
+        ForgotLoginPage.forgotLoginLastName,
+        lastName
+      );
       await commands.waitThenSetValue(ForgotLoginPage.forgotLoginEmail, email);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      const errorElement = await commands.waitThenGetText(RegisterPage.validationMessageAboveForm);
+      const errorElement = await commands.waitThenGetText(
+        RegisterPage.validationErrorMessageAboveForm
+      );
 
       await assert(errorElement.includes(expectedErrorMessage));
     });

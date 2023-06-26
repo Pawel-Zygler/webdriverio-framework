@@ -17,7 +17,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const header = await commands.waitThenGetText(
         await SharedPageComponents.pageHeader(testData.headers.createAccount)
       );
-      await expect(header).toHaveText(
+      await expect(header).toContain(
         testData.headers.createAccount.toUpperCase()
       );
     });
@@ -46,7 +46,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.firstName
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.firstName
       );
     });
@@ -61,7 +61,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.lastName
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.lastName
       );
     });
@@ -76,7 +76,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.email
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.email
       );
     });
@@ -131,7 +131,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.addressOne
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.addressOne
       );
     });
@@ -146,7 +146,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.addressOne
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.addressOne
       );
     });
@@ -160,7 +160,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.regionState
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.regionState
       );
     });
@@ -191,7 +191,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.loginName
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.loginName
       );
     });
@@ -206,7 +206,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.loginNameTaken
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.loginNameTaken
       );
     });
@@ -222,7 +222,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.password
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.password
       );
     });
@@ -241,7 +241,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.passwordConfirm
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.passwordConfirm
       );
     });
@@ -267,13 +267,11 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       }
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      const errorElement = await RegisterPage.validationMessageAboveForm(
+      const errorElement = await RegisterPage.validationErrorMessageAboveForm;
+
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.failedValidationAboveForm.privacyPolicy
       );
-
-      await expect(
-        await commands.waitThenGetText(errorElement)
-      ).toHaveTextContaining(testData.failedValidationAboveForm.privacyPolicy);
     });
   });
 
@@ -289,7 +287,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.firstName
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.firstName
       );
     });
@@ -304,7 +302,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.lastName
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.lastName
       );
     });
@@ -319,7 +317,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.email
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.email
       );
     });
@@ -334,7 +332,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.telephone
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.telephone
       );
     });
@@ -365,7 +363,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.addressOne
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.addressOne
       );
     });
@@ -380,7 +378,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.addressOne
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.addressOne
       );
     });
@@ -394,7 +392,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.regionState
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.regionState
       );
     });
@@ -410,7 +408,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.zipCode
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.zipCode
       );
     });
@@ -425,7 +423,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.loginName
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.loginName
       );
     });
@@ -440,7 +438,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.loginNameTaken
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.loginNameTaken
       );
     });
@@ -455,7 +453,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.password
       );
-      await expect(await commands.waitThenGetText(errorElement)).toHaveText(
+      await expect(await commands.waitThenGetText(errorElement)).toContain(
         testData.registerValidationErrors.password
       );
     });

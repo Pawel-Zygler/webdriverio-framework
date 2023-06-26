@@ -15,19 +15,33 @@ describe("FORGOT PASSWORD PAGE - happy path", () => {
   });
 
   it("checks if user is on forgot password page", async () => {
-    const header = await commands.waitThenGetText(SharedPageComponents.pageHeader(testData.headers.forgotYourPassword));
+    const header = await commands.waitThenGetText(
+      SharedPageComponents.pageHeader(testData.headers.forgotYourPassword)
+    );
 
-    await expect(header).toEqual(testData.headers.forgotYourPassword.toUpperCase());
+    await expect(header).toEqual(
+      testData.headers.forgotYourPassword.toUpperCase()
+    );
   });
 
   it("submits correct login and email", async () => {
-    await commands.waitThenSetValue(ForgotPasswordPage.forgotPasswordLoginName, testData.registeredUser.loginName);
-    await commands.waitThenSetValue(ForgotPasswordPage.forgotPasswordEmail, testData.registeredUser.email);
+    await commands.waitThenSetValue(
+      ForgotPasswordPage.forgotPasswordLoginName,
+      testData.registeredUser.loginName
+    );
+
+    await commands.waitThenSetValue(
+      ForgotPasswordPage.forgotPasswordEmail,
+      testData.registeredUser.email
+    );
     await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-    const errorElement = await commands.waitThenGetText(RegisterPage.validationMessageAboveForm);
-    await console.log("hehehe" + errorElement);
+    const errorElement = await commands.waitThenGetText(
+      RegisterPage.validationSuccessMessageAboveForm
+    );
 
-    await expect(errorElement).toContain(testData.successValidationAboveForm.resetLinkSent);
+    await expect(errorElement).toContain(
+      testData.successValidationAboveForm.resetLinkSent
+    );
   });
 });
