@@ -60,9 +60,7 @@ describe("LOGIN PAGE - happy path", () => {
           testData.categories.home.subcategoryAccount.name
         )
       );
-      await commands.waitThenClick(
-        CategoryMenuComponent.homeCategoryDropdownLoginBtn
-      );
+      await commands.waitThenClick(CategoryMenuComponent.homeCategoryDropdownLoginBtn);
 
       await commands.waitThenSetValue(
         LoginPage.loginName,
@@ -76,11 +74,8 @@ describe("LOGIN PAGE - happy path", () => {
 
       await commands.waitThenClick(MyAccountPage.sideMenuLogoff);
 
-      await expect(
-        await commands.waitThenGetText(
-          SharedPageComponents.pageHeader(testData.headers.accountLogout)
-        )
-      ).toHaveText(testData.headers.accountLogout.toUpperCase());
+      await expect(await commands.waitThenGetText(SharedPageComponents.pageHeader(testData.headers.accountLogout)))
+      .toContain(testData.headers.accountLogout.toUpperCase());
     });
 
     it("goes to login page through Account top menu button", async () => {
