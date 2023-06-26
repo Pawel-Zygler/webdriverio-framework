@@ -31,15 +31,8 @@ class LoginPage {
 
   async loginRegisteredUser() {
     await commands.waitThenClick(TopMenuComponent.loginOrRegister);
-    await browser.pause(3000);
-    await commands.waitThenSetValue(
-      this.loginName,
-      testData.registeredUser.loginName
-    );
-    await commands.waitThenSetValue(
-      this.password,
-      testData.registeredUser.password
-    );
+    await commands.waitThenSetValue(this.loginName, testData.registeredUser.loginName);
+    await commands.waitThenSetValue(this.password, testData.registeredUser.password);
     await commands.waitThenClick(this.loginButton);
   }
 }
