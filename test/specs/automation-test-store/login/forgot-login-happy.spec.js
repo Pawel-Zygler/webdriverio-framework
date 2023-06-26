@@ -6,6 +6,7 @@ import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 import commands from "../../../../utils/commands";
+import assert from "assert";
 
 describe("FORGOT LOGIN PAGE - happy path", () => {
   beforeEach(async () => {
@@ -15,28 +16,18 @@ describe("FORGOT LOGIN PAGE - happy path", () => {
   });
 
   it("checks if user is on forgot login page", async () => {
-    await expect(
-      SharedPageComponents.pageHeader(testData.headers.forgotLogin)
-    ).toHaveText(testData.headers.forgotLogin.toUpperCase());
+    await expect(SharedPageComponents.pageHeader(testData.headers.forgotLogin)).toHaveText(
+      testData.headers.forgotLogin.toUpperCase()
+    );
   });
 
   it("submits correct last name and email", async () => {
-    await commands.waitThenSetValue(
-      await ForgotLoginPage.forgotLoginLastName,
-      testData.registeredUser.lastName
-    );
-    await commands.waitThenSetValue(
-      await ForgotLoginPage.forgotLoginEmail,
-      testData.registeredUser.email
-    );
+    await commands.waitThenSetValue(await ForgotLoginPage.forgotLoginLastName, testData.registeredUser.lastName);
+    await commands.waitThenSetValue(await ForgotLoginPage.forgotLoginEmail, testData.registeredUser.email);
     await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-    const errorElement = await RegisterPage.validationMessageAboveForm(
-      testData.successValidationAboveForm.loginNameSent
-    );
+    const errorElement = await commands.waitThenGetText(RegisterPage.validationMessageAboveForm);
 
-    await expect(
-      await commands.waitThenGetText(errorElement)
-    ).toHaveTextContaining(testData.successValidationAboveForm.loginNameSent);
+    await assert(errorElement.includes(testData.successValidationAboveForm.loginNameSent));
   });
 });
