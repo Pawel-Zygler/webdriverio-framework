@@ -3,8 +3,7 @@ class DataGenerator {
     const chars = {
       numeric: "0123456789",
       alphabetic: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
-      alphanumeric:
-        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
+      alphanumeric: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
     };
 
     let result = "";
@@ -13,6 +12,12 @@ class DataGenerator {
     }
 
     return result;
+  }
+
+  generateRandomEmail(prefix = "pz") {
+    const domain = "pl.pl";
+    const randomString = this.generateRandomString(4, "numeric");
+    return `${prefix}${randomString}@${domain}`;
   }
 }
 export default new DataGenerator();

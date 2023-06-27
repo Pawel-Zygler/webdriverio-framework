@@ -1,3 +1,7 @@
+import SharedPageComponents from "../../pageObjects/automation-test-store/components/shared-page-components.comp";
+import testData from "../../data/testData";
+import commands from "../../../utils/commands";
+
 class RegisterPage {
   get firstName() {
     return $("#AccountFrm_firstname");
@@ -64,9 +68,7 @@ class RegisterPage {
   }
 
   get errorMessages() {
-    let errorElements = $$(
-      "//span[@class='help-block' and string-length(text())>0]"
-    );
+    let errorElements = $$("//span[@class='help-block' and string-length(text())>0]");
     errorElements.waitForClickable();
     let errorMessages = errorElements.map((element) => element.getText());
     return errorMessages;
@@ -78,6 +80,26 @@ class RegisterPage {
 
   get validationErrorMessageAboveForm() {
     return $(`.alert.alert-danger.alert-error`);
+  }
+
+  async registerNewUser() {
+    await commands.waitThenSetValue(this.firstName, testData.uniqueUser.firstName);
+    await commands.waitThenSetValue(this.lastName, testData.uniqueUser.lastName);
+    await commands.waitThenSetValue(this.email, testData.uniqueUser.email);
+    await commands.waitThenSetValue(this.telephone, testData.uniqueUser.telephone);
+    await commands.waitThenSetValue(this.fax, testData.uniqueUser.fax);
+    await commands.waitThenSetValue(this.addressOne, testData.uniqueUser.addressOne);
+    await commands.waitThenSetValue(this.city, testData.uniqueUser.city);
+    await this.regionState.selectByVisibleText(testData.uniqueUser.regionState);
+    await commands.waitThenSetValue(this.zipCode, testData.uniqueUser.zipCode);
+    await this.country.selectByVisibleText(testData.uniqueUser.country);
+    await commands.waitThenSetValue(this.loginName, testData.uniqueUser.loginName);
+    await commands.waitThenSetValue(this.password, testData.uniqueUser.password);
+    await commands.waitThenSetValue(this.passwordConfirm, testData.uniqueUser.passwordConfirm);
+
+    await commands.waitThenClick(this.privacyPolicyAgree);
+
+    await commands.waitThenClick(await SharedPageComponents.continueButton);
   }
 }
 export default new RegisterPage();

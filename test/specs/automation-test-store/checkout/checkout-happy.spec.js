@@ -10,6 +10,7 @@ import TopCartPage from "../../../pageObjects/automation-test-store/top-cart.pag
 import CartPage from "../../../pageObjects/automation-test-store/cart.page";
 import CheckoutPage from "../../../pageObjects/automation-test-store/checkout.page";
 import assert from "assert";
+import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 
 describe("CHECKOUT LOGGED IN", () => {
   describe("ADDS A SHOE", () => {
@@ -146,6 +147,28 @@ describe("CHECKOUT LOGGED IN", () => {
       await expect(SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)).toHaveText(
         expectedHeaderText
       );
+    });
+  });
+
+  describe("REGISTER USER DURING CHECKOUT", () => {
+    beforeEach(async () => {
+      await HomePage.open();
+      await CartPage.addItemToBasket(
+        testData.categories.skincare.name,
+        testData.categories.skincare.subcategoryFace.name,
+        testData.categories.skincare.subcategoryFace.productOne
+      );
+      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
+
+      await commands.waitThenClick(await TopMenuComponent.loginOrRegister);
+
+      await commands.waitThenClick(await SharedPageComponents.continueButton);
+    });
+
+    it("registers user and completes checkout", async () => {
+      await RegisterPage.registerNewUser();
+
+      await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
     });
   });
 });

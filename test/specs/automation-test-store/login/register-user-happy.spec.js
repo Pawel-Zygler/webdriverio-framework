@@ -12,49 +12,37 @@ describe("REGISTER COMPONENT - happy path", () => {
     await commands.waitThenClick(await SharedPageComponents.continueButton);
   });
 
-  it("opens the register form", async () => {
+  it("checks if user is on the register form", async () => {
     const header = await commands.waitThenGetText(
       await SharedPageComponents.pageHeader(testData.headers.createAccount)
     );
 
-    await expect(header).toContain(
-      testData.headers.createAccount.toUpperCase()
-    );
+    await expect(header).toContain(testData.headers.createAccount.toUpperCase());
   });
 
-  it("fills in the form correctly and registers", async () => {
-    for (const eachField in testData.user) {
-      if (
-        RegisterPage[eachField] &&
-        typeof commands.waitThenSetValue(RegisterPage[eachField]) === "function"
-      ) {
-        if (eachField === "regionState" || eachField === "country") {
-          await RegisterPage[eachField].selectByVisibleText(
-            testData.user[eachField]
-          );
-        } else {
-          await commands.waitThenSetValue(
-            RegisterPage[eachField],
-            testData.user[eachField]
-          );
-        }
-      }
-    }
+  it("fills in the form and registers new user", async () => {
+    await commands.waitThenSetValue(RegisterPage.firstName, testData.user.firstName);
+    await commands.waitThenSetValue(RegisterPage.lastName, testData.user.lastName);
+    await commands.waitThenSetValue(RegisterPage.email, testData.user.email);
+    await commands.waitThenSetValue(RegisterPage.telephone, testData.user.telephone);
+    await commands.waitThenSetValue(RegisterPage.fax, testData.user.fax);
+    await commands.waitThenSetValue(RegisterPage.addressOne, testData.user.addressOne);
+    await commands.waitThenSetValue(RegisterPage.city, testData.user.city);
+    await RegisterPage.regionState.selectByVisibleText(testData.user.regionState);
+    await commands.waitThenSetValue(RegisterPage.zipCode, testData.user.zipCode);
+    await RegisterPage.country.selectByVisibleText(testData.user.country);
+    await commands.waitThenSetValue(RegisterPage.loginName, testData.user.loginName);
+    await commands.waitThenSetValue(RegisterPage.password, testData.user.password);
+    await commands.waitThenSetValue(RegisterPage.passwordConfirm, testData.user.passwordConfirm);
 
     await commands.waitThenClick(RegisterPage.privacyPolicyAgree);
-
-    //I don't click Continue, I just go to success page (it is possible) and check text.
-    //For real registration, we would have to register user with each test, which I want to avoid.
+    //I go to success page instead of actualyl registering a user
     //await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-    await browser.url(
-      "https://automationteststore.com/index.php?rt=account/success"
-    );
+    await browser.url("https://automationteststore.com/index.php?rt=account/success");
 
     await expect(
-      await commands.waitThenGetText(
-        SharedPageComponents.pageHeader(testData.headers.accountCreated)
-      )
+      await commands.waitThenGetText(SharedPageComponents.pageHeader(testData.headers.accountCreated))
     ).toContain(testData.headers.accountCreated.toUpperCase());
   });
 });

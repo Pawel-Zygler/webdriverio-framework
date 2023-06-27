@@ -33,6 +33,7 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
+
 As a guest user I want to checkout one item and register account during checkout
 As a guest user I want to checkout and log in during checkout
 
@@ -54,6 +55,7 @@ ADVANCED
 Set it up so tests run on 4 browsers and pass
 Analyse Kibana integration for visualising data
 Improve github workflow in CI, it actually passes 10/10 but still fails in actions
+Promise all dla rh - dla duzej ilosc async/await
 
 CHANGELOG and NOTES:
 Implementing commands support reduced suite execution time from 2:16s to 1:46s. 30s reduction or around 20%.

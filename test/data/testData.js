@@ -17,6 +17,22 @@ const testData = {
     passwordConfirm: "pawelpawell",
   },
 
+  uniqueUser: {
+    firstName: dataGenerator.generateRandomString(8, "alphabetic"),
+    lastName: dataGenerator.generateRandomString(8, "alphabetic"),
+    email: dataGenerator.generateRandomEmail(),
+    telephone: dataGenerator.generateRandomString(6, "numeric"),
+    fax: "123456b",
+    addressOne: "ul. Portowa",
+    city: "Gdynia",
+    regionState: "Angus",
+    zipCode: 12345678,
+    country: "United Kingdom",
+    loginName: dataGenerator.generateRandomString(7, "alphabetic"),
+    password: "pawelpawelll",
+    passwordConfirm: "pawelpawelll",
+  },
+
   registeredUser: {
     loginName: "autoTester",
     password: "autoTester",
