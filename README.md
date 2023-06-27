@@ -33,12 +33,8 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
-
-As a guest user I want to checkout one item and register account during checkout
-As a guest user I want to checkout and log in during checkout
-
-adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
-
+As a user I want to complete checkout as a guest
+As a user I want to complete checkout as a guest with checking for separate shipping address
 As a user I want to checkout 10 items.
 As a user I want to add 10 products QTY from subcategory page to Cart.
 easy or later
@@ -81,4 +77,4 @@ As a user I want to check if there are any sales
 As a user I want to add size 40 shoe
 As a logged in user I want to go to checkout from all locations
 As a logged in user I want to checkout item and go to invoice page
-As a guest user I want to checkout one item
+As a guest user I want to checkout one item and log in during checkout
