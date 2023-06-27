@@ -33,9 +33,6 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
-Check for unfinished //debug tests
-Increase log data in terminal
-keep fixing test that use getText, now fph - 4 tests fixed, 4 left
 As a guest user I want to checkout one item and register account during checkout
 As a guest user I want to checkout and log in during checkout
 

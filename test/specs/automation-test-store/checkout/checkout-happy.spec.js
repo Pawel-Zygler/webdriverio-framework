@@ -123,4 +123,29 @@ describe("CHECKOUT LOGGED IN", () => {
       await expect(SharedPageComponents.pageHeader(testData.headers.orderDetails)).toHaveText(expectedHeaderText);
     });
   });
+
+  describe("LOGIN DURING CHECKOUT", () => {
+    beforeEach(async () => {
+      await HomePage.open();
+      await CartPage.addItemToBasket(
+        testData.categories.skincare.name,
+        testData.categories.skincare.subcategoryFace.name,
+        testData.categories.skincare.subcategoryFace.productOne
+      );
+      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
+      await commands.waitThenSetValue(LoginPage.loginName, testData.registeredUser.loginName);
+      await commands.waitThenSetValue(LoginPage.password, testData.registeredUser.password);
+      await commands.waitThenClick(LoginPage.loginButton);
+    });
+
+    it("completes checkout after logging in", async () => {
+      await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
+
+      const expectedHeaderText = await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
+
+      await expect(SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)).toHaveText(
+        expectedHeaderText
+      );
+    });
+  });
 });
