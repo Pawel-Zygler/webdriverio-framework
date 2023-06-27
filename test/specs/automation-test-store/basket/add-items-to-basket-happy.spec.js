@@ -34,7 +34,7 @@ describe("ADD PRODUCTS - happy path", () => {
   });
 
   describe(`${testData.categories.apparel.name}`, () => {
-    it(`adds subcategory ${testData.categories.apparel.subcategoryShoes} products with clicking dropdown and validates items are in basket`, async () => {
+    it(`adds subcategory Shoes products with clicking dropdown and validates items are in basket`, async () => {
       await CartPage.addItemToBasket(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
@@ -93,6 +93,7 @@ describe("ADD PRODUCTS - happy path", () => {
       let texts = await CartPage.getTextsFromItemsAttributesInBasket(
         testData.categories.apparel.subcategoryShoes.shoeThree
       );
+
       await texts.includes(testData.categories.apparel.subcategoryShoes.shoeGreenColor);
     });
   });
@@ -112,6 +113,7 @@ describe("ADD PRODUCTS - happy path", () => {
       );
 
       let texts = await CartPage.getTextsFromItemsInBasket();
+
       await expect(texts).toContain(testData.categories.apparel.subcategoryTshirts.tshirtOne);
       await expect(texts).toContain(testData.categories.apparel.subcategoryTshirts.tshirtTwo);
     });
@@ -140,6 +142,35 @@ describe("ADD PRODUCTS - happy path", () => {
 
       let texts = await CartPage.getTextsFromItemsInBasket();
       await expect(texts).toContain(testData.categories.fragrance.subcategoryMen.productOne);
+    });
+  });
+
+  describe("ADD PRODUCTS", async () => {
+    beforeEach(async () => {
+      await HomePage.open();
+      await CartPage.addItemToBasket(
+        testData.categories.skincare.name,
+        testData.categories.skincare.subcategoryFace.name,
+        testData.categories.skincare.subcategoryFace.productOne
+      );
+
+      await CartPage.addItemToBasket(
+        testData.categories.apparel.name,
+        testData.categories.apparel.subcategoryShoes.name,
+        testData.categories.apparel.subcategoryShoes.shoeOne
+      );
+
+      await CartPage.addItemToBasket(
+        testData.categories.books.name,
+        testData.categories.books.subcategoryPaperback.name,
+        testData.categories.books.subcategoryPaperback.productOne
+      );
+    });
+
+    it.only("clears basekt to empty", async () => {
+      await CartPage.deleteItemsFromCart();
+
+      await expect(CartPage.isShoppingCartEmpty).toBeDisplayed();
     });
   });
 });

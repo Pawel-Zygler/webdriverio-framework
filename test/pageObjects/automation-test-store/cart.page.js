@@ -66,6 +66,31 @@ class CartPage extends BasePage {
 
     await commands.waitThenClick(await ItemComponent.addToCartBtn);
   }
+
+  get deleteItemBtn() {
+    return $(`.btn.btn-sm.btn-default`);
+  }
+
+  get isShoppingCartEmpty() {
+    return $(`//div[@class='contentpanel' and contains(text(),'Your shopping cart is empty!')]`);
+  }
+
+  // async deleteItemsFromCart() {
+  //   while (!(await this.isShoppingCartEmpty.isDisplayed())) {
+  //     await this.deleteItemBtn.click();
+  //   }
+  // }
+
+  async deleteItemsFromCart() {
+    while (true) {
+      try {
+        await this.deleteItemBtn.click();
+      } catch (error) {
+        // Przerwij pętlę, jeśli nie można znaleźć przycisku "Delete"
+        break;
+      }
+    }
+  }
 }
 
 export default new CartPage();
