@@ -7,3 +7,4 @@ allure-report
 test/specs/webdriver-university
 test/pageObjects/webdriver-university
 dataUniversity
+.history

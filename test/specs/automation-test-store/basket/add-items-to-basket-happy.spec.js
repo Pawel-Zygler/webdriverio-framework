@@ -28,6 +28,7 @@ describe("ADD PRODUCTS - happy path", () => {
       );
 
       await expect(browser).toHaveUrlContaining("checkout");
+
       await CartPage.validateTotal();
     });
   });
@@ -43,13 +44,11 @@ describe("ADD PRODUCTS - happy path", () => {
       await expect(SharedPageComponents.pageHeader(testData.headers.shoppingCart)).toBeDisplayed();
 
       let texts = await CartPage.getTextsFromItemsInBasket();
-      //added this pause due to flaky test, possibly to improve
-      await browser.pause(3000);
+
       await expect(texts).toContain(testData.categories.apparel.subcategoryShoes.shoeOne);
     });
 
     it(`adds a shoe of size ${testData.categories.apparel.subcategoryShoes.shoeTwoSize40}`, async () => {
-      //use method add items to basket, add size option
       await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(testData.categories.apparel.name));
 
       await commands.waitThenClick(
@@ -74,8 +73,6 @@ describe("ADD PRODUCTS - happy path", () => {
     });
 
     it(`adds ${testData.categories.apparel.subcategoryShoes.shoeGreenColor} shoe`, async () => {
-      //use method add items to basket, add size option
-      //debug text.includes, possibly flaky
       await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(testData.categories.apparel.name));
 
       await commands.waitThenClick(

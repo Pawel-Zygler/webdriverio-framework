@@ -59,10 +59,11 @@ class CartPage extends BasePage {
     return texts;
   }
 
-  async addItemToBasket(mainCategory, subcategory, item) {
+  async addItemToBasket(mainCategory, subcategory, item, attribute = null) {
     await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(mainCategory));
     await commands.waitThenClick(CategoryMenuComponent.subcategory(mainCategory, subcategory));
     await ItemComponent.selectProduct(item);
+
     await commands.waitThenClick(await ItemComponent.addToCartBtn);
   }
 }
