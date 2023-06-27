@@ -12,8 +12,8 @@ import CheckoutPage from "../../../pageObjects/automation-test-store/checkout.pa
 import assert from "assert";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 
-describe("CHECKOUT LOGGED IN", () => {
-  describe("ADDS A SHOE", () => {
+describe("CHECKOUT - happy path", () => {
+  describe("ENTER CHECKOUT FROM 3 LOCATIONS", () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
@@ -60,7 +60,7 @@ describe("CHECKOUT LOGGED IN", () => {
     });
   });
 
-  describe("ADDS A SHOE", () => {
+  describe("ONE ITEM", () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
@@ -99,7 +99,7 @@ describe("CHECKOUT LOGGED IN", () => {
     });
   });
 
-  describe("COMPLETES CHECKOUT", () => {
+  describe("CHECKOUT AND GO TO INVOICE PAGE", () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
@@ -169,6 +169,43 @@ describe("CHECKOUT LOGGED IN", () => {
       await RegisterPage.registerNewUser();
 
       await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
+    });
+  });
+
+  describe("AS A GUEST USER", () => {
+    beforeEach(async () => {
+      await HomePage.open();
+      await CartPage.addItemToBasket(
+        testData.categories.skincare.name,
+        testData.categories.skincare.subcategoryFace.name,
+        testData.categories.skincare.subcategoryFace.productOne
+      );
+
+      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
+
+      await commands.waitThenClick(LoginPage.guestCheckoutBtn);
+
+      await commands.waitThenClick(await SharedPageComponents.continueButton);
+    });
+
+    it("checks if user is in guest checkout step 1", async () => {
+      const expectedHeaderText = await testData.headers.guestCheckoutStepOne.toUpperCase();
+
+      await expect(SharedPageComponents.pageHeader(testData.headers.guestCheckoutStepOne)).toHaveText(
+        expectedHeaderText
+      );
+    });
+
+    it("completes checkout as a guest", async () => {
+      await LoginPage.fillInGuestCheckoutForm();
+
+      await commands.waitThenClick(await SharedPageComponents.continueButton);
+
+      const expectedHeaderText = await testData.headers.checkoutConfirmation.toUpperCase();
+
+      await expect(SharedPageComponents.pageHeader(testData.headers.checkoutConfirmation)).toHaveText(
+        expectedHeaderText
+      );
     });
   });
 });
