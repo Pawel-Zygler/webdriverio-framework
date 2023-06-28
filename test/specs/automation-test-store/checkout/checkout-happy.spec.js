@@ -12,7 +12,7 @@ import CheckoutPage from "../../../pageObjects/automation-test-store/checkout.pa
 import assert from "assert";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 
-describe("CHECKOUT - happy path", () => {
+describe("CHECKOUT LOGGED IN - happy path", () => {
   describe("ENTER CHECKOUT FROM 3 LOCATIONS", () => {
     beforeEach(async () => {
       await HomePage.open();
@@ -60,7 +60,7 @@ describe("CHECKOUT - happy path", () => {
     });
   });
 
-  describe("ONE ITEM", () => {
+  describe("ONE ITEM - as logged in", () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
@@ -124,54 +124,9 @@ describe("CHECKOUT - happy path", () => {
       await expect(SharedPageComponents.pageHeader(testData.headers.orderDetails)).toHaveText(expectedHeaderText);
     });
   });
+});
 
-  describe("LOGIN DURING CHECKOUT", () => {
-    beforeEach(async () => {
-      await HomePage.open();
-      await CartPage.addItemToBasket(
-        testData.categories.skincare.name,
-        testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
-      );
-      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
-      await commands.waitThenSetValue(LoginPage.loginName, testData.registeredUser.loginName);
-      await commands.waitThenSetValue(LoginPage.password, testData.registeredUser.password);
-      await commands.waitThenClick(LoginPage.loginButton);
-    });
-
-    it("completes checkout after logging in", async () => {
-      await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
-
-      const expectedHeaderText = await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
-
-      await expect(SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)).toHaveText(
-        expectedHeaderText
-      );
-    });
-  });
-
-  describe("REGISTER USER DURING CHECKOUT", () => {
-    beforeEach(async () => {
-      await HomePage.open();
-      await CartPage.addItemToBasket(
-        testData.categories.skincare.name,
-        testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
-      );
-      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
-
-      await commands.waitThenClick(await TopMenuComponent.loginOrRegister);
-
-      await commands.waitThenClick(await SharedPageComponents.continueButton);
-    });
-
-    it("registers user and completes checkout", async () => {
-      await RegisterPage.registerNewUser();
-
-      await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
-    });
-  });
-
+describe("CHECKOUT - happy path - not logged in", () => {
   describe("AS A GUEST USER", () => {
     beforeEach(async () => {
       await HomePage.open();
@@ -204,6 +159,62 @@ describe("CHECKOUT - happy path", () => {
       const expectedHeaderText = await testData.headers.checkoutConfirmation.toUpperCase();
 
       await expect(SharedPageComponents.pageHeader(testData.headers.checkoutConfirmation)).toHaveText(
+        expectedHeaderText
+      );
+
+      await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
+    });
+  });
+
+  describe("REGISTER USER DURING CHECKOUT", () => {
+    beforeEach(async () => {
+      await HomePage.open();
+      await CartPage.addItemToBasket(
+        testData.categories.skincare.name,
+        testData.categories.skincare.subcategoryFace.name,
+        testData.categories.skincare.subcategoryFace.productOne
+      );
+      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
+
+      await commands.waitThenClick(LoginPage.registerAccountBtn);
+
+      await commands.waitThenClick(SharedPageComponents.continueButton);
+    });
+
+    afterEach(async () => {
+      await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
+    });
+
+    it("registers user and completes checkout", async () => {
+      await RegisterPage.registerNewUser();
+
+      await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
+    });
+  });
+
+  describe("LOGIN DURING CHECKOUT", () => {
+    beforeEach(async () => {
+      await HomePage.open();
+      await CartPage.addItemToBasket(
+        testData.categories.skincare.name,
+        testData.categories.skincare.subcategoryFace.name,
+        testData.categories.skincare.subcategoryFace.productOne
+      );
+
+      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
+
+      await commands.waitThenSetValue(LoginPage.loginName, testData.registeredUser.loginName);
+      await commands.waitThenSetValue(LoginPage.password, testData.registeredUser.password);
+
+      await commands.waitThenClick(LoginPage.loginButton);
+    });
+
+    it("completes checkout after logging in", async () => {
+      await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
+
+      const expectedHeaderText = await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
+
+      await expect(SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)).toHaveText(
         expectedHeaderText
       );
     });

@@ -73,6 +73,10 @@ class LoginPage {
     return $(`#accountFrm_accountguest`);
   }
 
+  get registerAccountBtn() {
+    return $("#accountFrm_accountregister");
+  }
+
   async loginRegisteredUser() {
     await commands.waitThenClick(TopMenuComponent.loginOrRegister);
     await commands.waitThenSetValue(this.loginName, testData.registeredUser.loginName);
