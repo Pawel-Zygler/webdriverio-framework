@@ -6,28 +6,36 @@ import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
-describe("ADD PRODUCTS - happy path", () => {
+describe("CART - happy path", () => {
   beforeEach(async () => {
     await HomePage.open();
     await HomePage.bannerSlide.waitForDisplayed();
     await HomePage.scrollToLogo();
   });
 
+  afterEach(async () => {
+    await CartPage.deleteItemsFromCart();
+
+    await expect(CartPage.isShoppingCartEmpty).toBeDisplayed();
+  });
+
   describe(`${testData.categories.skincare.name}`, () => {
     it(`adds subcategory ${testData.categories.skincare.subcategoryFace.name} products and validates cart total`, async () => {
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productOne
       );
 
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productTwo
       );
+      //szuka to ponownie tego kremu subcategoryFace.productTwo
+      //dlaczego ponownie tam wraca?
 
-      await expect(browser).toHaveUrlContaining("checkout");
+      await expect(browser).toHaveUrlContaining("cart");
 
       await CartPage.validateTotal();
     });
@@ -35,7 +43,7 @@ describe("ADD PRODUCTS - happy path", () => {
 
   describe(`${testData.categories.apparel.name}`, () => {
     it(`adds subcategory Shoes products with clicking dropdown and validates items are in basket`, async () => {
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
         testData.categories.apparel.subcategoryShoes.shoeOne
@@ -43,7 +51,7 @@ describe("ADD PRODUCTS - happy path", () => {
 
       await expect(SharedPageComponents.pageHeader(testData.headers.shoppingCart)).toBeDisplayed();
 
-      let texts = await CartPage.getTextsFromItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInCart();
 
       await expect(texts).toContain(testData.categories.apparel.subcategoryShoes.shoeOne);
     });
@@ -66,7 +74,7 @@ describe("ADD PRODUCTS - happy path", () => {
 
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
-      let texts = await CartPage.getTextsFromItemsAttributesInBasket(
+      let texts = await CartPage.getTextsFromItemsAttributesInCart(
         testData.categories.apparel.subcategoryShoes.shoeTwo
       );
       await texts.includes(testData.categories.apparel.subcategoryShoes.shoeTwoSize40);
@@ -90,7 +98,7 @@ describe("ADD PRODUCTS - happy path", () => {
 
       await commands.waitThenClick(ItemComponent.addToCartBtn);
 
-      let texts = await CartPage.getTextsFromItemsAttributesInBasket(
+      let texts = await CartPage.getTextsFromItemsAttributesInCart(
         testData.categories.apparel.subcategoryShoes.shoeThree
       );
 
@@ -100,19 +108,19 @@ describe("ADD PRODUCTS - happy path", () => {
 
   describe(`${testData.categories.apparel.name}`, () => {
     it(`adds subcategory ${testData.categories.apparel.subcategoryTshirts.name} products and checks if items are in cart`, async () => {
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryTshirts.name,
         testData.categories.apparel.subcategoryTshirts.tshirtOne
       );
 
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryTshirts.name,
         testData.categories.apparel.subcategoryTshirts.tshirtTwo
       );
 
-      let texts = await CartPage.getTextsFromItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInCart();
 
       await expect(texts).toContain(testData.categories.apparel.subcategoryTshirts.tshirtOne);
       await expect(texts).toContain(testData.categories.apparel.subcategoryTshirts.tshirtTwo);
@@ -121,26 +129,26 @@ describe("ADD PRODUCTS - happy path", () => {
 
   describe(`${testData.categories.books.name}`, () => {
     it(`adds a subcategory ${testData.categories.books.subcategoryPaperback.name} products and validates item is in basket`, async () => {
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.books.name,
         testData.categories.books.subcategoryPaperback.name,
         testData.categories.books.subcategoryPaperback.productOne
       );
 
-      let texts = await CartPage.getTextsFromItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInCart();
       await expect(texts).toContain(testData.categories.books.subcategoryPaperback.productOne);
     });
   });
 
   describe(`${testData.categories.fragrance.name}`, () => {
     it(`adds a subcategory ${testData.categories.fragrance.subcategoryMen.name} men fragrance`, async () => {
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.fragrance.name,
         testData.categories.fragrance.subcategoryMen.name,
         testData.categories.fragrance.subcategoryMen.productOne
       );
 
-      let texts = await CartPage.getTextsFromItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInCart();
       await expect(texts).toContain(testData.categories.fragrance.subcategoryMen.productOne);
     });
   });
@@ -148,26 +156,26 @@ describe("ADD PRODUCTS - happy path", () => {
   describe("ADD PRODUCTS", async () => {
     beforeEach(async () => {
       await HomePage.open();
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productOne
       );
 
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
         testData.categories.apparel.subcategoryShoes.shoeOne
       );
 
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.books.name,
         testData.categories.books.subcategoryPaperback.name,
         testData.categories.books.subcategoryPaperback.productOne
       );
     });
 
-    it.only("clears basekt to empty", async () => {
+    it("clears cart to empty", async () => {
       await CartPage.deleteItemsFromCart();
 
       await expect(CartPage.isShoppingCartEmpty).toBeDisplayed();

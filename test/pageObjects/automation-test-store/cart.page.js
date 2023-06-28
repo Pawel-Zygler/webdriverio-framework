@@ -17,6 +17,7 @@ class CartPage extends BasePage {
     return $("//span[text()='Total:']/../following-sibling::td");
   }
 
+  //there is one expect here to be moved out of here
   async validateTotal() {
     var tempShippingRate = await this.tempShippingRate.getText();
     var shippingRate = tempShippingRate.replace("$", "");
@@ -37,7 +38,7 @@ class CartPage extends BasePage {
     return $$(`//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`);
   }
 
-  async getTextsFromItemsAttributesInBasket(productName) {
+  async getTextsFromItemsAttributesInCart(productName) {
     let rows = await this.itemsInBasketAttributes(productName);
     let texts = [];
 
@@ -48,7 +49,7 @@ class CartPage extends BasePage {
     return texts;
   }
 
-  async getTextsFromItemsInBasket() {
+  async getTextsFromItemsInCart() {
     let rows = await this.itemsInBasketNames;
     let texts = [];
 
@@ -59,7 +60,7 @@ class CartPage extends BasePage {
     return texts;
   }
 
-  async addItemToBasket(mainCategory, subcategory, item, attribute = null) {
+  async addItemToCart(mainCategory, subcategory, item) {
     await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(mainCategory));
     await commands.waitThenClick(CategoryMenuComponent.subcategory(mainCategory, subcategory));
     await ItemComponent.selectProduct(item);
@@ -75,14 +76,8 @@ class CartPage extends BasePage {
     return $(`//div[@class='contentpanel' and contains(text(),'Your shopping cart is empty!')]`);
   }
 
-  // async deleteItemsFromCart() {
-  //   while (!(await this.isShoppingCartEmpty.isDisplayed())) {
-  //     await this.deleteItemBtn.click();
-  //   }
-  // }
-
   async deleteItemsFromCart() {
-    while (true) {
+    while (await this.deleteItemBtn.isExisting()) {
       try {
         await this.deleteItemBtn.click();
       } catch (error) {

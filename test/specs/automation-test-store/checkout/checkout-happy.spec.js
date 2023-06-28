@@ -17,7 +17,7 @@ describe("CHECKOUT - happy path - logged in", () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
         testData.categories.apparel.subcategoryShoes.shoeOne
@@ -64,7 +64,7 @@ describe("CHECKOUT - happy path - logged in", () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
         testData.categories.apparel.subcategoryShoes.shoeOne
@@ -103,7 +103,7 @@ describe("CHECKOUT - happy path - logged in", () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productOne
@@ -130,7 +130,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
   describe("AS A GUEST USER", () => {
     beforeEach(async () => {
       await HomePage.open();
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productOne
@@ -169,7 +169,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
   describe("REGISTER USER DURING CHECKOUT", () => {
     beforeEach(async () => {
       await HomePage.open();
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productOne
@@ -195,7 +195,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
   describe("LOGIN DURING CHECKOUT", () => {
     beforeEach(async () => {
       await HomePage.open();
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productOne
@@ -225,7 +225,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
   describe("ADD SEPARATE ADDRESS DURING GUEST CHECKOUT", () => {
     beforeEach(async () => {
       await HomePage.open();
-      await CartPage.addItemToBasket(
+      await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productOne

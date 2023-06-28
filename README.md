@@ -33,8 +33,11 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
-As a user I want to complete checkout as a guest
-As a user I want to complete checkout as a guest with checking for separate shipping address
+https://automationteststore.com/index.php?rt=product/category&path=43_47 - ten przycisk dodaje od razu do koszyka przedmioty, sprawdz czy sie updejtją
+
+https://automationteststore.com/index.php?rt=product/category&path=36_39 - call to order btn test
+
+As a user I want to complete checkout as a guest with different shipping address
 As a user I want to checkout 10 items.
 As a user I want to add 10 products QTY from subcategory page to Cart.
 easy or later
@@ -42,10 +45,8 @@ As a user I want to add a product from latest products (home page, item page)
 As a user i want to see breadcrumbs whereever I go
 As a distributor, I want to buy 10 000 books.
 
-https://automationteststore.com/index.php?rt=product/category&path=43_47 - ten przycisk dodaje od razu do koszyka przedmioty, sprawdz czy sie updejtją
-
 MEDIUM
-gitgnore is missing some files to ignore from allure reports
+Implement sessions correctly, so test below can be independent from each other, then verify if passes
 
 ADVANCED
 Set it up so tests run on 4 browsers and pass
@@ -78,3 +79,4 @@ As a user I want to add size 40 shoe
 As a logged in user I want to go to checkout from all locations
 As a logged in user I want to checkout item and go to invoice page
 As a guest user I want to checkout one item and log in during checkout
+As a user I want to complete checkout as a guest
