@@ -98,8 +98,6 @@ class RegisterPage {
     await commands.waitThenSetValue(this.passwordConfirm, testData.uniqueUser.passwordConfirm);
 
     await commands.waitThenClick(this.privacyPolicyAgree);
-
-    await commands.waitThenClick(await SharedPageComponents.continueButton);
   }
 }
 export default new RegisterPage();

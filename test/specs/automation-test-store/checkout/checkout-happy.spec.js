@@ -12,7 +12,7 @@ import CheckoutPage from "../../../pageObjects/automation-test-store/checkout.pa
 import assert from "assert";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 
-describe("CHECKOUT LOGGED IN - happy path", () => {
+describe("CHECKOUT - happy path - logged in", () => {
   describe("ENTER CHECKOUT FROM 3 LOCATIONS", () => {
     beforeEach(async () => {
       await HomePage.open();
@@ -152,7 +152,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
     });
 
     it("completes checkout as a guest", async () => {
-      await LoginPage.fillInGuestCheckoutForm();
+      await CheckoutPage.fillInGuestCheckoutForm();
 
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
@@ -181,14 +181,14 @@ describe("CHECKOUT - happy path - not logged in", () => {
       await commands.waitThenClick(SharedPageComponents.continueButton);
     });
 
-    afterEach(async () => {
-      await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
-    });
-
     it("registers user and completes checkout", async () => {
       await RegisterPage.registerNewUser();
 
+      await commands.waitThenClick(SharedPageComponents.continueButton);
+
       await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
+
+      await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
     });
   });
 
@@ -210,6 +210,42 @@ describe("CHECKOUT - happy path - not logged in", () => {
     });
 
     it("completes checkout after logging in", async () => {
+      await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
+
+      const expectedHeaderText = await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
+
+      await expect(SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)).toHaveText(
+        expectedHeaderText
+      );
+
+      await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
+    });
+  });
+
+  describe("ADD SEPARATE ADDRESS DURING GUEST CHECKOUT", () => {
+    beforeEach(async () => {
+      await HomePage.open();
+      await CartPage.addItemToBasket(
+        testData.categories.skincare.name,
+        testData.categories.skincare.subcategoryFace.name,
+        testData.categories.skincare.subcategoryFace.productOne
+      );
+      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
+
+      await commands.waitThenClick(LoginPage.guestCheckoutBtn);
+
+      await commands.waitThenClick(SharedPageComponents.continueButton);
+    });
+
+    it("adds separate shipping address and completes checkout", async () => {
+      await CheckoutPage.fillInGuestCheckoutForm();
+
+      await commands.waitThenClick(CheckoutPage.separateShippingAddressCheckbox);
+
+      await CheckoutPage.fillInSeparateShippingAddressForm();
+
+      await commands.waitThenClick(SharedPageComponents.continueButton);
+
       await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
 
       const expectedHeaderText = await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
