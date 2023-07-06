@@ -33,7 +33,6 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
-Add deleting items from cart to other tests to unflaky them
 https://automationteststore.com/index.php?rt=product/category&path=43_47 - dodaj do koszyka za pomocą tego przycisku and validate items are in top cart
 
 https://automationteststore.com/index.php?rt=product/category&path=36_39 - call to order btn test

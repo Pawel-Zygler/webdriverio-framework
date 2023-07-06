@@ -32,7 +32,7 @@ export const config = {
     // 'path/to/excluded/files'
   ],
   suites: {
-    smoke: ["test/specs/automation-test-store/add-items-to-basket-happy.spec.js"],
+    smoke: ["test/specs/automation-test-store/add-items-to-cart-happy.spec.js"],
     autostore: ["test/specs/automation-test-store/**/*.spec.js"],
   },
   //
@@ -67,7 +67,11 @@ export const config = {
       browserName: "chrome",
       acceptInsecureCerts: true,
       "goog:chromeOptions": {
-        args: ["--incognito", "--headless", "--start-maximize", "--window-size=1920,1080"],
+        args: [
+          "--incognito", //"--headless",
+          "--start-maximize",
+          "--window-size=1920,1080",
+        ],
       },
       timeouts: {
         pageLoad: 30000, //30 seconds
@@ -329,8 +333,9 @@ export const config = {
    * @param {Array.<Object>} capabilities list of capabilities details
    * @param {Array.<String>} specs List of spec file paths that ran
    */
-  // after: function (result, capabilities, specs) {
-  // },
+  after: async function () {
+    await browser.pause(1000);
+  },
   /**
    * Gets executed right after terminating the webdriver session.
    * @param {Object} config wdio configuration object

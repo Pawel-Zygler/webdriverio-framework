@@ -32,8 +32,6 @@ describe("CART - happy path", () => {
         testData.categories.skincare.subcategoryFace.name,
         testData.categories.skincare.subcategoryFace.productTwo
       );
-      //szuka to ponownie tego kremu subcategoryFace.productTwo
-      //dlaczego ponownie tam wraca?
 
       await expect(browser).toHaveUrlContaining("cart");
 
