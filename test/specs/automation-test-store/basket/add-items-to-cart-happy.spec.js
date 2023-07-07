@@ -179,4 +179,23 @@ describe("CART - happy path", () => {
       await expect(CartPage.isShoppingCartEmpty).toBeDisplayed();
     });
   });
+
+  describe("ADD 10 PRODUCTS", () => {
+    beforeEach(async () => {
+      await HomePage.open();
+      await CartPage.addItemToCart(
+        testData.categories.skincare.name,
+        testData.categories.skincare.subcategoryFace.name,
+        testData.categories.skincare.subcategoryFace.productOne
+      );
+    });
+
+    //debug this shit
+    it("it multiplies added product * 10 and asserts the number", async () => {
+      await commands.waitThenSetValue(CartPage.itemQuantity, "10");
+      await commands.waitThenClick(CartPage.updateCartBtn);
+      const elementValue = await CartPage.itemQuantity.getAttribute("value");
+      await expect(elementValue).toEqual("10");
+    });
+  });
 });

@@ -76,6 +76,14 @@ class CartPage extends BasePage {
     return $(`//div[@class='contentpanel' and contains(text(),'Your shopping cart is empty!')]`);
   }
 
+  get itemQuantity() {
+    return $("//div[@class='input-group input-group-sm']/input");
+  }
+
+  get updateCartBtn() {
+    return $("#cart_update");
+  }
+
   async deleteItemsFromCart() {
     while (await this.deleteItemBtn.isExisting()) {
       try {
