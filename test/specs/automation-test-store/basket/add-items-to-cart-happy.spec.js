@@ -1,6 +1,7 @@
 import CartPage from "../../../pageObjects/automation-test-store/cart.page";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
+import commands from "../../../../utils/commands.js";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("CART - happy path", () => {
