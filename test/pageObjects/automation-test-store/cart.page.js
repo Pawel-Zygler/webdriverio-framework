@@ -31,11 +31,15 @@ class CartPage extends BasePage {
   }
 
   get itemsInBasketNames() {
-    return $$(`//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`);
+    return $$(
+      `//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`
+    );
   }
 
   itemsInBasketAttributes(productName) {
-    return $$(`//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`);
+    return $$(
+      `//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`
+    );
   }
 
   async getTextsFromItemsAttributesInCart(productName) {
@@ -60,11 +64,26 @@ class CartPage extends BasePage {
     return texts;
   }
 
-  async addItemToCart(mainCategory, subcategory, item) {
-    await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(mainCategory));
-    await commands.waitThenClick(CategoryMenuComponent.subcategory(mainCategory, subcategory));
+  async addItemToCart(
+    mainCategory,
+    subcategory,
+    item,
+    size = null,
+    color = null
+  ) {
+    await commands.waitThenMoveTo(
+      HomePage.categoryMenuComponent.categoryMenuLink(mainCategory)
+    );
+    await commands.waitThenClick(
+      CategoryMenuComponent.subcategory(mainCategory, subcategory)
+    );
     await ItemComponent.selectProduct(item);
-
+    if (size) {
+      await ItemComponent.selectSizeDropdown.selectByVisibleText(size);
+    }
+    if (color) {
+      await commands.waitThenClick(ItemComponent.selectColourRadioBtn(color));
+    }
     await commands.waitThenClick(await ItemComponent.addToCartBtn);
   }
 
@@ -73,7 +92,9 @@ class CartPage extends BasePage {
   }
 
   get isShoppingCartEmpty() {
-    return $(`//div[@class='contentpanel' and contains(text(),'Your shopping cart is empty!')]`);
+    return $(
+      `//div[@class='contentpanel' and contains(text(),'Your shopping cart is empty!')]`
+    );
   }
 
   get itemQuantity() {

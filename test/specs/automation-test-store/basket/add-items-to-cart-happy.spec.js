@@ -1,7 +1,4 @@
 import CartPage from "../../../pageObjects/automation-test-store/cart.page";
-import ItemComponent from "../../../pageObjects/automation-test-store/components/item.comp";
-import CategoryMenuComponent from "../../../pageObjects/automation-test-store/components/category-menu.comp";
-import commands from "../../../../utils/commands";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
@@ -13,13 +10,7 @@ describe("CART - happy path", () => {
     await HomePage.scrollToLogo();
   });
 
-  afterEach(async () => {
-    await CartPage.deleteItemsFromCart();
-
-    await expect(CartPage.isShoppingCartEmpty).toBeDisplayed();
-  });
-
-  describe(`${testData.categories.skincare.name}`, () => {
+  describe(`${testData.categories.skincare.name}`, async () => {
     it(`adds subcategory ${testData.categories.skincare.subcategoryFace.name} products and validates cart total`, async () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
@@ -40,67 +31,58 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.apparel.name}`, () => {
-    it(`adds subcategory Shoes products with clicking dropdown and validates items are in basket`, async () => {
+    //move target out of bounds issue here ocasionally when running all tests at once, flaky to improve
+    it(`adds subcategory ${testData.categories.apparel.subcategoryShoes} products with clicking dropdown and validates items are in basket`, async () => {
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
         testData.categories.apparel.subcategoryShoes.shoeOne
       );
 
-      await expect(SharedPageComponents.pageHeader(testData.headers.shoppingCart)).toBeDisplayed();
+      await expect(
+        SharedPageComponents.pageHeader(testData.headers.shoppingCart)
+      ).toBeDisplayed();
 
-      let texts = await CartPage.getTextsFromItemsInCart();
-
-      await expect(texts).toContain(testData.categories.apparel.subcategoryShoes.shoeOne);
+      let texts = await CartPage.getTextsFromItemsInBasket();
+      //added this pause due to flaky test, possibly to improve
+      await browser.pause(3000);
+      await expect(texts).toContain(
+        testData.categories.apparel.subcategoryShoes.shoeOne
+      );
     });
 
     it(`adds a shoe of size ${testData.categories.apparel.subcategoryShoes.shoeTwoSize40}`, async () => {
-      await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(testData.categories.apparel.name));
-
-      await commands.waitThenClick(
-        CategoryMenuComponent.subcategory(
-          testData.categories.apparel.name,
-          testData.categories.apparel.subcategoryShoes.name
-        )
-      );
-
-      await commands.waitThenClickProduct(testData.categories.apparel.subcategoryShoes.shoeTwo);
-
-      await ItemComponent.selectSizeDropdown.selectByVisibleText(
+      await CartPage.addItemToCart(
+        testData.categories.apparel.name,
+        testData.categories.apparel.subcategoryShoes.name,
+        testData.categories.apparel.subcategoryShoes.shoeTwo,
         testData.categories.apparel.subcategoryShoes.shoeTwoSize40
       );
 
-      await commands.waitThenClick(ItemComponent.addToCartBtn);
-
-      let texts = await CartPage.getTextsFromItemsAttributesInCart(
+      let texts = await CartPage.getTextsFromItemsAttributesInBasket(
         testData.categories.apparel.subcategoryShoes.shoeTwo
       );
-      await texts.includes(testData.categories.apparel.subcategoryShoes.shoeTwoSize40);
+      await texts.includes(
+        testData.categories.apparel.subcategoryShoes.shoeTwoSize40
+      );
     });
 
     it(`adds ${testData.categories.apparel.subcategoryShoes.shoeGreenColor} shoe`, async () => {
-      await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(testData.categories.apparel.name));
-
-      await commands.waitThenClick(
-        CategoryMenuComponent.subcategory(
-          testData.categories.apparel.name,
-          testData.categories.apparel.subcategoryShoes.name
-        )
+      //debug text.includes, possibly flaky
+      await CartPage.addItemToCart(
+        testData.categories.apparel.name,
+        testData.categories.apparel.subcategoryShoes.name,
+        testData.categories.apparel.subcategoryShoes.shoeThree,
+        null,
+        testData.categories.apparel.subcategoryShoes.shoeGreenColor
       );
 
-      await commands.waitThenClickProduct(testData.categories.apparel.subcategoryShoes.shoeThree);
-
-      await commands.waitThenClick(
-        ItemComponent.selectColourRadioBtn(testData.categories.apparel.subcategoryShoes.shoeGreenColor)
-      );
-
-      await commands.waitThenClick(ItemComponent.addToCartBtn);
-
-      let texts = await CartPage.getTextsFromItemsAttributesInCart(
+      let texts = await CartPage.getTextsFromItemsAttributesInBasket(
         testData.categories.apparel.subcategoryShoes.shoeThree
       );
-
-      await texts.includes(testData.categories.apparel.subcategoryShoes.shoeGreenColor);
+      await texts.includes(
+        testData.categories.apparel.subcategoryShoes.shoeGreenColor
+      );
     });
   });
 
@@ -118,10 +100,13 @@ describe("CART - happy path", () => {
         testData.categories.apparel.subcategoryTshirts.tshirtTwo
       );
 
-      let texts = await CartPage.getTextsFromItemsInCart();
-
-      await expect(texts).toContain(testData.categories.apparel.subcategoryTshirts.tshirtOne);
-      await expect(texts).toContain(testData.categories.apparel.subcategoryTshirts.tshirtTwo);
+      let texts = await CartPage.getTextsFromItemsInBasket();
+      await expect(texts).toContain(
+        testData.categories.apparel.subcategoryTshirts.tshirtOne
+      );
+      await expect(texts).toContain(
+        testData.categories.apparel.subcategoryTshirts.tshirtTwo
+      );
     });
   });
 
@@ -133,8 +118,10 @@ describe("CART - happy path", () => {
         testData.categories.books.subcategoryPaperback.productOne
       );
 
-      let texts = await CartPage.getTextsFromItemsInCart();
-      await expect(texts).toContain(testData.categories.books.subcategoryPaperback.productOne);
+      let texts = await CartPage.getTextsFromItemsInBasket();
+      await expect(texts).toContain(
+        testData.categories.books.subcategoryPaperback.productOne
+      );
     });
   });
 
@@ -146,8 +133,10 @@ describe("CART - happy path", () => {
         testData.categories.fragrance.subcategoryMen.productOne
       );
 
-      let texts = await CartPage.getTextsFromItemsInCart();
-      await expect(texts).toContain(testData.categories.fragrance.subcategoryMen.productOne);
+      let texts = await CartPage.getTextsFromItemsInBasket();
+      await expect(texts).toContain(
+        testData.categories.fragrance.subcategoryMen.productOne
+      );
     });
   });
 

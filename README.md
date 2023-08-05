@@ -33,10 +33,10 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
-Unable to locate element: {"method":"xpath","selector":"//\*[@title='Creme Precieuse Nuit 50ml' - dlaczego tego szuka w bh? Nawet po skonczeniu testu, nie mam pojecia
-https://automationteststore.com/index.php?rt=product/category&path=43_47 - dodaj do koszyka za pomocą tego przycisku and validate items are in top cart
-
-https://automationteststore.com/index.php?rt=product/category&path=36_39 - call to order btn test
+Increase log data in terminal
+As a guest user I want to checkout one item and register account during checkout
+As a guest user I want to checkout and log in during checkout
+adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
 
 As a user I want to add 10 products QTY from subcategory page to Cart.
 easy or later

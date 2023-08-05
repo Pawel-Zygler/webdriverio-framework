@@ -25,24 +25,33 @@ describe("CHECKOUT - happy path - logged in", () => {
     });
 
     afterEach(async () => {
-      const expectedHeaderText = await testData.headers.checkoutConfirmation.toUpperCase();
+      const expectedHeaderText =
+        await testData.headers.checkoutConfirmation.toUpperCase();
 
-      await expect(SharedPageComponents.pageHeader(testData.headers.checkoutConfirmation)).toHaveText(
-        expectedHeaderText
-      );
+      await expect(
+        SharedPageComponents.pageHeader(testData.headers.checkoutConfirmation)
+      ).toHaveText(expectedHeaderText);
 
       await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
     });
 
     it("enters checkout from top menu", async () => {
-      await commands.waitThenClick(TopMenuComponent.topMenuLink(testData.topMenu.checkout.name));
+      await commands.waitThenClick(
+        TopMenuComponent.topMenuLink(testData.topMenu.checkout.name)
+      );
     });
 
     it("enters checkout from Home category dropdown on left side", async () => {
-      await commands.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(testData.categories.home.name));
+      await commands.waitThenMoveTo(
+        HomePage.categoryMenuComponent.categoryMenuLink(
+          testData.categories.home.name
+        )
+      );
 
       await commands.waitThenClick(
-        CategoryMenuComponent.homeCategorySubcategoryOption(testData.categories.home.subcategoryCheckout.name)
+        CategoryMenuComponent.homeCategorySubcategoryOption(
+          testData.categories.home.subcategoryCheckout.name
+        )
       );
     });
 
@@ -72,11 +81,14 @@ describe("CHECKOUT - happy path - logged in", () => {
     });
 
     afterEach(async () => {
-      const expectedHeaderText = await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
+      const expectedHeaderText =
+        await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
 
-      await expect(SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)).toHaveText(
-        expectedHeaderText
-      );
+      await expect(
+        SharedPageComponents.pageHeader(
+          testData.headers.yourOrderHasBeenProcessed
+        )
+      ).toHaveText(expectedHeaderText);
 
       await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
     });
@@ -92,7 +104,9 @@ describe("CHECKOUT - happy path - logged in", () => {
 
       let regex = /Your order #\d+ has been created!/;
 
-      let orderNumber = await commands.waitThenGetText(CheckoutPage.orderNumber);
+      let orderNumber = await commands.waitThenGetText(
+        CheckoutPage.orderNumber
+      );
 
       await console.log(orderNumber);
       await assert(regex.test(orderNumber));
@@ -119,9 +133,12 @@ describe("CHECKOUT - happy path - logged in", () => {
     it("goes to invoice page", async () => {
       await commands.waitThenClick(CheckoutPage.invoiceLink);
 
-      const expectedHeaderText = await testData.headers.orderDetails.toUpperCase();
+      const expectedHeaderText =
+        await testData.headers.orderDetails.toUpperCase();
 
-      await expect(SharedPageComponents.pageHeader(testData.headers.orderDetails)).toHaveText(expectedHeaderText);
+      await expect(
+        SharedPageComponents.pageHeader(testData.headers.orderDetails)
+      ).toHaveText(expectedHeaderText);
     });
   });
 });
