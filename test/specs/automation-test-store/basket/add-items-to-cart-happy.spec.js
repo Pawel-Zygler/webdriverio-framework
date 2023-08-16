@@ -180,7 +180,6 @@ describe("CART - happy path", () => {
       );
     });
 
-    //debug this shit
     it("it multiplies added product * 10 and asserts the number", async () => {
       await commands.waitThenSetValue(CartPage.itemQuantity, "10");
       await commands.waitThenClick(CartPage.updateCartBtn);

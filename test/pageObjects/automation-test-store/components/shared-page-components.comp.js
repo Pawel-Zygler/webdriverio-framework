@@ -24,6 +24,10 @@ class SharedPageComponents {
   get outOfStockBtn() {
     return $(`//span[contains(text(), 'Out of Stock')]`);
   }
+
+  get lastBreadcrumb() {
+    return $(`//ul[@class='breadcrumb']/li[last()]`);
+  }
 }
 
 export default new SharedPageComponents();

@@ -33,16 +33,14 @@ npm run wiremock
 More scripts in package.js
 
 SCENARIOS(todo):
-Increase log data in terminal
-As a guest user I want to checkout one item and register account during checkout
-As a guest user I want to checkout and log in during checkout
-adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
-
-As a user I want to add 10 products QTY from subcategory page to Cart.
-easy or later
-As a user I want to add a product from latest products (home page, item page)
 As a user i want to see breadcrumbs whereever I go
+As a user I want to see items in grid view and list view
 As a distributor, I want to buy 10 000 books.
+As a user I want to see if item has desired description
+As a user I want to see certain product has discount
+As a user I want to see if item has review https://automationteststore.com/index.php?rt=product/product&manufacturer_id=18&product_id=77
+As a user I want to see if tag has correct items
+Increase log data in terminal
 
 MEDIUM
 Implement sessions correctly, so test below can be independent from each other, then verify if passes
@@ -50,14 +48,19 @@ Implement sessions correctly, so test below can be independent from each other, 
 ADVANCED
 Set it up so tests run on 4 browsers and pass
 Analyse Kibana integration for visualising data
+
+Bugs to do:
 Improve github workflow in CI, it actually passes 10/10 but still fails in actions
-Promise all dla rh - dla duzej ilosc async/await
+adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
 
 CHANGELOG and NOTES:
 Implementing commands support reduced suite execution time from 2:16s to 1:46s. 30s reduction or around 20%.
 'move to out of bounds' issue is often fixed by npm i
 
-SCENARIOS(completed)
+SCENARIOS(completed):
+As a user I want to add 10 products QTY from subcategory page to Cart
+As a guest user I want to checkout and log in during checkout
+As a guest user I want to checkout one item and register account during checkout
 As a user I want to complete checkout as a guest with different shipping address
 As a user I want to add item to basket
 As a user I want to add items to basket
