@@ -93,16 +93,20 @@ const testData = {
     incorrectLoginOrPassword: "Error: Incorrect login or password provided.",
     noRecords:
       "Error: No records found matching information your provided, please check your information and try again!",
-    emailNotProvided: "Error: The Email address was not provided or not found in our records, please try again!",
-    noLoginProvided: "Error: The Login name was not provided or not found in our records, please try again!",
+    emailNotProvided:
+      "Error: The Email address was not provided or not found in our records, please try again!",
+    noLoginProvided:
+      "Error: The Login name was not provided or not found in our records, please try again!",
     noRecordsMatched:
       "Error: No records found matching information your provided, please check your information and try again!",
-    noLastNameProvided: "Error: The Last name was not provided or not found in our records, please try again!",
+    noLastNameProvided:
+      "Error: The Last name was not provided or not found in our records, please try again!",
   },
 
   successValidationAboveForm: {
     resetLinkSent: "Success: Password reset link has been sent to your e-mail address.",
-    loginNameSent: "Success: Your login name reminder has been sent to your e-mail address.",
+    loginNameSent:
+      "Success: Your login name reminder has been sent to your e-mail address.",
   },
 
   currency: {
@@ -143,7 +147,8 @@ const testData = {
       name: "Apparel & accessories",
       subcategoryTshirts: {
         name: "T-shirts",
-        tshirtOne: "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie",
+        tshirtOne:
+          "Designer Men Casual Formal Double Cuffs Grandad Band Collar Shirt Elegant Tie",
         tshirtTwo: "Casual 3/4 Sleeve Baseball T-Shirt",
       },
       subcategoryShoes: {
@@ -160,7 +165,11 @@ const testData = {
       name: "Skincare",
       subcategoryFace: {
         name: "Face",
-        productOne: "Creme Precieuse Nuit 50ml",
+        productOne: {
+          name: "Creme Precieuse Nuit 50ml",
+          description:
+            "A luxurious, melting night cream to repair skin during sleep Features Polypeptides that boost production of collagen & elastin Improves skin elasticity & firmness Visibly reduces appearance of wrinkles, fine lines & brown spots Enriched with Bvlgari Gem Essence to restore radiance Skin appears smooth, energized & luminous in morning Perfect for all skin types",
+        },
         productTwo: "Total Moisture Facial Cream",
       },
       subcategoryEyes: {
@@ -189,7 +198,8 @@ const testData = {
       subcategoryBodyAndShower: {
         name: "Body & Shower",
         productOne: "Men+Care Active Clean Shower Tool",
-        productTwo: "Lancome Slimissime 360 Slimming Activating Concentrate Unisex Treatment",
+        productTwo:
+          "Lancome Slimissime 360 Slimming Activating Concentrate Unisex Treatment",
       },
     },
   },

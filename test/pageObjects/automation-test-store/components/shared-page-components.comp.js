@@ -28,6 +28,14 @@ class SharedPageComponents {
   get lastBreadcrumb() {
     return $(`//ul[@class='breadcrumb']/li[last()]`);
   }
+
+  get gridButton() {
+    return $("#grid");
+  }
+
+  get listButton() {
+    return $("#list");
+  }
 }
 
 export default new SharedPageComponents();

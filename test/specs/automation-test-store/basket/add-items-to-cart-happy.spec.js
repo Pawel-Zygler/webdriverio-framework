@@ -16,7 +16,7 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
+        testData.categories.skincare.subcategoryFace.productOne.name
       );
 
       await CartPage.addItemToCart(
@@ -47,9 +47,7 @@ describe("CART - happy path", () => {
       let texts = await CartPage.getTextsFromItemsInBasket();
       //added this pause due to flaky test, possibly to improve
       await browser.pause(3000);
-      await expect(texts).toContain(
-        testData.categories.apparel.subcategoryShoes.shoeOne
-      );
+      await expect(texts).toContain(testData.categories.apparel.subcategoryShoes.shoeOne);
     });
 
     it(`adds a shoe of size ${testData.categories.apparel.subcategoryShoes.shoeTwoSize40}`, async () => {
@@ -63,9 +61,7 @@ describe("CART - happy path", () => {
       let texts = await CartPage.getTextsFromItemsAttributesInBasket(
         testData.categories.apparel.subcategoryShoes.shoeTwo
       );
-      await texts.includes(
-        testData.categories.apparel.subcategoryShoes.shoeTwoSize40
-      );
+      await texts.includes(testData.categories.apparel.subcategoryShoes.shoeTwoSize40);
     });
 
     it(`adds ${testData.categories.apparel.subcategoryShoes.shoeGreenColor} shoe`, async () => {
@@ -81,9 +77,7 @@ describe("CART - happy path", () => {
       let texts = await CartPage.getTextsFromItemsAttributesInBasket(
         testData.categories.apparel.subcategoryShoes.shoeThree
       );
-      await texts.includes(
-        testData.categories.apparel.subcategoryShoes.shoeGreenColor
-      );
+      await texts.includes(testData.categories.apparel.subcategoryShoes.shoeGreenColor);
     });
   });
 
@@ -116,12 +110,12 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.books.name,
         testData.categories.books.subcategoryPaperback.name,
-        testData.categories.books.subcategoryPaperback.productOne
+        testData.categories.books.subcategoryPaperback.productOne.name
       );
 
       let texts = await CartPage.getTextsFromItemsInBasket();
       await expect(texts).toContain(
-        testData.categories.books.subcategoryPaperback.productOne
+        testData.categories.books.subcategoryPaperback.productOne.name
       );
     });
   });
@@ -131,12 +125,12 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.fragrance.name,
         testData.categories.fragrance.subcategoryMen.name,
-        testData.categories.fragrance.subcategoryMen.productOne
+        testData.categories.fragrance.subcategoryMen.productOne.name
       );
 
       let texts = await CartPage.getTextsFromItemsInBasket();
       await expect(texts).toContain(
-        testData.categories.fragrance.subcategoryMen.productOne
+        testData.categories.fragrance.subcategoryMen.productOne.name
       );
     });
   });
@@ -147,7 +141,7 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
+        testData.categories.skincare.subcategoryFace.productOne.name
       );
 
       await CartPage.addItemToCart(
@@ -159,7 +153,7 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.books.name,
         testData.categories.books.subcategoryPaperback.name,
-        testData.categories.books.subcategoryPaperback.productOne
+        testData.categories.books.subcategoryPaperback.productOne.name
       );
     });
 
@@ -176,7 +170,7 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
+        testData.categories.skincare.subcategoryFace.productOne.name
       );
     });
 

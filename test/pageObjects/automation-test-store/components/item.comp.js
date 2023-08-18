@@ -24,5 +24,9 @@ class ItemComponent {
       `//input[@type='radio' and following-sibling::text()[contains(., '${colour}')]]`
     );
   }
+
+  get itemHeaderDescriptions() {
+    return $$(".productdiscrption");
+  }
 }
 export default new ItemComponent();

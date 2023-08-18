@@ -83,9 +83,7 @@ describe("CHECKOUT - happy path - logged in", () => {
         await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
 
       await expect(
-        SharedPageComponents.pageHeader(
-          testData.headers.yourOrderHasBeenProcessed
-        )
+        SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)
       ).toHaveText(expectedHeaderText);
 
       await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
@@ -102,9 +100,7 @@ describe("CHECKOUT - happy path - logged in", () => {
 
       let regex = /Your order #\d+ has been created!/;
 
-      let orderNumber = await commands.waitThenGetText(
-        CheckoutPage.orderNumber
-      );
+      let orderNumber = await commands.waitThenGetText(CheckoutPage.orderNumber);
 
       await console.log(orderNumber);
       await assert(regex.test(orderNumber));
@@ -118,7 +114,7 @@ describe("CHECKOUT - happy path - logged in", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
+        testData.categories.skincare.subcategoryFace.productOne.name
       );
       await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
       await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
@@ -131,8 +127,7 @@ describe("CHECKOUT - happy path - logged in", () => {
     it("goes to invoice page", async () => {
       await commands.waitThenClick(CheckoutPage.invoiceLink);
 
-      const expectedHeaderText =
-        await testData.headers.orderDetails.toUpperCase();
+      const expectedHeaderText = await testData.headers.orderDetails.toUpperCase();
 
       await expect(
         SharedPageComponents.pageHeader(testData.headers.orderDetails)
@@ -148,7 +143,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
+        testData.categories.skincare.subcategoryFace.productOne.name
       );
 
       await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
@@ -189,7 +184,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
+        testData.categories.skincare.subcategoryFace.productOne.name
       );
       await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
 
@@ -215,7 +210,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
+        testData.categories.skincare.subcategoryFace.productOne.name
       );
 
       await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
@@ -239,9 +234,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
         await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
 
       await expect(
-        SharedPageComponents.pageHeader(
-          testData.headers.yourOrderHasBeenProcessed
-        )
+        SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)
       ).toHaveText(expectedHeaderText);
 
       await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
@@ -254,7 +247,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne
+        testData.categories.skincare.subcategoryFace.productOne.name
       );
       await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
 
@@ -266,9 +259,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
     it("adds separate shipping address and completes checkout", async () => {
       await CheckoutPage.fillInGuestCheckoutForm();
 
-      await commands.waitThenClick(
-        CheckoutPage.separateShippingAddressCheckbox
-      );
+      await commands.waitThenClick(CheckoutPage.separateShippingAddressCheckbox);
 
       await CheckoutPage.fillInSeparateShippingAddressForm();
 
@@ -280,9 +271,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
         await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
 
       await expect(
-        SharedPageComponents.pageHeader(
-          testData.headers.yourOrderHasBeenProcessed
-        )
+        SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)
       ).toHaveText(expectedHeaderText);
     });
   });

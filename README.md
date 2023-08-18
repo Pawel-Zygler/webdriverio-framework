@@ -32,8 +32,15 @@ npm run wiremock
 
 More scripts in package.js
 
+Bugs to do:
+fix add items to cart getTextsFromItemsAttributesInBasket - this function si not hjere
+
+Improve github workflow in CI, it actually passes 10/10 but still fails in actions
+adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
+Improve github workflow in CI, it actually passes 10/10 but still fails in actions
+adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
+
 SCENARIOS(todo):
-As a user i want to see breadcrumbs whereever I go
 As a user I want to see items in grid view and list view
 As a distributor, I want to buy 10 000 books.
 As a user I want to see if item has desired description
@@ -49,15 +56,12 @@ ADVANCED
 Set it up so tests run on 4 browsers and pass
 Analyse Kibana integration for visualising data
 
-Bugs to do:
-Improve github workflow in CI, it actually passes 10/10 but still fails in actions
-adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
-
 CHANGELOG and NOTES:
 Implementing commands support reduced suite execution time from 2:16s to 1:46s. 30s reduction or around 20%.
 'move to out of bounds' issue is often fixed by npm i
 
 SCENARIOS(completed):
+As a user i want to see breadcrumbs whereever I go
 As a user I want to add 10 products QTY from subcategory page to Cart
 As a guest user I want to checkout and log in during checkout
 As a guest user I want to checkout one item and register account during checkout
