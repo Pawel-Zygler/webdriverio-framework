@@ -42,10 +42,8 @@ describe("CHECKOUT - happy path - logged in", () => {
     });
 
     it("enters checkout from Home category dropdown on left side", async () => {
-      await commands.waitThenMoveTo(
-        HomePage.categoryMenuComponent.categoryMenuLink(
-          testData.categories.home.name
-        )
+      await commands.waitThenSelectCategoryAndOrSubcategory(
+        testData.categories.home.name
       );
 
       await commands.waitThenClick(
@@ -161,11 +159,12 @@ describe("CHECKOUT - happy path - not logged in", () => {
     });
 
     it("checks if user is in guest checkout step 1", async () => {
-      const expectedHeaderText = await testData.headers.guestCheckoutStepOne.toUpperCase();
+      const expectedHeaderText =
+        await testData.headers.guestCheckoutStepOne.toUpperCase();
 
-      await expect(SharedPageComponents.pageHeader(testData.headers.guestCheckoutStepOne)).toHaveText(
-        expectedHeaderText
-      );
+      await expect(
+        SharedPageComponents.pageHeader(testData.headers.guestCheckoutStepOne)
+      ).toHaveText(expectedHeaderText);
     });
 
     it("completes checkout as a guest", async () => {
@@ -173,11 +172,12 @@ describe("CHECKOUT - happy path - not logged in", () => {
 
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-      const expectedHeaderText = await testData.headers.checkoutConfirmation.toUpperCase();
+      const expectedHeaderText =
+        await testData.headers.checkoutConfirmation.toUpperCase();
 
-      await expect(SharedPageComponents.pageHeader(testData.headers.checkoutConfirmation)).toHaveText(
-        expectedHeaderText
-      );
+      await expect(
+        SharedPageComponents.pageHeader(testData.headers.checkoutConfirmation)
+      ).toHaveText(expectedHeaderText);
 
       await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
     });
@@ -220,8 +220,14 @@ describe("CHECKOUT - happy path - not logged in", () => {
 
       await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
 
-      await commands.waitThenSetValue(LoginPage.loginName, testData.registeredUser.loginName);
-      await commands.waitThenSetValue(LoginPage.password, testData.registeredUser.password);
+      await commands.waitThenSetValue(
+        LoginPage.loginName,
+        testData.registeredUser.loginName
+      );
+      await commands.waitThenSetValue(
+        LoginPage.password,
+        testData.registeredUser.password
+      );
 
       await commands.waitThenClick(LoginPage.loginButton);
     });
@@ -229,11 +235,14 @@ describe("CHECKOUT - happy path - not logged in", () => {
     it("completes checkout after logging in", async () => {
       await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
 
-      const expectedHeaderText = await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
+      const expectedHeaderText =
+        await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
 
-      await expect(SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)).toHaveText(
-        expectedHeaderText
-      );
+      await expect(
+        SharedPageComponents.pageHeader(
+          testData.headers.yourOrderHasBeenProcessed
+        )
+      ).toHaveText(expectedHeaderText);
 
       await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
     });
@@ -257,7 +266,9 @@ describe("CHECKOUT - happy path - not logged in", () => {
     it("adds separate shipping address and completes checkout", async () => {
       await CheckoutPage.fillInGuestCheckoutForm();
 
-      await commands.waitThenClick(CheckoutPage.separateShippingAddressCheckbox);
+      await commands.waitThenClick(
+        CheckoutPage.separateShippingAddressCheckbox
+      );
 
       await CheckoutPage.fillInSeparateShippingAddressForm();
 
@@ -265,11 +276,14 @@ describe("CHECKOUT - happy path - not logged in", () => {
 
       await commands.waitThenClick(CheckoutPage.confirmOrderBtn);
 
-      const expectedHeaderText = await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
+      const expectedHeaderText =
+        await testData.headers.yourOrderHasBeenProcessed.toUpperCase();
 
-      await expect(SharedPageComponents.pageHeader(testData.headers.yourOrderHasBeenProcessed)).toHaveText(
-        expectedHeaderText
-      );
+      await expect(
+        SharedPageComponents.pageHeader(
+          testData.headers.yourOrderHasBeenProcessed
+        )
+      ).toHaveText(expectedHeaderText);
     });
   });
 });

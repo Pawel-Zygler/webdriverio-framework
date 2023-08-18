@@ -16,18 +16,12 @@ describe("SPECIALS", () => {
     );
 
     await expect(
-      SharedPageComponents.pageHeader(
-        testData.headers.specialOffers
-      ).toBeDisplayed()
+      SharedPageComponents.pageHeader(testData.headers.specialOffers).toBeDisplayed()
     );
   });
 
   it("goes to Specials page from Home menu", async () => {
-    await commands.waitThenMoveTo(
-      HomePage.categoryMenuComponent.categoryMenuLink(
-        testData.categories.home.name
-      )
-    );
+    await commands.waitThenSelectCategoryAndOrSubcategory(testData.categories.home.name);
 
     await commands.waitThenClick(
       CategoryMenuComponent.homeCategorySubcategoryOption(
@@ -36,9 +30,7 @@ describe("SPECIALS", () => {
     );
 
     await expect(
-      SharedPageComponents.pageHeader(
-        testData.headers.specialOffers
-      ).toBeDisplayed()
+      SharedPageComponents.pageHeader(testData.headers.specialOffers).toBeDisplayed()
     );
   });
 });

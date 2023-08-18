@@ -24,20 +24,9 @@ describe("BREADCRUMBS - main category", () => {
 describe("BREADCRUMBS - subcategory", () => {
   beforeEach(async () => {
     await HomePage.open();
-
-    //debug this, chyba musze razem dawac waitThenMoveTo by dzialalo waitThenClick
-    //jak cos to w jedna komende toto dla fiksa
-    await commands.waitThenMoveTo(
-      HomePage.categoryMenuComponent.categoryMenuLink(
-        testData.categories.skincare.name
-      )
-    );
-
-    await commands.waitThenClick(
-      HomePage.categoryMenuComponent.subcategory(
-        testData.categories.skincare.name,
-        testData.categories.skincare.subcategoryEyes.name
-      )
+    await commands.waitThenSelectCategoryAndOrSubcategory(
+      testData.categories.skincare.name,
+      testData.categories.skincare.subcategoryEyes.name
     );
   });
 
@@ -45,7 +34,6 @@ describe("BREADCRUMBS - subcategory", () => {
     const text = await commands.waitThenGetText(
       SharedPageComponents.lastBreadcrumb
     );
-    await console.log(`heheheh` + text);
 
     await expect(text).toEqual(
       testData.categories.skincare.subcategoryEyes.name
