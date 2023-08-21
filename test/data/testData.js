@@ -167,14 +167,17 @@ const testData = {
         name: "Face",
         productOne: {
           name: "Creme Precieuse Nuit 50ml",
-          description:
-            "A luxurious, melting night cream to repair skin during sleep Features Polypeptides that boost production of collagen & elastin Improves skin elasticity & firmness Visibly reduces appearance of wrinkles, fine lines & brown spots Enriched with Bvlgari Gem Essence to restore radiance Skin appears smooth, energized & luminous in morning Perfect for all skin types",
+          description: "A luxurious, melting night cream to repair skin during sleep",
         },
         productTwo: "Total Moisture Facial Cream",
       },
       subcategoryEyes: {
         name: "Eyes",
-        productThree: "Eye Rejuvenating Serum",
+        productThree: {
+          name: "Eye Rejuvenating Serum",
+          description:
+            "The volcanic force of minerals concentrated in multi action skincare",
+        },
       },
     },
 

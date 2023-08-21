@@ -9,27 +9,34 @@ describe("SWITCH TO LIST VIEW", () => {
     await HomePage.open();
     await commands.waitThenSelectCategoryAndOrSubcategory(
       testData.categories.skincare.name,
-      testData.categories.skincare.subcategoryEyes.name
+      testData.categories.skincare.subcategoryFace.name
     );
   });
 
+  //checks if element in a list has part of this text
   it("checks if the items are in list view", async () => {
     await commands.waitThenClick(SharedPageComponents.listButton);
-    const elems = await ItemComponent.itemHeaderDescriptions;
+    const descriptions = await ItemComponent.itemHeaderDescriptions;
 
-    // const descriptions = await commands.waitThenGetText(elems);
+    let descriptionsAsTexts = [];
 
-    const descriptions = [];
-
-    for (let elem of elems) {
-      const description = await commands.waitThenGetText(elem);
-      descriptions.push(description);
+    for (let description of descriptions) {
+      const descriptionTexts = await commands.waitThenGetText(description);
+      descriptionsAsTexts.push(descriptionTexts);
     }
 
-    await expect(descriptions).toContain(
-      testData.categories.skincare.subcategoryFace.productOne.description
+    const isTextPresent = descriptionsAsTexts.some((description) =>
+      description.includes(
+        testData.categories.skincare.subcategoryFace.productOne.description
+      )
     );
+
+    await expect(isTextPresent).toBe(true);
   });
 
-  xit("checks if the items are in grid view", async () => {});
+  it("checks if the items are in grid view", async () => {
+    await commands.waitThenClick(SharedPageComponents.gridButton);
+    const descriptions = await ItemComponent.itemHeaderDescriptions;
+    await expect(descriptions[1]).not.toBeDisplayed();
+  });
 });

@@ -25,14 +25,14 @@ describe("ADD ITEMS - unhappy path", () => {
   });
 
   describe("SKINCARE", () => {
-    it(`it tries to add ${testData.categories.skincare.subcategoryEyes.productThree} which is out of stock from subcategory page`, async () => {
+    it(`it tries to add ${testData.categories.skincare.subcategoryEyes.productThree.name} which is out of stock from subcategory page`, async () => {
       await commands.waitThenSelectCategoryAndOrSubcategory(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryEyes.name
       );
 
       await commands.waitThenClickProduct(
-        testData.categories.skincare.subcategoryEyes.productThree
+        testData.categories.skincare.subcategoryEyes.productThree.name
       );
 
       const isOutOfStockBtn = await SharedPageComponents.outOfStockBtn;

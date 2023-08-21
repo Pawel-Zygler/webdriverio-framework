@@ -41,7 +41,6 @@ Improve github workflow in CI, it actually passes 10/10 but still fails in actio
 adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
 
 SCENARIOS(todo):
-As a user I want to see items in grid view and list view
 As a distributor, I want to buy 10 000 books.
 As a user I want to see if item has desired description
 As a user I want to see certain product has discount
