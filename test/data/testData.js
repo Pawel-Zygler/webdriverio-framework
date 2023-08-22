@@ -245,8 +245,7 @@ const testData = {
     Dove: {
       name: "Dove",
       showerTool: "Men+Care Active Clean Shower Tool",
-      showerToolReview:
-        "I thought since it was made for men that it was the perfect thing to go with the body wash. Its too small and doesn't lather up very well.",
+      showerToolReview: "I thought since it was made for men that it",
     },
   },
 };

@@ -41,6 +41,10 @@ class HomePage extends BasePage {
     await element.scrollIntoView();
     await element.waitForDisplayed();
   }
+
+  async brandsScrollingList(brand) {
+    return $(`//img[@alt='${brand}']`);
+  }
 }
 
 export default new HomePage();
