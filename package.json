@@ -25,6 +25,7 @@
     "chh": "npx wdio --spec ./test/specs/automation-test-store/checkout/checkout-happy.spec.js",
     "bh": "npx wdio --spec ./test/specs/automation-test-store/homePage/breadcrumbs.spec.js",
     "glh": "npx wdio --spec ./test/specs/automation-test-store/homePage/grid-list-item-views.spec.js",
+    "ifd": "npx wdio --spec ./test/specs/automation-test-store/homePage/item-featured-discount.spec.js",
     "wiremock": "cd /Users/pawelzygler/Documents && java -jar -verbose wiremock-standalone-2.35.0.jar"
   },
   "author": "pawel",

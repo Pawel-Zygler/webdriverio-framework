@@ -28,5 +28,21 @@ class ItemComponent {
   get itemHeaderDescriptions() {
     return $$(".productdiscrption");
   }
+
+  get discountPrice() {
+    return $(`//span[@class='productpageoldprice']`);
+  }
+
+  get finalPrice() {
+    return $(`//div[@class='productfilneprice']`);
+  }
+
+  async selectTab(tabName) {
+    return $(`//ul[@id='myTab']//li/a[contains(text(),'${tabName}')]`);
+  }
+
+  get reviewContent() {
+    return $(`//div[@class='content']`);
+  }
 }
 export default new ItemComponent();

@@ -143,6 +143,11 @@ const testData = {
         name: "Checkout",
       },
     },
+
+    featured: {
+      benefit: "BeneFit Girl Meets Pearl",
+    },
+
     apparel: {
       name: "Apparel & accessories",
       subcategoryTshirts: {
@@ -196,6 +201,7 @@ const testData = {
         productOne: "Euphoria Men Intense Eau De Toilette Spray",
       },
     },
+
     men: {
       name: "Men",
       subcategoryBodyAndShower: {
@@ -233,6 +239,15 @@ const testData = {
     orderDetails: "Order Details",
     forgotYourPassword: "Forgot Your Password?",
     guestCheckoutStepOne: "Guest Checkout - Step 1",
+  },
+
+  brands: {
+    Dove: {
+      name: "Dove",
+      showerTool: "Men+Care Active Clean Shower Tool",
+      showerToolReview:
+        "I thought since it was made for men that it was the perfect thing to go with the body wash. Its too small and doesn't lather up very well.",
+    },
   },
 };
 

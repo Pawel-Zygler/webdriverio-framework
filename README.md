@@ -33,17 +33,13 @@ npm run wiremock
 More scripts in package.js
 
 Bugs to do:
-fix add items to cart getTextsFromItemsAttributesInBasket - this function si not hjere
-
+fix add items to cart getTextsFromItemsAttributesInBasket - this function is not here
 Improve github workflow in CI, it actually passes 10/10 but still fails in actions
-adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
+adds subcategory [object Object] products with clicking dropdown and validates items are in basket
 Improve github workflow in CI, it actually passes 10/10 but still fails in actions
-adds subcategory [object Object] products with clicking dropdown and validates items are in basket - resolve
+adds subcategory [object Object] products with clicking dropdown and validates items are in basket
 
 SCENARIOS(todo):
-As a distributor, I want to buy 10 000 books.
-As a user I want to see if item has desired description
-As a user I want to see certain product has discount
 As a user I want to see if item has review https://automationteststore.com/index.php?rt=product/product&manufacturer_id=18&product_id=77
 As a user I want to see if tag has correct items
 Increase log data in terminal
@@ -60,6 +56,8 @@ Implementing commands support reduced suite execution time from 2:16s to 1:46s. 
 'move to out of bounds' issue is often fixed by npm i
 
 SCENARIOS(completed):
+As a user I want to see certain product has discount
+As a user I want to see if item has desired description
 As a user i want to see breadcrumbs whereever I go
 As a user I want to add 10 products QTY from subcategory page to Cart
 As a guest user I want to checkout and log in during checkout
