@@ -14,6 +14,8 @@ To run single test, login happy path in this case:
 npm run lh
 ```
 
+(check [package.json](package.json)) for more single spec shortcuts.
+
 If you want to enable/disable headless, comment out browser setting in wdio.conf file.
 
 To run the entire Automation Test Store test suite, use the following command:
