@@ -1,15 +1,11 @@
-utomation tests for Automation Test Store in js and webdriver.io.
+Automation tests for Automation Test Store in js and webdriver.io, node.js.
 
-Setup
-Navigate to the project's root folder.
-Install the required packages:
+Go to root and install dependencies:
 
 ```bash
 npm i
 ```
 
-Running Tests
-Run All Tests
 To run the entire Automation Test Store test suite, use the following command:
 
 ```bash
