@@ -8,26 +8,16 @@ Go to root and install dependencies:
 npm i
 ```
 
-enable/disable headless in wdio.conf file
+```bash to run single test, login happy path in this case:
+npm run lh
+```
+
+If you want to enable/disable headless, comment out browser setting in wdio.conf file.
+
 To run the entire Automation Test Store test suite, use the following command:
 
 ```bash
 npm run autostore
-```
-
-Run Specific Tests
-Happy Path Login Test
-To run only the login spec for the happy path:
-
-```bash run login happy path test
-npm run lh
-```
-
-Unhappy Path Login Test
-To run only the login spec for the unhappy path:
-
-```bash
-npm run luh
 ```
 
 WireMock
