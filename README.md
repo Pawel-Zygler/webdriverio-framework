@@ -8,7 +8,9 @@ Go to root and install dependencies:
 npm i
 ```
 
-```bash to run single test, login happy path in this case:
+To run single test, login happy path in this case:
+
+```bash
 npm run lh
 ```
 
