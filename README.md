@@ -1,4 +1,4 @@
-Automation tests for Automation Test Store in js and webdriver.io, node.js.
+Test store framework done using: node.js, webdriver.io and js
 
 Website under test: automationteststore.com
 
