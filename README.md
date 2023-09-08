@@ -22,8 +22,7 @@ To run the entire Automation Test Store test suite, use the following command:
 npm run autostore
 ```
 
-WireMock
-To run WireMock, execute the following command:
+Run wiremock
 
 ```bash
 npm run wiremock
