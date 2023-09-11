@@ -44,7 +44,7 @@ describe("CART - happy path", () => {
         SharedPageComponents.pageHeader(testData.headers.shoppingCart)
       ).toBeDisplayed();
 
-      let texts = await CartPage.getTextsFromItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInCart();
       //added this pause due to flaky test, possibly to improve
       await browser.pause(3000);
       await expect(texts).toContain(testData.categories.apparel.subcategoryShoes.shoeOne);
@@ -95,7 +95,7 @@ describe("CART - happy path", () => {
         testData.categories.apparel.subcategoryTshirts.tshirtTwo
       );
 
-      let texts = await CartPage.getTextsFromItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInCart();
       await expect(texts).toContain(
         testData.categories.apparel.subcategoryTshirts.tshirtOne
       );
@@ -113,7 +113,7 @@ describe("CART - happy path", () => {
         testData.categories.books.subcategoryPaperback.productOne.name
       );
 
-      let texts = await CartPage.getTextsFromItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInCart();
       await expect(texts).toContain(
         testData.categories.books.subcategoryPaperback.productOne.name
       );
@@ -128,7 +128,7 @@ describe("CART - happy path", () => {
         testData.categories.fragrance.subcategoryMen.productOne.name
       );
 
-      let texts = await CartPage.getTextsFromItemsInBasket();
+      let texts = await CartPage.getTextsFromItemsInCart();
       await expect(texts).toContain(
         testData.categories.fragrance.subcategoryMen.productOne.name
       );

@@ -1,13 +1,5 @@
-More scripts in package.js
-
-Bugs to do:
-fix add items to cart getTextsFromItemsAttributesInBasket - this function is not here
-Improve github workflow in CI, it actually passes 10/10 but still fails in actions
-adds subcategory [object Object] products with clicking dropdown and validates items are in basket
-Improve github workflow in CI, it actually passes 10/10 but still fails in actions
-adds subcategory [object Object] products with clicking dropdown and validates items are in basket
-
-SCENARIOS(todo):
+SCENARIOS and TODO:
+Add assertions in checkout happy (check other non-assertions files)
 Fix brands scrolling list undefined issue
 As a user I want to see if tag has correct items
 Increase log data in terminal
@@ -22,6 +14,14 @@ Analyse Kibana integration for visualising data
 CHANGELOG and NOTES:
 Implementing commands support reduced suite execution time from 2:16s to 1:46s. 30s reduction or around 20%.
 'move to out of bounds' issue is often fixed by npm i
+
+
+Bugs to do:
+fix add items to cart getTextsFromItemsAttributesInBasket - this function is not here
+Improve github workflow in CI, it actually passes 10/10 but still fails in actions
+adds subcategory [object Object] products with clicking dropdown and validates items are in basket
+Improve github workflow in CI, it actually passes 10/10 but still fails in actions
+adds subcategory [object Object] products with clicking dropdown and validates items are in basket
 
 SCENARIOS(completed):
 As a user I want to see if item has review https://automationteststore.com/index.php?rt=product/product&manufacturer_id=18&product_id=77

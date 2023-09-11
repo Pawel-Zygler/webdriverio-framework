@@ -112,9 +112,15 @@ class CheckoutPage {
   }
 
   async fillInSeparateShippingAddressForm() {
-    await commands.waitThenSetValue(this.firstNameShipping, testData.uniqueUser.firstName);
+    await commands.waitThenSetValue(
+      this.firstNameShipping,
+      testData.uniqueUser.firstName
+    );
     await commands.waitThenSetValue(this.lastNameShipping, testData.uniqueUser.lastName);
-    await commands.waitThenSetValue(this.addressOneShipping, testData.uniqueUser.addressOne);
+    await commands.waitThenSetValue(
+      this.addressOneShipping,
+      testData.uniqueUser.addressOne
+    );
     await commands.waitThenSetValue(this.cityShipping, testData.uniqueUser.city);
     await this.regionStateShipping.selectByVisibleText(testData.uniqueUser.regionState);
     await commands.waitThenSetValue(this.zipCodeShipping, testData.uniqueUser.zipCode);

@@ -13,9 +13,7 @@ describe("BREADCRUMBS - main category", () => {
   });
 
   it("checks if Apparel crumb is visible", async () => {
-    const text = await commands.waitThenGetText(
-      SharedPageComponents.lastBreadcrumb
-    );
+    const text = await commands.waitThenGetText(SharedPageComponents.lastBreadcrumb);
 
     await expect(text).toEqual(testData.categories.apparel.name);
   });
@@ -31,12 +29,8 @@ describe("BREADCRUMBS - subcategory", () => {
   });
 
   it("clicks Apparel item and checks if next crumb is visible", async () => {
-    const text = await commands.waitThenGetText(
-      SharedPageComponents.lastBreadcrumb
-    );
+    const text = await commands.waitThenGetText(SharedPageComponents.lastBreadcrumb);
 
-    await expect(text).toEqual(
-      testData.categories.skincare.subcategoryEyes.name
-    );
+    await expect(text).toEqual(testData.categories.skincare.subcategoryEyes.name);
   });
 });

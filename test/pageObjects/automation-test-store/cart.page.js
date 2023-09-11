@@ -37,9 +37,7 @@ class CartPage extends BasePage {
   }
 
   itemsInBasketAttributes(productName) {
-    return $$(
-      `//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`
-    );
+    return $$(`//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`);
   }
 
   async getTextsFromItemsAttributesInCart(productName) {
@@ -64,13 +62,7 @@ class CartPage extends BasePage {
     return texts;
   }
 
-  async addItemToCart(
-    mainCategory,
-    subcategory,
-    item,
-    size = null,
-    color = null
-  ) {
+  async addItemToCart(mainCategory, subcategory, item, size = null, color = null) {
     await commands.waitThenMoveTo(
       HomePage.categoryMenuComponent.categoryMenuLink(mainCategory)
     );
@@ -110,7 +102,7 @@ class CartPage extends BasePage {
       try {
         await this.deleteItemBtn.click();
       } catch (error) {
-        // Przerwij pętlę, jeśli nie można znaleźć przycisku "Delete"
+        // Stop the loop if you cannot find "Delete" button
         break;
       }
     }

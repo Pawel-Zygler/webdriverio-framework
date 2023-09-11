@@ -102,7 +102,6 @@ describe("CHECKOUT - happy path - logged in", () => {
 
       let orderNumber = await commands.waitThenGetText(CheckoutPage.orderNumber);
 
-      await console.log(orderNumber);
       await assert(regex.test(orderNumber));
     });
   });
