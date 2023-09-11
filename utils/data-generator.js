@@ -1,3 +1,5 @@
+//for commerce project I'd use some lib to generate this, for this project I wanted to play with native code a bit
+
 class DataGenerator {
   generateRandomString(length, type = "alphanumeric") {
     const chars = {

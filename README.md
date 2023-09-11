@@ -8,10 +8,10 @@ Go to root and install dependencies:
 npm i
 ```
 
-To run single test, login happy path in this case:
+To run single test:
 
 ```bash
-npm run lh
+npx wdio --spec test/specs/automation-test-store/checkout/checkout-happy.spec.js
 ```
 
 (check [package.json](package.json)) for more single spec shortcuts.
