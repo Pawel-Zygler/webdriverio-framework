@@ -12,7 +12,7 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.skincare.name}`, async () => {
-    it(`adds subcategory ${testData.categories.skincare.subcategoryFace.name} products and validates cart total`, async () => {
+    it(`adds subcategory face products and validates cart total`, async () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
@@ -32,8 +32,7 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.apparel.name}`, () => {
-    //move target out of bounds issue here ocasionally when running all tests at once, flaky to improve
-    it(`adds subcategory ${testData.categories.apparel.subcategoryShoes} products with clicking dropdown and validates items are in basket`, async () => {
+    it(`adds subcategory shoes products with clicking dropdown and validates items are in basket`, async () => {
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
@@ -45,7 +44,7 @@ describe("CART - happy path", () => {
       ).toBeDisplayed();
 
       let texts = await CartPage.getTextsFromItemsInCart();
-      //added this pause due to flaky test, possibly to improve
+
       await browser.pause(3000);
       await expect(texts).toContain(testData.categories.apparel.subcategoryShoes.shoeOne);
     });
@@ -58,14 +57,13 @@ describe("CART - happy path", () => {
         testData.categories.apparel.subcategoryShoes.shoeTwoSize40
       );
 
-      let texts = await CartPage.getTextsFromItemsAttributesInBasket(
+      let texts = await CartPage.getTextsFromItemsAttributesInCart(
         testData.categories.apparel.subcategoryShoes.shoeTwo
       );
       await texts.includes(testData.categories.apparel.subcategoryShoes.shoeTwoSize40);
     });
 
     it(`adds ${testData.categories.apparel.subcategoryShoes.shoeGreenColor} shoe`, async () => {
-      //debug text.includes, possibly flaky
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
@@ -74,7 +72,7 @@ describe("CART - happy path", () => {
         testData.categories.apparel.subcategoryShoes.shoeGreenColor
       );
 
-      let texts = await CartPage.getTextsFromItemsAttributesInBasket(
+      let texts = await CartPage.getTextsFromItemsAttributesInCart(
         testData.categories.apparel.subcategoryShoes.shoeThree
       );
       await texts.includes(testData.categories.apparel.subcategoryShoes.shoeGreenColor);
@@ -82,6 +80,7 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.apparel.name}`, () => {
+    //move out of bounds ocasionally, not when running single it block test
     it(`adds subcategory ${testData.categories.apparel.subcategoryTshirts.name} products and checks if items are in cart`, async () => {
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
@@ -106,7 +105,7 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.books.name}`, () => {
-    it(`adds a subcategory ${testData.categories.books.subcategoryPaperback.name} products and validates item is in basket`, async () => {
+    it.only(`adds a subcategory ${testData.categories.books.subcategoryPaperback.name} products and validates item is in cart`, async () => {
       await CartPage.addItemToCart(
         testData.categories.books.name,
         testData.categories.books.subcategoryPaperback.name,
