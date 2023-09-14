@@ -105,7 +105,7 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.books.name}`, () => {
-    it.only(`adds a subcategory ${testData.categories.books.subcategoryPaperback.name} products and validates item is in cart`, async () => {
+    it(`adds a subcategory ${testData.categories.books.subcategoryPaperback.name} products and validates item is in cart`, async () => {
       await CartPage.addItemToCart(
         testData.categories.books.name,
         testData.categories.books.subcategoryPaperback.name,
