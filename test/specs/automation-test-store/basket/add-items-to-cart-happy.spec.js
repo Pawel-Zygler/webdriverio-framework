@@ -80,7 +80,6 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.apparel.name}`, () => {
-    //move out of bounds ocasionally, not when running single it block test
     it(`adds subcategory ${testData.categories.apparel.subcategoryTshirts.name} products and checks if items are in cart`, async () => {
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
@@ -109,12 +108,12 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.books.name,
         testData.categories.books.subcategoryPaperback.name,
-        testData.categories.books.subcategoryPaperback.productOne.name
+        testData.categories.books.subcategoryPaperback.productOne
       );
 
       let texts = await CartPage.getTextsFromItemsInCart();
       await expect(texts).toContain(
-        testData.categories.books.subcategoryPaperback.productOne.name
+        testData.categories.books.subcategoryPaperback.productOne
       );
     });
   });
@@ -124,12 +123,12 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.fragrance.name,
         testData.categories.fragrance.subcategoryMen.name,
-        testData.categories.fragrance.subcategoryMen.productOne.name
+        testData.categories.fragrance.subcategoryMen.productOne
       );
 
       let texts = await CartPage.getTextsFromItemsInCart();
       await expect(texts).toContain(
-        testData.categories.fragrance.subcategoryMen.productOne.name
+        testData.categories.fragrance.subcategoryMen.productOne
       );
     });
   });
@@ -152,7 +151,7 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.books.name,
         testData.categories.books.subcategoryPaperback.name,
-        testData.categories.books.subcategoryPaperback.productOne.name
+        testData.categories.books.subcategoryPaperback.productOne
       );
     });
 

@@ -2,7 +2,6 @@ import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import commands from "../../../../utils/commands.js";
 import ItemComponent from "../../../pageObjects/automation-test-store/components/item.comp";
 import testData from "../../../data/testData.js";
-import { assert } from "chai";
 
 const reviewsTab = "Reviews";
 

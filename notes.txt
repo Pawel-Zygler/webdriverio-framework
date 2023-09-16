@@ -6,8 +6,6 @@ As a user I want to see if tag has correct items
 Increase log data in terminal
 
 
-
-
 npx wdio --spec test/specs/automation-test-store/**/add-items-to-cart-happy.spec.js
 
 
