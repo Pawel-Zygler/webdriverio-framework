@@ -1,7 +1,4 @@
 SCENARIOS and TODO:
-13.11 - continue work on add items to cart, failing tests
-Add assertions in checkout happy (check other non-assertions files)
-Fix brands scrolling list undefined issue
 As a user I want to see if tag has correct items
 Increase log data in terminal
 

@@ -247,6 +247,10 @@ const testData = {
       showerTool: "Men+Care Active Clean Shower Tool",
       showerToolReview: "I thought since it was made for men that it",
     },
+    Pantene: {
+      name: "Pantene",
+      hairShine: "Pro-V Color Hair Solutions Color Preserve Shine Conditioner",
+    },
   },
 };
 
