@@ -171,7 +171,7 @@ export const config = {
       "allure",
       {
         outputDir: "allure-results",
-        disableWebdriverStepsReporting: false,
+        disableWebdriverStepsReporting: true,
         disableWebdriverScreenshotsReporting: false,
       },
     ],
@@ -197,7 +197,7 @@ export const config = {
    * @param {Object} config wdio configuration object
    * @param {Array.<Object>} capabilities list of capabilities details
    */
-  onPrepare: function (config, capabilities) {
+  onPrepare: function () {
     if (fs.existsSync("./allure-results")) {
       fs.rmSync("./allure-results", { recursive: true });
     }
@@ -261,7 +261,7 @@ export const config = {
    * @param {String} commandName hook command name
    * @param {Array} args arguments that command would receive
    */
-  beforeCommand: function (commandName, args) {
+  beforeCommand: function () {
     Object.keys(commands).forEach((key) => {
       browser.addCommand(key, commands[key]);
     });
@@ -306,11 +306,7 @@ export const config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  afterTest: async function (
-    test,
-    context,
-    { error, result, duration, passed, retries }
-  ) {
+  afterTest: async function ({ error }) {
     if (error) {
       await browser.takeScreenshot();
     }
@@ -361,7 +357,7 @@ export const config = {
     const reportError = new Error("Could not generate Allure report");
     const generation = allure(["generate", "allure-results", "--clean"]);
     return new Promise((resolve, reject) => {
-      const generationTimeout = setTimeout(() => reject(reportError), 5000);
+      const generationTimeout = setTimeout(() => reject(reportError), 15000);
 
       generation.on("exit", function (exitCode) {
         clearTimeout(generationTimeout);
