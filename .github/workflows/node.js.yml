@@ -29,3 +29,9 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm run autostore
+
+    - name: Archive Allure report
+      uses: actions/upload-artifact@v2
+      with:
+        name: allure-report
+        path: allure-results/
