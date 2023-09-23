@@ -166,6 +166,19 @@ const testData = {
       },
     },
 
+    makeup: {
+      name: "Makeup",
+      subcategoryCheeks: {
+        name: "Cheeks",
+        productOne: {
+          name: "BeneFit Girl Meets Pearl",
+        },
+        productTwo: {
+          name: "Skinsheen Bronzer Stick",
+        },
+      },
+    },
+
     skincare: {
       name: "Skincare",
       subcategoryFace: {
@@ -251,6 +264,10 @@ const testData = {
       name: "Pantene",
       hairShine: "Pro-V Color Hair Solutions Color Preserve Shine Conditioner",
     },
+  },
+
+  tags: {
+    cheeks: "cheeks",
   },
 };
 

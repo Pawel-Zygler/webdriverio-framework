@@ -44,5 +44,9 @@ class ItemComponent {
   get reviewContent() {
     return $(`//div[@class='content']`);
   }
+
+  tagName(tagName) {
+    return $(`//li//a[contains(text(),'${tagName}')]`);
+  }
 }
 export default new ItemComponent();
