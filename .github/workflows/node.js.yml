@@ -31,15 +31,4 @@ jobs:
           npm run build --if-present
 
       - name: Run tests and generate Allure report
-        run: |
-          npm run autostore
-          allure generate allure-results --clean
-        continue-on-error: true
-
-      - name: Archive Allure report
-        uses: actions/upload-artifact@v2
-        with:
-          name: allure-artifacts
-          path: |
-            allure-report/
-            allure-results/
+        run: npm run autostore
