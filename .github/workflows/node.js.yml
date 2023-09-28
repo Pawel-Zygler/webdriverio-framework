@@ -39,5 +39,7 @@ jobs:
       - name: Archive Allure report
         uses: actions/upload-artifact@v2
         with:
-          name: allure-report
-          path: allure-report/
+          name: allure-artifacts
+          path: |
+            allure-report/
+            allure-results/
