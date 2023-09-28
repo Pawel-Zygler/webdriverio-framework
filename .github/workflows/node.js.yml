@@ -33,6 +33,7 @@ jobs:
         run: |
           sudo apt update
           sudo apt install -y allure
+          whereis allure  # Sprawdź lokalizację
           
       - name: Update PATH for npm global packages
         run: echo "$(npm bin -g)/allure-commandline" >> $GITHUB_PATH
