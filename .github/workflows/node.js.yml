@@ -38,6 +38,9 @@ jobs:
       - name: Find Allure executable
         run: find /usr/share/allure -name allure
 
+      - name: Find Allure executable
+        run: find / -name allure 2>/dev/null
+
       - name: Update PATH for npm global packages
         run: echo "$(npm bin -g)/allure-commandline" >> $GITHUB_PATH
 
