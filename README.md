@@ -36,7 +36,7 @@ To run wiremock export path to where the wiremock jar is located. Such as:
 export WIREMOCK_PATH="/Users/jondoe/Documents"
 ```
 
-To display report run tests and:
+To display report run tests locally and:
 
 ```bash
 npm run report

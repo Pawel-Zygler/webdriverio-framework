@@ -1,4 +1,6 @@
 SCENARIOS and TODO:
+one est is flaky, check
+patch1 branch, inprobbaly exit prevoius test wrotng without logout and this?
 
 As a user I want to see if tag has correct items
 Increase log data in terminal
