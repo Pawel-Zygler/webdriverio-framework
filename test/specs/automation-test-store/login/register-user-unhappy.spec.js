@@ -17,9 +17,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       const header = await commands.waitThenGetText(
         await SharedPageComponents.pageHeader(testData.headers.createAccount)
       );
-      await expect(header).toContain(
-        testData.headers.createAccount.toUpperCase()
-      );
+      await expect(header).toContain(testData.headers.createAccount.toUpperCase());
     });
 
     //not sure if this is not flaky
@@ -67,10 +65,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
 
     it("throws error for email", async () => {
-      await commands.waitThenSetValue(
-        RegisterPage.email,
-        testData.userInvalidMin.email
-      );
+      await commands.waitThenSetValue(RegisterPage.email, testData.userInvalidMin.email);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
@@ -103,10 +98,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
 
     //prod bug, has no validations
     xit("[prod bug] throws error for fax number", async () => {
-      await commands.waitThenSetValue(
-        RegisterPage.fax,
-        testData.userInvalidMin.fax
-      );
+      await commands.waitThenSetValue(RegisterPage.fax, testData.userInvalidMin.fax);
 
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
@@ -137,10 +129,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
 
     it("throws error for city field", async () => {
-      await commands.waitThenSetValue(
-        RegisterPage.city,
-        testData.userInvalidMin.city
-      );
+      await commands.waitThenSetValue(RegisterPage.city, testData.userInvalidMin.city);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
@@ -197,10 +186,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
 
     it("throws error for login name taken", async () => {
-      await commands.waitThenSetValue(
-        RegisterPage.loginName,
-        testData.user.loginName
-      );
+      await commands.waitThenSetValue(RegisterPage.loginName, testData.user.loginName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
@@ -250,13 +236,10 @@ describe("REGISTER COMPONENT - unhappy path", () => {
       for (const eachField in testData.user) {
         if (
           RegisterPage[eachField] &&
-          typeof commands.waitThenSetValue(RegisterPage[eachField]) ===
-            "function"
+          typeof commands.waitThenSetValue(RegisterPage[eachField]) === "function"
         ) {
           if (eachField === "regionState" || eachField === "country") {
-            await RegisterPage[eachField].selectByVisibleText(
-              testData.user[eachField]
-            );
+            await RegisterPage[eachField].selectByVisibleText(testData.user[eachField]);
           } else {
             await commands.waitThenClick(
               RegisterPage[eachField],
@@ -308,10 +291,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
 
     it("throws error for email", async () => {
-      await commands.waitThenSetValue(
-        RegisterPage.email,
-        testData.userInvalidMax.email
-      );
+      await commands.waitThenSetValue(RegisterPage.email, testData.userInvalidMax.email);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
@@ -339,18 +319,13 @@ describe("REGISTER COMPONENT - unhappy path", () => {
 
     //prod bug, missing validations
     xit("[prod bug] throws error for fax number", async () => {
-      await commands.waitThenSetValue(
-        RegisterPage.fax,
-        testData.userInvalidMax.fax
-      );
+      await commands.waitThenSetValue(RegisterPage.fax, testData.userInvalidMax.fax);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
         testData.registerValidationErrors.fax
       );
-      await expect(errorElement).toHaveText(
-        testData.registerValidationErrors.fax
-      );
+      await expect(errorElement).toHaveText(testData.registerValidationErrors.fax);
     });
 
     it("throws error for addres one field", async () => {
@@ -369,10 +344,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
 
     it("throws error for city field", async () => {
-      await commands.waitThenSetValue(
-        RegisterPage.city,
-        testData.userInvalidMax.city
-      );
+      await commands.waitThenSetValue(RegisterPage.city, testData.userInvalidMax.city);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
@@ -429,10 +401,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
 
     it("throws error for login name taken", async () => {
-      await commands.waitThenSetValue(
-        RegisterPage.loginName,
-        testData.user.loginName
-      );
+      await commands.waitThenSetValue(RegisterPage.loginName, testData.user.loginName);
       await commands.waitThenClick(await SharedPageComponents.continueButton);
 
       const errorElement = await RegisterPage.errorElement(
