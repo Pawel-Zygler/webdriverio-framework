@@ -5,8 +5,6 @@ import commands from "../../../../utils/commands.js";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("CART - happy path", () => {
-  this.retries(1);
-
   beforeEach(async () => {
     await HomePage.open();
     await HomePage.bannerSlide.waitForDisplayed();
@@ -34,6 +32,7 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.apparel.name}`, () => {
+    this.retries(1);
     it(`adds subcategory shoes products with clicking dropdown and validates items are in basket`, async () => {
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
@@ -82,6 +81,7 @@ describe("CART - happy path", () => {
   });
 
   describe(`${testData.categories.apparel.name}`, () => {
+    this.retries(1);
     it(`adds subcategory ${testData.categories.apparel.subcategoryTshirts.name} products and checks if items are in cart`, async () => {
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
