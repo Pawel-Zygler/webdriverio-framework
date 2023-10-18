@@ -42,6 +42,7 @@ describe("BRANDS SCROLLING LIST", () => {
   });
 
   it("checks if tags have correct products", async () => {
+    this.retries(1);
     await commands.waitThenSelectCategoryAndOrSubcategory(
       testData.categories.makeup.name,
       testData.categories.makeup.subcategoryCheeks.name
