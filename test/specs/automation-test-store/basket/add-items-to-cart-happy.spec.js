@@ -5,6 +5,8 @@ import commands from "../../../../utils/commands.js";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("CART - happy path", () => {
+  this.retries(1);
+
   beforeEach(async () => {
     await HomePage.open();
     await HomePage.bannerSlide.waitForDisplayed();

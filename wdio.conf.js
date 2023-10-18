@@ -71,7 +71,7 @@ export const config = {
           "--incognito",
           "--headless",
           "--start-maximize",
-          "--window-size=1920,1080",
+          "--window-size=1920,1280",
         ],
       },
       timeouts: {
@@ -86,7 +86,11 @@ export const config = {
     //   maxInstances: 2,
     //   browserName: "firefox",
     //   "moz:firefoxOptions": {
-    //     args: ["-private", "-headless"],
+    //     args: [
+    //       "-private",
+    //       //"-headless",
+    //       "-window-size=1920,1280",
+    //     ],
     //   },
     //   timeouts: {
     //     pageLoad: 30000,
@@ -177,7 +181,6 @@ export const config = {
     ],
   ],
 
-  //
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
   mochaOpts: {
@@ -186,7 +189,7 @@ export const config = {
     retry: 1,
   },
   //
-  // =====
+  // =====s
   // Hooks
   // =====
   // WebdriverIO provides several hooks you can use to interfere with the test process in order to enhance
@@ -276,11 +279,7 @@ export const config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  //still was not actually going to that home page, dunno why, so I have it in beforeEach on each test.
   // beforeTest: async function () {
-  //   await HomePage.open();
-  //   await HomePage.scrollToLogo();
-  //   await browser.maximizeWindow();
   // },
 
   /**
