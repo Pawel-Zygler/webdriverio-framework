@@ -1,5 +1,2 @@
-fail test - jest
-retry on fail - nie ma ustawioen w mocha opts
-ustawi inne retry - inna metoda niz mocha
 show retry in report
 
