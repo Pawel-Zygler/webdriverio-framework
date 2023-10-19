@@ -5,7 +5,7 @@ import testData from "../../../data/testData";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 import commands from "../../../../utils/commands";
 
-describe("REGISTER COMPONENT - happy path", () => {
+describe("REGISTER COMPONENT - happy path", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(await TopMenuComponent.loginOrRegister);
@@ -33,7 +33,10 @@ describe("REGISTER COMPONENT - happy path", () => {
     await RegisterPage.country.selectByVisibleText(testData.user.country);
     await commands.waitThenSetValue(RegisterPage.loginName, testData.user.loginName);
     await commands.waitThenSetValue(RegisterPage.password, testData.user.password);
-    await commands.waitThenSetValue(RegisterPage.passwordConfirm, testData.user.passwordConfirm);
+    await commands.waitThenSetValue(
+      RegisterPage.passwordConfirm,
+      testData.user.passwordConfirm
+    );
 
     await commands.waitThenClick(RegisterPage.privacyPolicyAgree);
     //I go to success page instead of actualyl registering a user
@@ -42,7 +45,9 @@ describe("REGISTER COMPONENT - happy path", () => {
     await browser.url("https://automationteststore.com/index.php?rt=account/success");
 
     await expect(
-      await commands.waitThenGetText(SharedPageComponents.pageHeader(testData.headers.accountCreated))
+      await commands.waitThenGetText(
+        SharedPageComponents.pageHeader(testData.headers.accountCreated)
+      )
     ).toContain(testData.headers.accountCreated.toUpperCase());
   });
 });

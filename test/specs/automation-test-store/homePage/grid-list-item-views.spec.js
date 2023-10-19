@@ -4,7 +4,7 @@ import commands from "../../../../utils/commands.js";
 import testData from "../../../data/testData.js";
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 
-describe("SWITCH TO LIST VIEW", () => {
+describe("SWITCH TO LIST VIEW", async () => {
   before(async () => {
     await HomePage.open();
     await commands.waitThenSelectCategoryAndOrSubcategory(

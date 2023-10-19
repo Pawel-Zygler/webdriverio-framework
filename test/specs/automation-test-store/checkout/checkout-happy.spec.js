@@ -12,8 +12,8 @@ import CheckoutPage from "../../../pageObjects/automation-test-store/checkout.pa
 import assert from "assert";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 
-describe("CHECKOUT - happy path - logged in", () => {
-  describe("ENTER CHECKOUT FROM 3 LOCATIONS", () => {
+describe("CHECKOUT - happy path - logged in", async () => {
+  describe("ENTER CHECKOUT FROM 3 LOCATIONS", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
@@ -67,7 +67,7 @@ describe("CHECKOUT - happy path - logged in", () => {
     });
   });
 
-  describe("ONE ITEM - as logged in", () => {
+  describe("ONE ITEM - as logged in", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
@@ -106,7 +106,7 @@ describe("CHECKOUT - happy path - logged in", () => {
     });
   });
 
-  describe("CHECKOUT AND GO TO INVOICE PAGE", () => {
+  describe("CHECKOUT AND GO TO INVOICE PAGE", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
@@ -135,8 +135,8 @@ describe("CHECKOUT - happy path - logged in", () => {
   });
 });
 
-describe("CHECKOUT - happy path - not logged in", () => {
-  describe("AS A GUEST USER", () => {
+describe("CHECKOUT - happy path - not logged in", async () => {
+  describe("AS A GUEST USER", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await CartPage.addItemToCart(
@@ -177,7 +177,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
     });
   });
 
-  describe("REGISTER USER DURING CHECKOUT", () => {
+  describe("REGISTER USER DURING CHECKOUT", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await CartPage.addItemToCart(
@@ -203,7 +203,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
     });
   });
 
-  describe("LOGIN DURING CHECKOUT", () => {
+  describe("LOGIN DURING CHECKOUT", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await CartPage.addItemToCart(
@@ -240,7 +240,7 @@ describe("CHECKOUT - happy path - not logged in", () => {
     });
   });
 
-  describe("ADD SEPARATE ADDRESS DURING GUEST CHECKOUT", () => {
+  describe("ADD SEPARATE ADDRESS DURING GUEST CHECKOUT", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await CartPage.addItemToCart(

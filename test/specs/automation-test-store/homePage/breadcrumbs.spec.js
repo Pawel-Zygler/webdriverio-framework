@@ -4,7 +4,7 @@ import testData from "../../../data/testData.js";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 import CategoryMenuComponent from "../../../pageObjects/automation-test-store/components/category-menu.comp";
 
-describe("BREADCRUMBS - main category", () => {
+describe("BREADCRUMBS - main category", async () => {
   before(async () => {
     await HomePage.open();
     await commands.waitThenClick(
@@ -19,7 +19,7 @@ describe("BREADCRUMBS - main category", () => {
   });
 });
 
-describe("BREADCRUMBS - subcategory", () => {
+describe("BREADCRUMBS - subcategory", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenSelectCategoryAndOrSubcategory(

@@ -7,8 +7,8 @@ import commands from "../../../../utils/commands";
 import CategoryMenuComponent from "../../../../test/pageObjects/automation-test-store/components/category-menu.comp";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
-describe("LOGIN PAGE - happy path", () => {
-  describe("LOGIN PAGE - happy path", () => {
+describe("LOGIN PAGE - happy path", async () => {
+  describe("LOGIN PAGE - happy path", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await LoginPage.loginRegisteredUser();
@@ -42,7 +42,7 @@ describe("LOGIN PAGE - happy path", () => {
     });
   });
 
-  describe("LOGIN THROUGH HOME DROPDOWN - happy path", () => {
+  describe("LOGIN THROUGH HOME DROPDOWN - happy path", async () => {
     before(async () => {
       await HomePage.open();
       await HomePage.bannerSlide.waitForDisplayed();
@@ -59,9 +59,7 @@ describe("LOGIN PAGE - happy path", () => {
           testData.categories.home.subcategoryAccount.name
         )
       );
-      await commands.waitThenClick(
-        CategoryMenuComponent.homeCategoryDropdownLoginBtn
-      );
+      await commands.waitThenClick(CategoryMenuComponent.homeCategoryDropdownLoginBtn);
 
       await commands.waitThenSetValue(
         LoginPage.loginName,
@@ -88,15 +86,11 @@ describe("LOGIN PAGE - happy path", () => {
       );
 
       await commands.waitThenClick(
-        TopMenuComponent.topMenuLink(
-          testData.topMenu.account.subcategoryLoginBtn
-        )
+        TopMenuComponent.topMenuLink(testData.topMenu.account.subcategoryLoginBtn)
       );
 
       await expect(
-        SharedPageComponents.pageHeader(
-          testData.headers.accountLogin
-        ).toBeDisplayed()
+        SharedPageComponents.pageHeader(testData.headers.accountLogin).toBeDisplayed()
       );
     });
   });

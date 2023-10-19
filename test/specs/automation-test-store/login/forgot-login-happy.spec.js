@@ -8,7 +8,7 @@ import RegisterPage from "../../../pageObjects/automation-test-store/register.pa
 import commands from "../../../../utils/commands";
 import assert from "assert";
 
-describe("FORGOT LOGIN PAGE - happy path", () => {
+describe("FORGOT LOGIN PAGE - happy path", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(TopMenuComp.loginOrRegister);

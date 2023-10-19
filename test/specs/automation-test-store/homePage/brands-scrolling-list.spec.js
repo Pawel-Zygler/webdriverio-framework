@@ -8,7 +8,7 @@ import assert from "assert";
 const reviewsTab = "Reviews";
 const tagsTab = "Tags";
 
-describe("BRANDS SCROLLING LIST", () => {
+describe("BRANDS SCROLLING LIST", async () => {
   beforeEach(async () => {
     await HomePage.open();
   });
@@ -41,7 +41,7 @@ describe("BRANDS SCROLLING LIST", () => {
     await assert(reviewText.includes(testData.brands.Dove.showerToolReview));
   });
 
-  it("checks if tags have correct products", async () => {
+  it("checks if tags have correct products", async function () {
     this.retries(1);
     await commands.waitThenSelectCategoryAndOrSubcategory(
       testData.categories.makeup.name,

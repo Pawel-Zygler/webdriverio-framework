@@ -5,7 +5,7 @@ import TopMenuComp from "../../../pageObjects/automation-test-store/components/t
 import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import commands from "../../../../utils/commands";
 
-describe("LOGIN PAGE - unhappy path", () => {
+describe("LOGIN PAGE - unhappy path", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(TopMenuComp.loginOrRegister);
@@ -29,10 +29,7 @@ describe("LOGIN PAGE - unhappy path", () => {
   });
 
   it("it throws error when incorrect password is provided", async () => {
-    await commands.waitThenSetValue(
-      LoginPage.password,
-      testData.userInvalidMax.password
-    );
+    await commands.waitThenSetValue(LoginPage.password, testData.userInvalidMax.password);
 
     await commands.waitThenClick(LoginPage.loginButton);
   });
@@ -43,10 +40,7 @@ describe("LOGIN PAGE - unhappy path", () => {
       testData.userInvalidMax.loginName
     );
 
-    await commands.waitThenSetValue(
-      LoginPage.password,
-      testData.userInvalidMax.password
-    );
+    await commands.waitThenSetValue(LoginPage.password, testData.userInvalidMax.password);
 
     await commands.waitThenClick(LoginPage.loginButton);
   });

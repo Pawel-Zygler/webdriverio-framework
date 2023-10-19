@@ -5,7 +5,7 @@ import CategoryMenuComponent from "../../../../test/pageObjects/automation-test-
 import TopMenuComponent from "../../../../test/pageObjects/automation-test-store/components/top-menu.comp";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
-describe("SPECIALS", () => {
+describe("SPECIALS", async () => {
   beforeEach(async () => {
     await HomePage.open();
   });

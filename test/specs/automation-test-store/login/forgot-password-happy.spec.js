@@ -7,7 +7,7 @@ import SharedPageComponents from "../../../pageObjects/automation-test-store/com
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 import commands from "../../../../utils/commands";
 
-describe("FORGOT PASSWORD PAGE - happy path", () => {
+describe("FORGOT PASSWORD PAGE - happy path", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(TopMenuComp.loginOrRegister);
@@ -19,9 +19,7 @@ describe("FORGOT PASSWORD PAGE - happy path", () => {
       SharedPageComponents.pageHeader(testData.headers.forgotYourPassword)
     );
 
-    await expect(header).toEqual(
-      testData.headers.forgotYourPassword.toUpperCase()
-    );
+    await expect(header).toEqual(testData.headers.forgotYourPassword.toUpperCase());
   });
 
   it("submits correct login and email", async () => {

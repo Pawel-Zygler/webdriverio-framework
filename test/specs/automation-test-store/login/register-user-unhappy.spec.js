@@ -5,14 +5,14 @@ import testData from "../../../data/testData";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 import commands from "../../../../utils/commands";
 
-describe("REGISTER COMPONENT - unhappy path", () => {
+describe("REGISTER COMPONENT - unhappy path", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(TopMenuComponent.loginOrRegister);
     await commands.waitThenClick(SharedPageComponents.continueButton);
   });
 
-  describe("REGISTER COMPONENT - minimal values", () => {
+  describe("REGISTER COMPONENT - minimal values", async () => {
     it("opens the register form", async () => {
       const header = await commands.waitThenGetText(
         await SharedPageComponents.pageHeader(testData.headers.createAccount)
@@ -258,7 +258,7 @@ describe("REGISTER COMPONENT - unhappy path", () => {
     });
   });
 
-  describe("REGISTER COMPONENT - maximum values", () => {
+  describe("REGISTER COMPONENT - maximum values", async () => {
     //not sure if this is not flaky
     it("throws error for first name", async () => {
       await commands.waitThenSetValue(

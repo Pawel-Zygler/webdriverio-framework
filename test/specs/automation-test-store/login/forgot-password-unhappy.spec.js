@@ -7,7 +7,7 @@ import SharedPageComponents from "../../../pageObjects/automation-test-store/com
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 import commands from "../../../../utils/commands";
 
-describe("FORGOT PASSWORD PAGE - unhappy path", () => {
+describe("FORGOT PASSWORD PAGE - unhappy path", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(TopMenuComp.loginOrRegister);
@@ -15,7 +15,9 @@ describe("FORGOT PASSWORD PAGE - unhappy path", () => {
   });
 
   it("checks if user is on forgot password page", async () => {
-    const header = await commands.waitThenGetText(SharedPageComponents.pageHeader(testData.headers.forgotYourPassword));
+    const header = await commands.waitThenGetText(
+      SharedPageComponents.pageHeader(testData.headers.forgotYourPassword)
+    );
 
     await expect(header).toEqual(testData.headers.forgotYourPassword.toUpperCase());
   });
@@ -44,13 +46,20 @@ describe("FORGOT PASSWORD PAGE - unhappy path", () => {
 
     for (const { description, loginName, email, expectedErrorMessage } of testCases) {
       it(description, async () => {
-        await commands.waitThenSetValue(ForgotPasswordPage.forgotPasswordLoginName, loginName);
+        await commands.waitThenSetValue(
+          ForgotPasswordPage.forgotPasswordLoginName,
+          loginName
+        );
         await commands.waitThenSetValue(ForgotPasswordPage.forgotPasswordEmail, email);
         await commands.waitThenClick(await SharedPageComponents.continueButton);
 
-        const errorElement = await RegisterPage.validationMessageAboveForm(expectedErrorMessage);
+        const errorElement = await RegisterPage.validationMessageAboveForm(
+          expectedErrorMessage
+        );
 
-        await expect(await commands.waitThenGetText(errorElement)).toHaveTextContaining(expectedErrorMessage);
+        await expect(await commands.waitThenGetText(errorElement)).toHaveTextContaining(
+          expectedErrorMessage
+        );
       });
     }
   });

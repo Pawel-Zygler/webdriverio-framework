@@ -6,7 +6,7 @@ import commands from "../../../../utils/commands.js";
 const benefitPriceNormal = "$30.00";
 const benefitPriceFinal = "$19.00";
 
-describe("FEATURED", () => {
+describe("FEATURED", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await ItemComponent.selectProduct(testData.categories.featured.benefit);

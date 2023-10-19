@@ -31,7 +31,7 @@ describe("CART - happy path", () => {
     });
   });
 
-  describe(`${testData.categories.apparel.name}`, () => {
+  describe(`${testData.categories.apparel.name}`, async function () {
     this.retries(1);
     it(`adds subcategory shoes products with clicking dropdown and validates items are in basket`, async () => {
       await CartPage.addItemToCart(
@@ -80,8 +80,9 @@ describe("CART - happy path", () => {
     });
   });
 
-  describe(`${testData.categories.apparel.name}`, () => {
+  describe(`${testData.categories.apparel.name}`, async function () {
     this.retries(1);
+
     it(`adds subcategory ${testData.categories.apparel.subcategoryTshirts.name} products and checks if items are in cart`, async () => {
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
@@ -105,7 +106,7 @@ describe("CART - happy path", () => {
     });
   });
 
-  describe(`${testData.categories.books.name}`, () => {
+  describe(`${testData.categories.books.name}`, async () => {
     it(`adds a subcategory ${testData.categories.books.subcategoryPaperback.name} products and validates item is in cart`, async () => {
       await CartPage.addItemToCart(
         testData.categories.books.name,
@@ -120,7 +121,7 @@ describe("CART - happy path", () => {
     });
   });
 
-  describe(`${testData.categories.fragrance.name}`, () => {
+  describe(`${testData.categories.fragrance.name}`, async () => {
     it(`adds a subcategory ${testData.categories.fragrance.subcategoryMen.name} men fragrance`, async () => {
       await CartPage.addItemToCart(
         testData.categories.fragrance.name,
@@ -164,7 +165,7 @@ describe("CART - happy path", () => {
     });
   });
 
-  describe("ADD 10 PRODUCTS", () => {
+  describe("ADD 10 PRODUCTS", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await CartPage.addItemToCart(
