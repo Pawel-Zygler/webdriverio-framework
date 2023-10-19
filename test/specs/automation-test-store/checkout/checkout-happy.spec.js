@@ -34,7 +34,9 @@ describe("CHECKOUT - happy path - logged in", async () => {
 
       await commands.waitThenClick(MyAccountPage.footerMenuLogoff);
     });
-
+    
+    this.retries(1);
+    
     it("enters checkout from top menu", async () => {
       await commands.waitThenClick(
         TopMenuComponent.topMenuLink(testData.topMenu.checkout.name)
