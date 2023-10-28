@@ -1,4 +1,3 @@
-import SharedPageComponents from "../test/pageObjects/automation-test-store/components/shared-page-components.comp";
 import HomePage from "../test/pageObjects/automation-test-store/home.page";
 
 module.exports = {
@@ -35,21 +34,8 @@ module.exports = {
     await element.moveTo();
   },
 
-  clickItemIfInStock() {
-    const element = SharedPageComponents.addToCartBtnSub;
-    if (element) {
-      element.waitForExist();
-      element.waitForDisplayed();
-      element.click();
-    } else {
-      console.log("Item out of stock");
-    }
-  },
-
   waitThenSelectCategoryAndOrSubcategory(category, subcategory = null) {
-    this.waitThenMoveTo(
-      HomePage.categoryMenuComponent.categoryMenuLink(category)
-    );
+    this.waitThenMoveTo(HomePage.categoryMenuComponent.categoryMenuLink(category));
 
     if (subcategory) {
       this.waitThenClick(

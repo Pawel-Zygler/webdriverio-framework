@@ -1,11 +1,6 @@
 class ItemComponent {
-  //those probably should go to shared page components in next refactor
   get itemHeaderLinks() {
     return $$(".fixed_wrapper .prdocutname");
-  }
-
-  get addToCartBtn() {
-    return $("//a[@class='cart']/i");
   }
 
   selectProduct(itemName) {

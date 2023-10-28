@@ -3,6 +3,10 @@ class SharedPageComponents {
     return $(`//button[@title='Continue']`);
   }
 
+  get addToCartBtn() {
+    return $("//a[@class='cart']/i");
+  }
+
   addToCartBtnSubCategory(itemName) {
     return $(
       `//a[contains(text(), '${itemName}')]/ancestor::div[@class='col-md-3 col-sm-6 col-xs-12']//a[@class='productcart']`

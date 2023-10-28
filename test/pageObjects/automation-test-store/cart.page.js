@@ -3,6 +3,7 @@ import ItemComponent from "./components/item.comp";
 import HomePage from "./home.page";
 import CategoryMenuComponent from "./components/category-menu.comp";
 import commands from "../../../utils/commands";
+import SharedPageComponents from "../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 class CartPage extends BasePage {
   get tempShippingRate() {
@@ -76,7 +77,7 @@ class CartPage extends BasePage {
     if (color) {
       await commands.waitThenClick(ItemComponent.selectColourRadioBtn(color));
     }
-    await commands.waitThenClick(await ItemComponent.addToCartBtn);
+    await commands.waitThenClick(await SharedPageComponents.addToCartBtn);
   }
 
   get deleteItemBtn() {
