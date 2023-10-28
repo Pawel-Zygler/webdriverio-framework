@@ -1,6 +1,3 @@
-//
-//for a commerce project that I would do I would use some librabry to generate fake data, for this project I wanted to play with native code a bit
-//
 class DataGenerator {
   generateRandomString(length, type = "alphanumeric") {
     const chars = {
