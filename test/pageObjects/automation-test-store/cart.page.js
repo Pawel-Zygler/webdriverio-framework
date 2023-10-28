@@ -18,7 +18,6 @@ class CartPage extends BasePage {
     return $("//span[text()='Total:']/../following-sibling::td");
   }
 
-  //there is one expect here to be moved out of here
   async validateTotal() {
     var tempShippingRate = await this.tempShippingRate.getText();
     var shippingRate = tempShippingRate.replace("$", "");

@@ -1,3 +1,4 @@
+import { faker } from "@faker-js/faker";
 import dataGenerator from "../../utils/data-generator";
 
 const testData = {
@@ -18,17 +19,17 @@ const testData = {
   },
 
   uniqueUser: {
-    firstName: dataGenerator.generateRandomString(8, "alphabetic"),
-    lastName: dataGenerator.generateRandomString(8, "alphabetic"),
-    email: dataGenerator.generateRandomEmail(),
-    telephone: dataGenerator.generateRandomString(6, "numeric"),
+    firstName: faker.internet.firstName(),
+    lastName: faker.person.lastName("male"),
+    email: faker.internet.email(),
+    telephone: faker.phone.phoneNumber(),
     fax: "123456b",
     addressOne: "ul. Portowa",
     city: "Gdynia",
     regionState: "Angus",
     zipCode: 12345678,
     country: "United Kingdom",
-    loginName: dataGenerator.generateRandomString(7, "alphabetic"),
+    loginName: faker.internet.userName(),
     password: "pawelpawelll",
     passwordConfirm: "pawelpawelll",
   },
