@@ -1,6 +1,9 @@
 import allure from "allure-commandline";
 import fs from "fs";
 import commands from "./utils/commands.js";
+import path from "path";
+
+const downloadFolder = path.resolve(__dirname, "Downloads");
 
 export const config = {
   //
@@ -69,10 +72,16 @@ export const config = {
       "goog:chromeOptions": {
         args: [
           "--incognito",
-          "--headless",
+          //"--headless",
           "--start-maximize",
           "--window-size=1920,1280",
         ],
+        prefs: {
+          "download.default_directory": downloadFolder,
+          "download.prompt_for_download": false,
+          "download.directory_upgrade": true,
+          "safebrowsing.enabled": true,
+        },
       },
       timeouts: {
         pageLoad: 30000, //30 seconds

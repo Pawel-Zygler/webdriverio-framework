@@ -205,6 +205,10 @@ const testData = {
         name: "Paperback",
         productOne: "Paper Towns by John Green",
       },
+      subcategoryAudioCD: {
+        name: "Audio CD",
+        productTwo: "New French With Ease (1 book + 1 mp3 CD)",
+      },
     },
 
     fragrance: {

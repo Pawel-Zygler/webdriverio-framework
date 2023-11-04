@@ -43,5 +43,9 @@ class ItemComponent {
   tagName(tagName) {
     return $(`//li//a[contains(text(),'${tagName}')]`);
   }
+
+  get startDownload() {
+    return $(`//a[contains(text(),'Start Download')]`);
+  }
 }
 export default new ItemComponent();
