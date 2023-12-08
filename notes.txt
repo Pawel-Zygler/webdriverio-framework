@@ -1,2 +1,19 @@
-show retry in report
+show retry in report - abandoned?
+
+project db:
+1) pick free db service storage, preferably with sql, or check if there are any options for load testing database
+2) get results into zip, store it in free db
+
+1-baza jest
+stwórz w github actions credsy - done
+zedytuj workflow z credsami - done
+
+Odczytaj pliki raportu Allure (np. JSON).
+Przetwórz pliki, aby wyodrębnić interesujące Cię dane (np. status testu, czas trwania, nazwy testów itp.).
+WEZ: total tests, skipped: ile pass, ile failed, pass percentage
+Użyj przetworzonych danych do utworzenia zapytań SQL i zapisz je w bazie danych.
+
+
+Project 2:
+Sql query the db with automation?
 
