@@ -1,4 +1,4 @@
-show retry in report - abandoned?
+
 
 project db:
 1) pick free db service storage, preferably with sql, or check if there are any options for load testing database

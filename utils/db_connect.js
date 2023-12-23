@@ -7,6 +7,22 @@ const connection = mysql.createConnection({
   database: process.env.DB_NAME,
 });
 
+connection.connect((error) => {
+  if (error) {
+    console.error("Błąd połączenia: " + error.stack);
+    return;
+  }
+
+  console.log("Połączono jako ID " + connection.threadId);
+
+  connection.query("SELECT * FROM pawelzyg_salvemundus", (error, results, fields) => {
+    if (error) throw error;
+    console.log(results);
+  });
+
+  connection.end();
+});
+
 //get json results from allure
 //get meaningful data saved somewhere
 //connect db and turn the dat into sql query
@@ -14,3 +30,4 @@ const connection = mysql.createConnection({
 //check db manually if has data
 
 //automatically download last 10 days results
+//https://panel.freehosting.com:2222/evo/user/database

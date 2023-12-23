@@ -32,3 +32,22 @@ jobs:
 
       - name: Run tests and generate Allure report
         run: npm run autostore
+
+      - name: Archive Allure reports
+        run: |
+          tar -czf allure-reports.tar.gz allure-report allure-results
+
+      - name: Upload Allure report archive as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-reports-archive
+          path: allure-reports.tar.gz
+
+      - name: Upload Archive to Database
+        run: |
+          ./utils/db_connect.js downloaded-artifacts/allure-reports.tar.gz
+        env:
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_NAME: ${{ secrets.DB_NAME }}
