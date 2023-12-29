@@ -63,9 +63,11 @@ class CartPage extends BasePage {
   }
 
   async addItemToCart(mainCategory, subcategory, item, size = null, color = null) {
+    await HomePage.scrollToLogo();
     await commands.waitThenMoveTo(
       HomePage.categoryMenuComponent.categoryMenuLink(mainCategory)
     );
+    await browser.pause(2000);
     await commands.waitThenClick(
       CategoryMenuComponent.subcategory(mainCategory, subcategory)
     );

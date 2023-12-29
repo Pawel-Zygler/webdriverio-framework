@@ -13,3 +13,4 @@ Przetwórz pliki, aby wyodrębnić interesujące Cię dane (np. status testu, cz
 WEZ: total tests, skipped: ile pass, ile failed, pass percentage
 Użyj przetworzonych danych do utworzenia zapytań SQL i zapisz je w bazie danych.
 
+move out of bounds issue - to jak mi sie cos chce klikac ale cos zaslania

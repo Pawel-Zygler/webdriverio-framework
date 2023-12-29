@@ -147,9 +147,9 @@ describe("CHECKOUT - happy path - not logged in", async () => {
         testData.categories.skincare.subcategoryFace.productTwo
       );
 
-      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
+      await commands.waitThenClick(await CheckoutPage.shoppingCartCheckoutBtnOne);
 
-      await commands.waitThenClick(LoginPage.guestCheckoutBtn);
+      await commands.waitThenClick(await LoginPage.guestCheckoutBtn);
 
       await commands.waitThenClick(await SharedPageComponents.continueButton);
     });
@@ -214,7 +214,7 @@ describe("CHECKOUT - happy path - not logged in", async () => {
         testData.categories.skincare.subcategoryFace.productTwo
       );
 
-      await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
+      await commands.waitThenClick(await CheckoutPage.shoppingCartCheckoutBtnOne);
 
       await commands.waitThenSetValue(
         LoginPage.loginName,
@@ -248,7 +248,7 @@ describe("CHECKOUT - happy path - not logged in", async () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productTwoclear
+        testData.categories.skincare.subcategoryFace.productTwo
       );
       await commands.waitThenClick(CheckoutPage.shoppingCartCheckoutBtnOne);
 

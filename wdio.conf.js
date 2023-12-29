@@ -72,7 +72,7 @@ export const config = {
       "goog:chromeOptions": {
         args: [
           "--incognito",
-          "--headless",
+          //"--headless",
           "--start-maximize",
           "--window-size=1920,1280",
         ],
@@ -167,7 +167,7 @@ export const config = {
   framework: "mocha",
   //
   // The number of times to retry the entire specfile when it fails as a whole
-  specFileRetries: 1,
+  specFileRetries: 0,
   //
   // Delay in seconds between the spec file retry attempts
   // specFileRetriesDelay: 0,
