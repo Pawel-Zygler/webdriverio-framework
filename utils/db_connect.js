@@ -1,6 +1,6 @@
-const mysql = require("mysql");
+import { createConnection } from "mysql";
 
-const connection = mysql.createConnection({
+const connection = createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
