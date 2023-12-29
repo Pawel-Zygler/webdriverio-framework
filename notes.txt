@@ -13,7 +13,3 @@ Przetwórz pliki, aby wyodrębnić interesujące Cię dane (np. status testu, cz
 WEZ: total tests, skipped: ile pass, ile failed, pass percentage
 Użyj przetworzonych danych do utworzenia zapytań SQL i zapisz je w bazie danych.
 
-
-Project 2:
-Sql query the db with automation?
-

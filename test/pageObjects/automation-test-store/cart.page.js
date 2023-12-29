@@ -30,18 +30,18 @@ class CartPage extends BasePage {
     expect(parseFloat(subTotal)).toEqual(parseFloat(cartTotal));
   }
 
-  get itemsInBasketNames() {
+  get itemsInCartNames() {
     return $$(
       `//table[@class="table table-striped table-bordered"]//tr//td[@class="align_left"]/a`
     );
   }
 
-  itemsInBasketAttributes(productName) {
+  itemsInCartAttributes(productName) {
     return $$(`//td[@class="align_left" and .//a[text()="${productName}"]]//div//small`);
   }
 
   async getTextsFromItemsAttributesInCart(productName) {
-    let rows = await this.itemsInBasketAttributes(productName);
+    let rows = await this.itemsInCartAttributes(productName);
     let texts = [];
 
     for (let row of rows) {
@@ -52,7 +52,7 @@ class CartPage extends BasePage {
   }
 
   async getTextsFromItemsInCart() {
-    let rows = await this.itemsInBasketNames;
+    let rows = await this.itemsInCartNames;
     let texts = [];
 
     for (let row of rows) {
@@ -70,6 +70,7 @@ class CartPage extends BasePage {
       CategoryMenuComponent.subcategory(mainCategory, subcategory)
     );
     await ItemComponent.selectProduct(item);
+
     if (size) {
       await ItemComponent.selectSizeDropdown.selectByVisibleText(size);
     }
