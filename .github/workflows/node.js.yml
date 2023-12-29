@@ -43,6 +43,9 @@ jobs:
           name: allure-reports-archive
           path: allure-reports.tar.gz
 
+      - name: Change permissions
+        run: chmod +x ./utils/db_connect.js
+
       - name: Upload Archive to Database
         run: |
           ./utils/db_connect.js downloaded-artifacts/allure-reports.tar.gz
