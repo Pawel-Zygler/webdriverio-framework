@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { mysql } from "mysql";
 
 const connection = mysql.createConnection({
