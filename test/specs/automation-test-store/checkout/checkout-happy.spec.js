@@ -138,7 +138,7 @@ describe("CHECKOUT - happy path - logged in", async () => {
 });
 
 describe("CHECKOUT - happy path - not logged in", async () => {
-  describe.only("AS A GUEST USER", async () => {
+  describe("AS A GUEST USER", async () => {
     beforeEach(async () => {
       await HomePage.open();
       await CartPage.addItemToCart(
