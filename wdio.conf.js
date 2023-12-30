@@ -72,7 +72,7 @@ export const config = {
       "goog:chromeOptions": {
         args: [
           "--incognito",
-          //"--headless",
+          "--headless",
           "--start-maximize",
           "--window-size=1920,1280",
         ],
