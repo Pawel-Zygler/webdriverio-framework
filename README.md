@@ -1,6 +1,6 @@
-Test store framework done using: node.js, webdriver.io and js
+Webdriver.io + js + node.js
 
-Website under test: automationteststore.com
+www.automationteststore.com - sut
 
 Go to root and install dependencies:
 
@@ -8,20 +8,16 @@ Go to root and install dependencies:
 npm i
 ```
 
+Run suite:
+
+```bash
+npm run autostore
+```
+
 To run single test:
 
 ```bash
 npx wdio --spec test/specs/automation-test-store/checkout/checkout-happy.spec.js
-```
-
-(check [package.json](package.json)) for more single spec shortcuts.
-
-If you want to enable/disable headless, comment out browser setting in wdio.conf file.
-
-To run the entire Automation Test Store test suite, use the following command:
-
-```bash
-npm run autostore
 ```
 
 Run wiremock
@@ -36,7 +32,7 @@ To run wiremock export path to where the wiremock jar is located. Such as:
 export WIREMOCK_PATH="/Users/jondoe/Documents"
 ```
 
-To display report run tests locally and:
+To display report run tests locally:
 
 ```bash
 npm run report
