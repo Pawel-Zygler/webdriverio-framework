@@ -17,7 +17,7 @@ connection.connect((error) => {
 
   console.log("Połączono jako ID " + connection.threadId);
 
-  connection.query("SELECT * FROM pawelzyg_salvemundus", (error, results, fields) => {
+  connection.query("SELECT * FROM pawelzyg_salvemundus", (error, results) => {
     if (error) throw error;
     console.log(results);
   });
@@ -28,6 +28,14 @@ connection.connect((error) => {
 //get json results from allure
 //get meaningful data saved somewhere
 //connect db and turn the dat into sql query
+//no chyba mam mysqlsh na kompie, ale komenda
+
+// MySQL  JS > \connect pawelzyg@192.168.0.1:59652
+// Creating a session to 'pawelzyg@192.168.0.1:59652'
+// Please provide the password for 'pawelzyg@192.168.0.1:59652':
+// MySQL Error 2003 (HY000): Can't connect to MySQL server on '192.168.0.1:59652' (60)
+// cos nie chce sie podlaczyc do bazy
+
 //db connection and insert of allureResultsDBFormatted
 //check db manually if has data
 
