@@ -12,7 +12,7 @@ import CheckoutPage from "../../../pageObjects/automation-test-store/checkout.pa
 import assert from "assert";
 import RegisterPage from "../../../pageObjects/automation-test-store/register.page";
 
-describe("CHECKOUT - happy path - logged in", async () => {
+describe("@smoke CHECKOUT - happy path - logged in", async () => {
   describe("ENTER CHECKOUT FROM 3 LOCATIONS", async () => {
     beforeEach(async () => {
       await HomePage.open();

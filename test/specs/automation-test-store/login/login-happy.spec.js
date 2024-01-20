@@ -7,7 +7,7 @@ import commands from "../../../../utils/commands";
 import CategoryMenuComponent from "../../../../test/pageObjects/automation-test-store/components/category-menu.comp";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
-describe("LOGIN PAGE - happy path", async () => {
+describe("@smoke LOGIN PAGE - happy path", async () => {
   describe("LOGIN PAGE - happy path", async () => {
     beforeEach(async () => {
       await HomePage.open();
