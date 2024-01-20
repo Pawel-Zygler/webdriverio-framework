@@ -5,7 +5,7 @@ import TopMenuComp from "../../../pageObjects/automation-test-store/components/t
 import LoginPage from "../../../pageObjects/automation-test-store/login.page";
 import commands from "../../../../utils/commands";
 
-describe("LOGIN PAGE - unhappy path", async () => {
+describe("@ smoke LOGIN PAGE - unhappy path", async () => {
   beforeEach(async () => {
     await HomePage.open();
     await commands.waitThenClick(TopMenuComp.loginOrRegister);

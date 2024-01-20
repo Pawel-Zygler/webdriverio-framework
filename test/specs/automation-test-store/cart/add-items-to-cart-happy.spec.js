@@ -16,7 +16,7 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne.name
+        testData.categories.skincare.subcategoryFace.productTwo
       );
 
       await CartPage.addItemToCart(
@@ -33,7 +33,7 @@ describe("CART - happy path", () => {
 
   describe(`${testData.categories.apparel.name}`, async function () {
     this.retries(1);
-    it(`adds subcategory shoes products with clicking dropdown and validates items are in basket`, async () => {
+    it(`adds subcategory shoes products with clicking dropdown and validates items are in cart`, async () => {
       await CartPage.addItemToCart(
         testData.categories.apparel.name,
         testData.categories.apparel.subcategoryShoes.name,
@@ -142,7 +142,7 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne.name
+        testData.categories.skincare.subcategoryFace.productTwo
       );
 
       await CartPage.addItemToCart(
@@ -171,7 +171,7 @@ describe("CART - happy path", () => {
       await CartPage.addItemToCart(
         testData.categories.skincare.name,
         testData.categories.skincare.subcategoryFace.name,
-        testData.categories.skincare.subcategoryFace.productOne.name
+        testData.categories.skincare.subcategoryFace.productTwo
       );
     });
 

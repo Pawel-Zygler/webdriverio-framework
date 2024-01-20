@@ -38,7 +38,7 @@ describe("BRANDS SCROLLING LIST", async () => {
     await commands.waitThenClick(reviewsTabSelector);
 
     const reviewText = await commands.waitThenGetText(await ItemComponent.reviewContent);
-    await assert(reviewText.includes(testData.brands.Dove.showerToolReview));
+    await expect(reviewText).toContain(testData.brands.Dove.showerToolReview);
   });
 
   it("checks if tags have correct products", async function () {
