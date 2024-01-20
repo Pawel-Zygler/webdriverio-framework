@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { mysql } from "mysql";
+const mysql = require("mysql");
 
 const connection = mysql.createConnection({
   host: process.env.DB_HOST,
