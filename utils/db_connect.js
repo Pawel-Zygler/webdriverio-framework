@@ -41,3 +41,4 @@ connection.connect((error) => {
 
 //automatically download last 10 days results
 //https://panel.freehosting.com:2222/evo/user/database
+//testing smoke

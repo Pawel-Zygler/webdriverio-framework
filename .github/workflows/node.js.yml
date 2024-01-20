@@ -43,7 +43,7 @@ jobs:
         run: |
           if [[ "${{ github.event.inputs.triggerSmokeTests }}" == "true" || "${{ github.event.head_commit.message }}" == *"smoke"* ]]; then
             echo "Running Smoke Tests"
-            echo "::set-output name=TEST_CMD::npm run autostore -- --smoke"
+            echo "::set-output name=TEST_CMD::npm run autostore:smoke"
           else
             echo "Running All Tests"
             echo "::set-output name=TEST_CMD::npm run autostore"
