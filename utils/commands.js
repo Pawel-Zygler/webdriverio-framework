@@ -11,7 +11,7 @@ module.exports = {
     await element.waitForExist();
     await element.waitForDisplayed();
     let text = await element.getText();
-    return text;
+    return text.replace(/\n/g, "");
   },
 
   waitThenSetValue: async function (element, value) {
