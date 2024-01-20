@@ -66,6 +66,7 @@ jobs:
         run: chmod +x ./utils/db_connect.js
 
       - name: Upload Archive to Database
+        if: false
         run: |
           ./utils/db_connect.js downloaded-artifacts/allure-reports.tar.gz
         env:
