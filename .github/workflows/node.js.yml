@@ -66,7 +66,7 @@ jobs:
         run: chmod +x ./utils/db_connect.js
 
       - name: Upload Archive to Database
-        if: true
+        if: false
         run: |
           ./utils/db_connect.js downloaded-artifacts/allure-reports.tar.gz
         env:
@@ -74,3 +74,11 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_NAME: ${{ secrets.DB_NAME }}
+
+      - name: Install MySQL Shell
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mysql-shell
+      - name: Connect to MySQL Database and Execute Command
+        run: |
+          mysqlsh --sql --host=${{ secrets.DB_HOST }} --user=${{ secrets.DB_USER }} --password=${{ secrets.DB_PASSWORD }} --database=${{ secrets.DB_NAME }} -e "SELECT * FROM cities;"
