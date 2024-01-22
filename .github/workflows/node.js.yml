@@ -78,6 +78,12 @@ jobs:
       - name: Install MySQL Shell
         run: |
           sudo apt-get update
+          sudo apt-key adv --keyserver keys.gnupg.net --recv-keys 5072E1F5
+          echo "deb http://repo.mysql.com/apt/ubuntu/ $(lsb_release -sc) mysql-apt-config
+          deb http://repo.mysql.com/apt/ubuntu/ $(lsb_release -sc) mysql-8.0
+          deb http://repo.mysql.com/apt/ubuntu/ $(lsb_release -sc) mysql-tools
+          deb-src http://repo.mysql.com/apt/ubuntu/ $(lsb_release -sc) mysql-8.0" | sudo tee /etc/apt/sources.list.d/mysql.list
+          sudo apt-get update
           sudo apt-get install -y mysql-shell
       - name: Connect to MySQL Database and Execute Command
         run: |
