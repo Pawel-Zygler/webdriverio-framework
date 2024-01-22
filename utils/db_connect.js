@@ -17,7 +17,7 @@ connection.connect((error) => {
 
   console.log("Połączono jako ID " + connection.threadId);
 
-  connection.query("SELECT * FROM pawelzyg_salvemundus", (error, results) => {
+  connection.query("SELECT * FROM cities;", (error, results) => {
     if (error) throw error;
     console.log(results);
   });
