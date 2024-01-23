@@ -73,4 +73,4 @@ jobs:
 
       - name: Execute SQL Query on MySQL Service
         run: |
-          mysql --host db4free.net --port 3306 --user pawelz --password widelecosiem -e "SELECT * FROM cities;" salvemundus
+          mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "SELECT * FROM cities;" salvemundus
