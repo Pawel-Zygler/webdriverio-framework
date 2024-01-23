@@ -22,8 +22,8 @@ jobs:
       mysql:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: ${{ secrets.DB_PASSWORD }}
-          MYSQL_DATABASE: ${{ secrets.DB_NAME }}
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: test_db
         ports:
           - 3306:3306
 
@@ -73,4 +73,4 @@ jobs:
 
       - name: Execute SQL Query on MySQL Service
         run: |
-          mysql --host ${{ secrets.DB_HOST }} --port 3306 --user ${{ secrets.DB_USER }} --password ${{ secrets.DB_PASSWORD }} -e "SELECT * FROM cities;" ${{ secrets.DB_NAME }}
+          mysql --host db4free.net --port 3306 --user pawelz --password widelecosiem -e "SELECT * FROM cities;" salvemundus
