@@ -65,11 +65,8 @@ jobs:
         run: |
           tar -czf combined-allure-report.tar.gz allure-report allure-results
 
-      - name: Convert combined archive to Base64 string
-        id: base64_conversion
-        run: |
-          base64_string=$(base64 -w 0 combined-allure-report.tar.gz)
-          echo "::set-output name=base64_string::$base64_string"
+      - name: Encode file to Base64 and save to temporary file
+        run: base64 allure-reports.tar.gz > temp_base64.txt
 
       - name: Upload report archive as artifact
         uses: actions/upload-artifact@v2
@@ -82,11 +79,10 @@ jobs:
         run: |
           mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "SELECT * FROM cities;" salvemundus
 
-      - name: Insert report into the db
+      - name: Insert file to database
         run: |
-          mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "INSERT INTO allureReports (file_data, upload_date) VALUES ('$base64_string', NOW());" salvemundus
-        env:
-          base64_string: ${{ steps.base64_conversion.outputs.base64_string }}
+          encoded_file=$(cat temp_base64.txt)
+          mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "INSERT INTO allureReports (file_data, upload_date) VALUES ('$encoded_file', NOW());" salvemundus
 
       - name: Verify report in db
         run: |
