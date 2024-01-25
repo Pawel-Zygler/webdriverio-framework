@@ -63,7 +63,7 @@ jobs:
 
       - name: Archive reports
         run: |
-          tar -czf combined-allure-report.tar.gz allure-report allure-results
+          tar -czf allure-reports.tar.gz allure-report allure-results
 
       - name: Encode file to Base64 and save to temporary file
         run: base64 allure-reports.tar.gz > temp_base64.txt
