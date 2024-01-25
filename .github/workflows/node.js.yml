@@ -58,19 +58,44 @@ jobs:
             echo "::set-output name=TEST_CMD::npm run autostore"
           fi
 
-      - name: Run tests and generate Allure report
+      - name: Run tests and generate report
         run: ${{ steps.test_command.outputs.TEST_CMD }}
 
-      - name: Archive Allure reports
+      - name: Archive reports
         run: |
-          tar -czf allure-reports.tar.gz allure-report allure-results
+          tar -czf combined-allure-report.tar.gz allure-report allure-results
 
-      - name: Upload Allure report archive as artifact
+      - name: Convert combined archive to Base64 string
+        id: base64_conversion
+        run: |
+          base64_string=$(base64 -w 0 combined-allure-report.tar.gz)
+          echo "::set-output name=base64_string::$base64_string"
+
+      - name: Upload report archive as artifact
         uses: actions/upload-artifact@v2
         with:
           name: allure-reports-archive
           path: allure-reports.tar.gz
 
       - name: Execute SQL Query on MySQL Service
+        if: false
         run: |
           mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "SELECT * FROM cities;" salvemundus
+
+      - name: Insert report into the db
+        run: |
+          mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "INSERT INTO allureReports (file_data, upload_date) VALUES ('$base64_string', NOW());" salvemundus
+        env:
+          base64_string: ${{ steps.base64_conversion.outputs.base64_string }}
+
+      - name: Verify report in db
+        run: |
+          mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "SELECT * FROM allureReports;" salvemundus
+
+      - name: Delete report from db
+        run: |
+          mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "DELETE FROM allureReports WHERE id = 1;" salvemundus
+
+      - name: Verify deletion from db
+        run: |
+          mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "SELECT * FROM allureReports;" salvemundus
