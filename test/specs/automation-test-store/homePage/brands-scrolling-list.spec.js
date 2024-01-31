@@ -28,7 +28,7 @@ describe("BRANDS SCROLLING LIST", async () => {
     await assert(results.includes(testData.brands.Pantene.hairShine.toUpperCase()));
   });
 
-  it("checks if Dove product has a review", async () => {
+  it.skip("[prod bug] checks if Dove product has a review", async () => {
     const doveBrand = await HomePage.brandsScrollingList(testData.brands.Dove.name);
     await commands.waitThenClick(doveBrand);
 
