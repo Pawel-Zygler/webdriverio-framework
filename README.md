@@ -26,18 +26,6 @@ To run single test:
 npx wdio --spec test/specs/automation-test-store/checkout/checkout-happy.spec.js
 ```
 
-Run wiremock
-
-```bash
-npm run wiremock
-```
-
-To run wiremock export path to where the wiremock jar is located. Such as:
-
-```bash
-export WIREMOCK_PATH="/Users/jondoe/Documents"
-```
-
 To display report run tests locally:
 
 ```bash
