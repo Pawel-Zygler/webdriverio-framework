@@ -14,6 +14,12 @@ Run suite:
 npm run autostore
 ```
 
+or run just test with @smoke tag for a smoke test
+
+```bash
+npm run autostore:smoke
+```
+
 To run single test:
 
 ```bash
@@ -37,3 +43,5 @@ To display report run tests locally:
 ```bash
 npm run report
 ```
+
+There is also a possibility to run smoke test from CI/CD as a trigger dispatch.
