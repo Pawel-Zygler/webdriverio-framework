@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
-    "autostore": "npx wdio --spec test/specs/automation-test-store/**/*.spec.js",
-    "autostore:smoke": "npx wdio --spec test/specs/automation-test-store/**/*.spec.js --mochaOpts.grep '@smoke'",
+    "autostore:headless": "HEADLESS=true npx wdio --spec test/specs/automation-test-store/**/*.spec.js",
+    "autostore:headed": "HEADLESS=false npx wdio --spec test/specs/automation-test-store/**/*.spec.js",
+    "autostore:smoke": "HEADLESS=true npx wdio --spec test/specs/automation-test-store/**/*.spec.js --mochaOpts.grep '@smoke'",
     "report": "allure open"
   },
   "author": "pawel",

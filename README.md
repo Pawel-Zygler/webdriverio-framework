@@ -11,10 +11,12 @@ npm i
 Run suite:
 
 ```bash
-npm run autostore
+npm run autostore:headless
 ```
 
-or run just test with @smoke tag for a smoke test
+```bash
+npm run autostore:headed
+```
 
 ```bash
 npm run autostore:smoke
