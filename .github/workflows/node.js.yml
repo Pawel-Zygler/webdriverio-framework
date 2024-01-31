@@ -55,7 +55,7 @@ jobs:
             echo "::set-output name=TEST_CMD::npm run autostore:smoke"
           else
             echo "Running All Tests"
-            echo "::set-output name=TEST_CMD::npm run autostore:headed"
+            echo "::set-output name=TEST_CMD::npm run autostore:headless"
           fi
 
       - name: Run tests and generate report
