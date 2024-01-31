@@ -66,6 +66,7 @@ jobs:
           tar -czf allure-reports.tar.gz allure-report allure-results
 
       - name: Encode file to Base64 and save to temporary file
+        if: false
         run: base64 allure-reports.tar.gz > temp_base64.txt
 
       - name: Upload report archive as artifact
@@ -80,18 +81,22 @@ jobs:
           mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "SELECT * FROM cities;" salvemundus
 
       - name: Insert file to database
+        if: false
         run: |
           encoded_file=$(cat temp_base64.txt)
           mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "INSERT INTO allureReports (file_data, upload_date) VALUES ('$encoded_file', NOW());" salvemundus
 
       - name: Verify report in db
+        if: false
         run: |
           mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "SELECT * FROM allureReports;" salvemundus
 
       - name: Delete report from db
+        if: false
         run: |
           mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "DELETE FROM allureReports WHERE id = 1;" salvemundus
 
       - name: Verify deletion from db
+        if: false
         run: |
           mysql --host=db4free.net --port=3306 --user=pawelz --password=widelecosiem -e "SELECT * FROM allureReports;" salvemundus
