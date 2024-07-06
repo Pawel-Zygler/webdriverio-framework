@@ -7,11 +7,11 @@ describe("SOCIAL MEDIA - happy path", async () => {
     await HomePage.open();
   });
 
-  //this test for linked in has a prod bug, linked in opens in same tab
+  //this test for LinkedIn has a prod bug, it opens in same tab, so disabled it
   describe("SOCIAL MEDIA - happy path", async () => {
     const socials = [
       { name: "fb", url: "fburl" },
-      { name: "tt", url: "tturl" },
+      { name: "tt", url: "xurl" },
       //{name: "li", url: "liurl"}, prod bug here
     ];
 

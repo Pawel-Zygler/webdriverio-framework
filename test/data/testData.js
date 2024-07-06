@@ -120,10 +120,10 @@ const testData = {
 
   socialMedia: {
     fb: "Facebook",
-    tt: "Twitter",
+    tt: "Twitter", //I lfet a name because the sut is not updated to this change
     li: "Linkedin",
     fburl: "https://www.facebook.com/",
-    tturl: "https://twitter.com/",
+    xurl: "https://x.com/", //old twitter
     liurl: "https://www.linkedin.com/",
   },
 

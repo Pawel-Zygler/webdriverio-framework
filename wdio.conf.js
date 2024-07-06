@@ -59,7 +59,7 @@ export const config = {
   connectionRetryCount: 3,
   services: ["chromedriver", "geckodriver"],
   framework: "mocha",
-  specFileRetries: 1,
+  specFileRetries: 0,
   reporters: [
     "spec",
     [
@@ -75,7 +75,7 @@ export const config = {
   mochaOpts: {
     ui: "bdd",
     timeout: 600000,
-    retry: 1,
+    retry: 0,
   },
 
   /**
