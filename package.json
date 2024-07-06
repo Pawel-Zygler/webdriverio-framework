@@ -1,7 +1,7 @@
 {
   "name": "webdriverio-framework",
   "version": "1.0.0",
-  "description": "webdriver io automation framework",
+  "description": "webdriver.io + js + mocha + chai automation framework",
   "main": "index.js",
   "scripts": {
     "wdio": "wdio run ./wdio.conf.js",
@@ -10,8 +10,8 @@
     "autostore:smoke": "HEADLESS=true npx wdio --spec test/specs/automation-test-store/**/*.spec.js --mochaOpts.grep '@smoke'",
     "report": "allure open"
   },
-  "author": "pawel",
-  "license": "ISC",
+  "author": "Paweł Zygler - Test Engineer",
+  "license": "free",
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",

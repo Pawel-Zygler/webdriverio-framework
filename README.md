@@ -1,4 +1,4 @@
-Webdriver.io + js + node.js
+The reason for this framework is to show what I can code in Webdriver.io + js + mocha + chai + node.js configuration.
 
 www.automationteststore.com - sut
 
