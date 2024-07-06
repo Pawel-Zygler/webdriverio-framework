@@ -2,6 +2,12 @@ Webdriver.io + js + node.js
 
 www.automationteststore.com - sut
 
+Update ChromeDriver in devDependencies in package.json, change for instance to:
+
+```
+"chromedriver": "^126.0.0",
+```
+
 Go to root and install dependencies:
 
 ```bash
