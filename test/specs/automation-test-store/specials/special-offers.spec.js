@@ -1,8 +1,8 @@
 import HomePage from "../../../pageObjects/automation-test-store/home.page";
 import testData from "../../../data/testData";
 import commands from "../../../../utils/commands";
-import CategoryMenuComponent from "../../../../test/pageObjects/automation-test-store/components/category-menu.comp";
-import TopMenuComponent from "../../../../test/pageObjects/automation-test-store/components/top-menu.comp";
+import CategoryMenuComponent from "../../../pageObjects/automation-test-store/components/category-menu.comp";
+import TopMenuComponent from "../../../pageObjects/automation-test-store/components/top-menu.comp";
 import SharedPageComponents from "../../../pageObjects/automation-test-store/components/shared-page-components.comp";
 
 describe("SPECIALS", async () => {
