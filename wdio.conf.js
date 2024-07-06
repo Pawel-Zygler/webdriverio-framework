@@ -12,7 +12,7 @@ export const config = {
   exclude: [],
   suites: {
     smoke: ["test/specs/automation-test-store/add-items-to-cart-happy.spec.js"],
-    autostore: ["test/specs/automation-test-store/**/*.spec.js"],
+    autostore: ["test/specs/automation-test-store/**/**/*.spec.js"],
   },
   maxInstances: 10,
   capabilities: [
