@@ -1,5 +1,5 @@
 import HomePage from "../../../../pageObjects/automation-test-store/home.page";
-import commands from "../../../../../utils/commands";
+import testData from "../../../../data/testData.js";
 
 describe("TESTIMONIALS", async () => {
   beforeEach(async () => {
@@ -9,10 +9,17 @@ describe("TESTIMONIALS", async () => {
   it("checks if testimonials have correct review", async () => {
     await HomePage.clickTestimonial(1);
 
-    const testimonialText = await commands.waitThenGetText(HomePage.testimonialText); //element ("//ul//li//br") still not displayed, czyli lepszy selektor trzeba
+    const testimonialElements = await HomePage.testimonialTexts;
 
-    await expect(testimonialText).toContain(
-      "Really great products and professional service!"
+    const testimonialTexts = await Promise.all(
+      testimonialElements.map(async (element) => {
+        return element.getText();
+      })
     );
+
+    const found = testimonialTexts.some((text) =>
+      text.includes(testData.testimonials.MeganWitmore)
+    );
+    await expect(found).toBe(true);
   });
 });

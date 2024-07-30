@@ -273,6 +273,10 @@ const testData = {
   tags: {
     cheeks: "cheeks",
   },
+
+  testimonials: {
+    MeganWitmore: "Really great products and professional service!",
+  },
 };
 
 module.exports = testData;

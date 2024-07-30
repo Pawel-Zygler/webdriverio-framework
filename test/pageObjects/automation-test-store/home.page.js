@@ -1,7 +1,6 @@
 import BasePage from "./base.page";
 import CategoryMenuComponent from "../automation-test-store/components/category-menu.comp";
 import TopMenuComponent from "../automation-test-store/components/top-menu.comp";
-import commands from "../../../utils/commands";
 
 class HomePage extends BasePage {
   open() {
@@ -41,8 +40,8 @@ class HomePage extends BasePage {
     await tesimonialElement.click();
   }
 
-  get testimonialText() {
-    return $(`//ul//li//br`);
+  get testimonialTexts() {
+    return $$(`//div[@id='testimonialsidebar']//ul[@class='slides']/li`);
   }
 
   async scrollToLogo() {
