@@ -2,7 +2,7 @@ The reason for this framework is to show what I can code in Webdriver.io + js + 
 
 www.automationteststore.com - sut
 
-Update ChromeDriver in devDependencies in package.json, change for instance to:
+Update ChromeDriver in devDependencies in package.json, change for instance to (make sure it is the up to date version):
 
 ```
 "chromedriver": "^126.0.0",

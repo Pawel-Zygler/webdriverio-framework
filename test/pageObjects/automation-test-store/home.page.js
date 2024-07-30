@@ -35,6 +35,15 @@ class HomePage extends BasePage {
     return $(`//div[@class='oneByOneSlide']`);
   }
 
+  async clickTestimonial(index) {
+    const tesimonialElement = $(`//li//a[contains(text(),'${index}')]`);
+    await tesimonialElement.click();
+  }
+
+  get testimonialTexts() {
+    return $$(`//div[@id='testimonialsidebar']//ul[@class='slides']/li`);
+  }
+
   async scrollToLogo() {
     const element = $(`[title='Automation Test Store']`);
     await element.waitForExist();
